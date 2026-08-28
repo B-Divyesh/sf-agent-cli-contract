@@ -1,0 +1,24 @@
+version: 1
+command: [__AGENT_CONTRACT_BIN__, "fixture-target"]
+modes:
+  text: ["--mode", "text"]
+  tty: ["--mode", "tty"]
+  json: ["--mode", "json"]
+fixtures:
+  - name: inspect stable record
+    modes: [text, tty, json]
+    expect:
+      exit: 0
+      stdout_contains: ["ridge-7"]
+    idempotent: true
+    detect_nondeterminism: true
+    allow_network: false
+  - name: invalid input stays recoverable
+    args: ["--fail"]
+    modes: [json]
+    expect:
+      exit: 4
+      stdout_contains: ["record id is required"]
+      error_code: invalid_input
+    recover_args: ["--recover"]
+    allow_network: false

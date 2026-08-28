@@ -1,14 +1,109 @@
 # Agent CLI Contract
 
-Live: https://agent-cli-contract.sociobot.in — built by the Param Factory (`cli`).
+Test CLI output, exits, errors, and repeat runs before agents depend on them.
 
-See `.factory/brief.json` for the researched problem this solves and `.factory/design.md` for the visual system.
+Agent CLI Contract is for maintainers whose commands run inside coding agents and scripts. It executes declared fixtures in fresh temporary directories, records text, TTY, and JSON output, and writes Markdown and JSON reports.
 
-## Develop
+It is free, open source, local, and has no telemetry.
 
+## Install
+
+Build the single binary with Rust 1.85 or newer:
+
+```sh
+cargo install --path .
+agent-contract --help
 ```
+
+The factory can publish the ready package with `cargo package` after release review.
+
+## Try the bundled demo
+
+```sh
+agent-contract demo
+```
+
+The demo copies the bundled contract into a new temporary directory, runs its fixtures, and prints the report path. It never reads or writes project data. See [`examples/agent-contract.yml`](examples/agent-contract.yml) for the same suite in source form.
+
+The website demo is available at <https://agent-cli-contract.sociobot.in/demo>.
+
+## Add a contract
+
+Create a starter file:
+
+```sh
+agent-contract init --command my-cli
+```
+
+Then describe only commands you already trust:
+
+```yaml
+version: 1
+command: ["my-cli"]
+modes:
+  text: []
+  tty: ["--color=always"]
+  json: ["--json"]
+fixtures:
+  - name: inspect one record
+    args: ["inspect", "record-7"]
+    modes: [text, tty, json]
+    expect:
+      exit: 0
+      stdout_contains: ["record-7"]
+    idempotent: true
+```
+
+Record the first approved snapshots and then check them:
+
+```sh
+agent-contract check agent-contract.yml --accept
+agent-contract check agent-contract.yml
+```
+
+Snapshots go into `snapshots/`. Reports go into `.agent-contract/report.md` and `.agent-contract/report.json`.
+
+## Contract format
+
+The public format starts at version `1`.
+
+- `command` is an executable plus fixed arguments. No shell parses it.
+- `modes` adds declared arguments for `text`, `tty`, or `json` runs.
+- `fixtures[].args` contains the fixture arguments.
+- `fixtures[].files` writes inline sample files inside the temporary directory.
+- `expect.exit`, `stdout_contains`, and `stderr_contains` check the result.
+- `expect.error_code` reads `error.code` or `code` from JSON output.
+- `recover_args` runs after an expected failure and must exit zero.
+- `idempotent: true` runs the same fixture twice in one clean directory.
+- `detect_nondeterminism: true` compares two fresh runs and names changed JSON fields.
+- `allow_nondeterministic_fields` accepts known JSON paths such as `$.meta.duration_ms`.
+- `allow_network: true` permits URLs and known network commands. Network-shaped commands are rejected by default.
+- `timeout_ms` stops a fixture that exceeds its limit. The default is 10 seconds.
+- `redact_env` lists extra environment variable names whose values must never appear in reports.
+
+Run `agent-contract schema` for the complete JSON Schema. Invalid or empty suites exit with code `2`. Contract failures exit with code `1`. Passing suites exit with code `0`. Add `--json` before the command for a script-readable summary.
+
+## Safety model
+
+Each fixture receives a new temporary working directory. Idempotency checks share only their own temporary directory. The runner uses direct process arguments, never a shell. It passes a small environment allowlist plus values declared in the contract. Secret-shaped host variables are not passed. Declared secret values are replaced with `[REDACTED]` in snapshots and reports.
+
+Network use must be enabled per fixture. Without it, URL arguments and known network executables are rejected, proxy variables point to a closed local port, and `AGENT_CONTRACT_NETWORK=disabled` is set. A target binary can still open a raw socket; use an OS sandbox when hostile code is in scope. This tool runs maintainer-authored commands, not generated commands.
+
+## Develop and verify
+
+```sh
 npm install
-npm run dev
 npm test
-npm run build   # -> dist/
+npm run build
+cargo package
 ```
+
+`npm run build:site` writes the deployable site to `dist/site`. `npm run build` also builds the release CLI. No runtime service, account, tracking script, or network connection is used.
+
+## Project status
+
+Version `0.1.0`. See [CHANGELOG.md](CHANGELOG.md) for release notes. The contract format may add fields before `1.0`, but existing version 1 fields will retain their meaning.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
