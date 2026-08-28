@@ -1,0 +1,25 @@
+{
+  "tested_at": "2026-08-28",
+  "url": "http://127.0.0.1:4173/",
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 100,
+    "best_practices": 100,
+    "seo": 100,
+    "fcp_seconds": 0.9,
+    "lcp_seconds": 2.1,
+    "cls": 0,
+    "total_blocking_time_ms": 60
+  },
+  "assets_bytes": {
+    "initial_js": 15884,
+    "css": 13595,
+    "hero_webp": 221536
+  },
+  "verify_url": {
+    "load_ms": 621,
+    "console_errors": 0,
+    "h1_count": 1,
+    "missing_alt_count": 0
+  }
+}

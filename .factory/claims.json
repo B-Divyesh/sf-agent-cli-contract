@@ -1,0 +1,114 @@
+[
+  {
+    "id": "isolated-fixtures",
+    "claim": "Each fixture runs in a new temporary directory.",
+    "where": "landing how-it-works section, README",
+    "test": "npm test -- --grep @claim:isolated-fixtures",
+    "sandbox": "fresh temp contract; fixture writes a file; assert the project directory is untouched and the captured path is normalized"
+  },
+  {
+    "id": "mode-capture",
+    "claim": "Captures text, real TTY, and JSON output.",
+    "where": "landing preview, README",
+    "test": "npm test -- --grep @claim:mode-capture",
+    "sandbox": "fresh temp contract; assert stdout is a TTY in tty mode and JSON parses in json mode"
+  },
+  {
+    "id": "snapshot-regression",
+    "claim": "A later run reports when approved output changes.",
+    "where": "landing product preview, README",
+    "test": "npm test -- --grep @claim:snapshot-regression",
+    "sandbox": "fresh temp contract; approve one output, change the declared probe mode, and assert the next check names the changed stdout snapshot"
+  },
+  {
+    "id": "nondeterminism",
+    "claim": "Changing JSON fields are named across clean repeat runs.",
+    "where": "landing product preview, README",
+    "test": "npm test -- --grep @claim:nondeterminism",
+    "sandbox": "fresh temp contract producing a random run_id; assert the finding names $.meta.run_id"
+  },
+  {
+    "id": "idempotency",
+    "claim": "Idempotency checks report output or exit changes on a second run.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:idempotency",
+    "sandbox": "fresh temp contract whose command increments a fixture file; assert the second run is reported as changed"
+  },
+  {
+    "id": "inline-files",
+    "claim": "Inline sample files are written inside each temporary fixture directory.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:inline-files",
+    "sandbox": "fresh temp contract with an inline input.txt; assert the fixture reads its content and no file appears beside the contract"
+  },
+  {
+    "id": "fixture-timeout",
+    "claim": "A fixture is stopped when it exceeds timeout_ms.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:fixture-timeout",
+    "sandbox": "fresh temp contract running a five-second process with a 40 ms limit; assert the runner stops it and reports the limit"
+  },
+  {
+    "id": "error-recovery",
+    "claim": "Validates structured error codes and recovery commands.",
+    "where": "demo report, README",
+    "test": "npm test -- --grep @claim:error-recovery",
+    "sandbox": "bundled CLI demo in its generated temporary directory; assert the expected failure exits 4 and recovery passes"
+  },
+  {
+    "id": "report-formats",
+    "claim": "Writes Markdown and JSON reports.",
+    "where": "landing preview, README",
+    "test": "npm test -- --grep @claim:report-formats",
+    "sandbox": "bundled CLI demo; read both reports and assert matching four-check pass results"
+  },
+  {
+    "id": "secret-redaction",
+    "claim": "Declared secret values are redacted from snapshots and reports.",
+    "where": "landing privacy section, README",
+    "test": "npm test -- --grep @claim:secret-redaction",
+    "sandbox": "fresh temp contract with a known sample token; assert no snapshot or report contains it"
+  },
+  {
+    "id": "network-opt-in",
+    "claim": "Network-shaped commands need an explicit fixture opt-in.",
+    "where": "landing facts and privacy section, README",
+    "test": "npm test -- --grep @claim:network-opt-in",
+    "sandbox": "fresh temp contract declaring curl without allow_network; assert it is rejected before execution"
+  },
+  {
+    "id": "demo-sandbox",
+    "claim": "The web demo stores only separate sample state and reset removes it.",
+    "where": "demo banner, privacy page",
+    "test": "npm test -- --grep @claim:demo-sandbox",
+    "sandbox": "fresh browser context at /demo; change the sample; assert only demo-prefixed state exists; reset and assert it is removed"
+  },
+  {
+    "id": "no-third-party-data",
+    "claim": "The website demo sends no data to third parties.",
+    "where": "privacy page",
+    "test": "npm test -- --grep @claim:no-third-party-data",
+    "sandbox": "fresh browser context at /demo; intercept every request through a full sample run and assert all are same-origin"
+  },
+  {
+    "id": "free-mit",
+    "claim": "Agent CLI Contract is free, open-source software under the MIT License.",
+    "where": "landing facts, README, terms page",
+    "test": "npm test -- --grep @claim:free-mit",
+    "sandbox": "fresh clone; assert LICENSE grants free use and Cargo.toml declares MIT"
+  },
+  {
+    "id": "no-cli-telemetry",
+    "claim": "The CLI has no account, telemetry, analytics, or hosted service.",
+    "where": "landing install note, README, privacy page",
+    "test": "npm test -- --grep @claim:no-cli-telemetry",
+    "sandbox": "fresh clone and bundled CLI demo; assert source and dependency lock contain no network or telemetry client path"
+  },
+  {
+    "id": "rust-version",
+    "claim": "The CLI requires Rust 1.85 or newer.",
+    "where": "landing install note, README",
+    "test": "npm test -- --grep @claim:rust-version",
+    "sandbox": "fresh clone; assert Cargo.toml declares rust-version 1.85 and the built binary reports version 0.1.0"
+  }
+]
