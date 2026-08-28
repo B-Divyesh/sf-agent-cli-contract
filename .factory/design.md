@@ -55,6 +55,7 @@ One signature motion draws a short route across the hero map once on first view.
 - `site/public/topographic-run.webp`: original generated editorial map artwork. It shows a CLI route crossing nested contour lines and arriving at three contract checkpoints. It carries no text, logos, or UI labels. Generated for this project with `/opt/fleet/lib/gen-image.sh` using the factory image deployment, then converted to WebP at or below 300 KB.
 - `site/public/social-card.webp`: a 1200×630 crop/composition derived from the same original art, with the product name added in HTML-equivalent brand styling during build-time image composition.
 - `site/public/favicon.svg`: hand-authored route-and-checkpoint mark using the product palette.
+- `site/public/terminal-recording.svg`: generated locally from the real `agent-contract demo` output by `npm run generate:recording`. It uses the terminal palette and contains no invented fixture results.
 
 Generation prompt:
 

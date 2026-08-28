@@ -1,0 +1,1 @@
+Test CLI output, exits, errors, and repeat runs before agents depend on them.

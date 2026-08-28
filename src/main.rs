@@ -143,7 +143,7 @@ struct Captured {
     stderr: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 struct SuiteReport {
     tool_version: String,
     contract: String,
@@ -152,14 +152,14 @@ struct SuiteReport {
     checks: Vec<CheckReport>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 struct Summary {
     passed: usize,
     failed: usize,
     snapshots_written: usize,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 struct CheckReport {
     fixture: String,
     mode: String,
@@ -1057,17 +1057,36 @@ fn demo_command(json: bool) -> Result<(), (i32, String)> {
         .map_err(|error| (2, format!("could not write demo contract: {error}")))?;
     check_command(&contract, true, None, true, false)?;
     check_command(&contract, false, None, true, false)?;
+    let report_path = root.join(".agent-contract/report.md");
     if json {
         println!(
             "{}",
-            serde_json::json!({"ok": true, "demo": root, "report": root.join(".agent-contract/report.md")})
+            serde_json::json!({"ok": true, "demo": root, "report": report_path})
         );
     } else {
+        let report_source = fs::read_to_string(root.join(".agent-contract/report.json"))
+            .map_err(|error| (2, format!("could not read demo report: {error}")))?;
+        let report: SuiteReport = serde_json::from_str(&report_source)
+            .map_err(|error| (2, format!("could not parse demo report: {error}")))?;
         println!("Demo — sample data, nothing was saved to your project");
+        for check in &report.checks {
+            println!(
+                "{} {} [{}] exit {}",
+                if check.passed { "✓" } else { "✗" },
+                check.fixture,
+                check.mode,
+                check
+                    .exit
+                    .map(|exit| exit.to_string())
+                    .unwrap_or_else(|| "—".into())
+            );
+        }
         println!(
-            "Report: {}",
-            root.join(".agent-contract/report.md").display()
+            "{} {} checks",
+            if report.passed { "PASS" } else { "FAIL" },
+            report.checks.len()
         );
+        println!("Report: {}", report_path.display());
     }
     Ok(())
 }

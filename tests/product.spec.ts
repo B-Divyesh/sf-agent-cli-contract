@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { execFile } from 'node:child_process';
+import { createServer } from 'node:http';
 import { mkdtemp, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -60,6 +61,23 @@ fixtures:
   const result = await run(['--json', 'check', path, '--accept']);
   expect(result.code).toBe(1);
   expect(result.stdout).toContain('command timed out after 40 ms');
+});
+
+test('@claim:default-timeout applies the documented 10 second limit', async () => {
+  const { path } = await contractDir(`version: 1
+command: [${JSON.stringify(process.execPath)}, "-e", "setTimeout(() => {}, 20000)"]
+fixtures:
+  - name: uses default timeout
+    expect:
+      exit: 0
+`);
+  const started = Date.now();
+  const result = await run(['--json', 'check', path, '--accept']);
+  const elapsed = Date.now() - started;
+  expect(result.code).toBe(1);
+  expect(result.stdout).toContain('command timed out after 10000 ms');
+  expect(elapsed).toBeGreaterThanOrEqual(9_500);
+  expect(elapsed).toBeLessThan(13_000);
 });
 
 test('@claim:snapshot-regression reports changed command output', async () => {
@@ -200,25 +218,89 @@ fixtures:
   expect(report.passed).toBe(false);
   expect(JSON.stringify(report)).not.toContain('status=200');
   expect(report.checks[0].findings).toContain('exit was 1; expected 0');
+
+  const server = createServer((_request, response) => {
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.end('local-opt-in-ok');
+  });
+  await new Promise<void>((done) => server.listen(0, '127.0.0.1', done));
+  try {
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('local test server has no port');
+    const allowed = await contractDir(`version: 1
+command: [${JSON.stringify(process.execPath)}, "-e", "fetch(process.argv[1]).then((response) => response.text()).then(console.log)"]
+fixtures:
+  - name: declared local network
+    args: ["http://127.0.0.1:${address.port}/fixture"]
+    allow_network: true
+    expect:
+      exit: 0
+      stdout_contains: [local-opt-in-ok]
+`);
+    const permitted = await run(['check', allowed.path, '--accept']);
+    expect(permitted.code).toBe(0);
+    expect(await readFile(join(allowed.directory, 'snapshots/declared-local-network.text.stdout'), 'utf8')).toContain('local-opt-in-ok');
+  } finally {
+    await new Promise<void>((done, reject) => server.close((error) => error ? reject(error) : done()));
+  }
+});
+
+test('@claim:local-execution writes local outputs with fixture networking denied', async () => {
+  const { directory, path } = await contractDir(`version: 1
+command: [${JSON.stringify(process.execPath)}, "-e", "console.log('network=' + process.env.AGENT_CONTRACT_NETWORK)"]
+fixtures:
+  - name: local report
+    expect:
+      exit: 0
+      stdout_contains: [network=disabled]
+`);
+  expect((await run(['check', path, '--accept'])).code).toBe(0);
+  expect(await readFile(join(directory, 'snapshots/local-report.text.stdout'), 'utf8')).toContain('network=disabled');
+  expect(JSON.parse(await readFile(join(directory, '.agent-contract/report.json'), 'utf8'))).toMatchObject({ passed: true });
 });
 
 test('@claim:demo-sandbox keeps demo state separate and reset removes it', async ({ page }) => {
-  await page.goto('/demo');
+  await page.goto('/?demo=1');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Review a complete CLI contract run');
   await page.getByRole('button', { name: 'Show a blocked change' }).click();
   expect(await page.evaluate(() => localStorage.getItem('demo:report'))).toBe('failed');
   await page.getByRole('button', { name: 'Reset demo' }).click();
   expect(await page.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith('demo:')))).toEqual([]);
   await expect(page.getByText('All four contract checks pass')).toBeVisible();
+  await page.evaluate(() => localStorage.setItem('real:sentinel', 'keep'));
+  await page.getByRole('button', { name: 'Show a blocked change' }).click();
+  await page.getByRole('button', { name: 'Leave demo and view install steps' }).click();
+  await expect(page).toHaveURL('/#install');
+  expect(await page.evaluate(() => localStorage.getItem('real:sentinel'))).toBe('keep');
+  expect(await page.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith('demo:')))).toEqual([]);
 });
 
 test('@claim:no-third-party-data sends no demo data to other origins', async ({ page }) => {
   const requests: string[] = [];
   page.on('request', (request) => requests.push(request.url()));
-  await page.goto('/demo');
-  await page.getByRole('button', { name: 'Run sample contract' }).click();
-  await expect(page.getByText('Four checks passed. The sample workspace was discarded.')).toBeVisible();
+  await page.goto('/?demo=1');
+  await page.getByRole('button', { name: 'Replay recorded sample run' }).click();
+  await expect(page.getByText('Replaying the recorded output from the bundled CLI demo.')).toBeVisible();
   expect(requests.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
+});
+
+test('@claim:recorded-demo matches a fresh bundled CLI demo report', async ({ page }) => {
+  const result = await run(['--json', 'demo']);
+  expect(result.code).toBe(0);
+  const summary = JSON.parse(result.stdout.trim());
+  const report = JSON.parse(await readFile(join(summary.demo, '.agent-contract/report.json'), 'utf8'));
+  const transcript = await readFile(resolve('site/public/terminal-recording.txt'), 'utf8');
+  const recording = await readFile(resolve('site/public/terminal-recording.svg'), 'utf8');
+  expect(report.summary).toMatchObject({ passed: 4, failed: 0 });
+  for (const check of report.checks) {
+    const line = `✓ ${check.fixture} [${check.mode}] exit ${check.exit}`;
+    expect(transcript).toContain(line);
+    expect(recording).toContain(line);
+  }
+  expect(transcript).toContain('Report: /tmp/agent-contract-demo-<id>/.agent-contract/report.md');
+  await page.goto('/?demo=1');
+  await expect(page.locator('img[src="/terminal-recording.svg"]')).toBeVisible();
+  await expect(page.getByText('agent-contract demo', { exact: true }).first()).toBeVisible();
 });
 
 test('@claim:free-mit ships as free MIT-licensed source', async () => {
@@ -332,7 +414,8 @@ test('mobile demo keeps primary actions visible and links resolve', async ({ pag
   await page.goto('/');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await page.getByRole('link', { name: 'Try it with sample data' }).press('Enter');
-  await expect(page.getByRole('button', { name: 'Run sample contract' })).toBeVisible();
+  await expect(page).toHaveURL('/?demo=1');
+  await expect(page.getByRole('button', { name: 'Replay recorded sample run' })).toBeVisible();
   for (const path of ['/', '/demo', '/privacy', '/terms', '/robots.txt', '/sitemap.xml', '/favicon.svg']) {
     expect((await request.get(path)).ok()).toBe(true);
   }
@@ -355,7 +438,14 @@ test('390px routes do not create horizontal overflow and utility targets are tou
     await page.goto(route);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   }
-  for (const name of ['Reset demo', 'Start for real']) {
+  await page.goto('/?demo=1');
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+  const banner = await page.locator('.demo-banner').boundingBox();
+  expect(banner).not.toBeNull();
+  expect(banner!.y).toBeGreaterThanOrEqual(0);
+  expect(banner!.y + banner!.height).toBeLessThanOrEqual(844);
+  for (const name of ['Reset demo', 'Leave demo and view install steps']) {
     const box = await page.getByRole('button', { name }).boundingBox();
     expect(box).not.toBeNull();
     expect(box!.width).toBeGreaterThanOrEqual(44);
@@ -365,6 +455,37 @@ test('390px routes do not create horizontal overflow and utility targets are tou
     const box = await page.locator('footer').getByRole('link', { name }).boundingBox();
     expect(box).not.toBeNull();
     expect(box!.height).toBeGreaterThanOrEqual(44);
+  }
+});
+
+test('Back restores landing scroll while focusing its heading', async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto('/');
+  await page.evaluate(() => window.scrollTo(0, 1200));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  const saved = await page.evaluate(() => window.scrollY);
+  await page.evaluate(() => document.querySelector<HTMLAnchorElement>('a[href="/demo"]')?.click());
+  await page.goBack();
+  await expect(page.locator('h1')).toBeFocused();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThanOrEqual(saved - 24);
+  expect(await page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(saved + 24);
+});
+
+test('each route updates its title, description, canonical, and social metadata', async ({ page }) => {
+  const expected = [
+    ['/', 'Agent CLI Contract — test stable command output', 'https://agent-cli-contract.sociobot.in/'],
+    ['/demo', 'Demo — Agent CLI Contract', 'https://agent-cli-contract.sociobot.in/demo'],
+    ['/privacy', 'Privacy — Agent CLI Contract', 'https://agent-cli-contract.sociobot.in/privacy'],
+    ['/terms', 'Terms — Agent CLI Contract', 'https://agent-cli-contract.sociobot.in/terms'],
+    ['/not-here', 'Page not found — Agent CLI Contract', 'https://agent-cli-contract.sociobot.in/404']
+  ];
+  for (const [path, title, canonical] of expected) {
+    await page.goto(path);
+    await expect(page).toHaveTitle(title);
+    expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy();
+    expect(await page.locator('link[rel="canonical"]').getAttribute('href')).toBe(canonical);
+    expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toBe(title);
+    expect(await page.locator('meta[property="og:url"]').getAttribute('content')).toBe(canonical);
   }
 });
 
@@ -389,7 +510,8 @@ test('the loaded demo reloads offline and its service worker accepts an update c
 
 test('deployment configuration sends unknown routes through a real 404 and caches versioned assets', async () => {
   const config = JSON.parse(await readFile(resolve('site/public/staticwebapp.config.json'), 'utf8'));
-  expect(config.responseOverrides['404']).toEqual({ rewrite: '/index.html', statusCode: 404 });
+  expect(config.responseOverrides['404']).toEqual({ rewrite: '/404.html', statusCode: 404 });
+  expect((await stat(resolve('dist/site/404.html'))).size).toBeGreaterThan(0);
   const immutable = config.routes.find((route: { route: string }) => route.route === '/assets/*');
   expect(immutable.headers['Cache-Control']).toContain('immutable');
 });

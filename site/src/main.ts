@@ -13,6 +13,14 @@ const routeTitles: Record<Route, string> = {
   '/404': 'Page not found — Agent CLI Contract'
 };
 
+const routeDescriptions: Record<Route, string> = {
+  '/': 'Test CLI output, exit codes, errors, and repeat runs before coding agents depend on them.',
+  '/demo': 'Review a recorded run of the four fixtures bundled with Agent CLI Contract.',
+  '/privacy': 'Learn what Agent CLI Contract reads, writes, and keeps on your machine.',
+  '/terms': 'Read the MIT terms for Agent CLI Contract and your responsibility when running commands.',
+  '/404': 'This Agent CLI Contract page could not be found.'
+};
+
 const header = () => `
   <header class="site-header">
     <a class="wordmark route-link" href="/" aria-label="Agent CLI Contract home">
@@ -57,9 +65,9 @@ const landing = () => `
       <div class="hero-copy">
         <p class="eyebrow">Contract survey / v0.1.0</p>
         <h1 id="page-title" tabindex="-1">Test CLI contracts before agents depend on them</h1>
-        <p class="lede">For CLI maintainers who need stable output, exits, and errors without changing the human interface.</p>
+        <p class="lede">For CLI maintainers who need stable output, exits, and errors while keeping human-readable output unchanged.</p>
         <div class="hero-action">
-          <a class="button button--primary route-link" href="/demo">Try it with sample data <span aria-hidden="true">→</span></a>
+          <a class="button button--primary route-link" href="/?demo=1">Try it with sample data <span aria-hidden="true">→</span></a>
           <span>Opens a recorded run with four passing checks.</span>
         </div>
         <ul class="plain-facts" aria-label="Product facts">
@@ -70,7 +78,7 @@ const landing = () => `
       </div>
       <figure class="hero-map">
         <img src="/topographic-run.webp" width="1440" height="960" alt="A survey route crosses four checkpoints on a topographic map." fetchpriority="high" />
-        <figcaption>One declared route. Four contract checkpoints.</figcaption>
+        <figcaption>One declared command. Four contract checkpoints.</figcaption>
       </figure>
     </section>
 
@@ -90,7 +98,7 @@ const landing = () => `
         <p class="eyebrow">How it works</p>
         <h2 id="steps-heading">Survey a command in three steps</h2>
         <ol class="route-steps">
-          <li><span>01</span><div><h3>Declare the route</h3><p>List the executable, fixed arguments, modes, and expected exits in YAML.</p></div></li>
+          <li><span>01</span><div><h3>Declare the command</h3><p>List the executable, fixed arguments, modes, and expected exits in YAML.</p></div></li>
           <li><span>02</span><div><h3>Run isolated fixtures</h3><p>Each fixture starts in a new temporary directory with a small environment.</p></div></li>
           <li><span>03</span><div><h3>Review named changes</h3><p>Read Markdown in a pull request or parse the same result as JSON.</p></div></li>
         </ol>
@@ -101,7 +109,7 @@ const landing = () => `
       <div class="section-label">BOUNDARY / 03</div>
       <div>
         <p class="eyebrow">Limits and privacy</p>
-        <h2 id="limits-heading">Keep generated commands outside the boundary</h2>
+        <h2 id="limits-heading">Run only commands you declare</h2>
         <p>The runner executes only commands written in your contract.</p>
         <ul class="boundary-list">
           <li><b>Temporary workspaces</b><span>Project files stay outside each fixture.</span></li>
@@ -152,7 +160,7 @@ const demo = () => `
   ${header()}
   <aside class="demo-banner" aria-label="Demo status">
     <span><b>Demo</b> — sample data, nothing is saved</span>
-    <div><button type="button" class="text-button" data-reset-demo>Reset demo</button><button type="button" class="text-button" data-start-real>Start for real</button></div>
+    <div><button type="button" class="text-button" data-reset-demo>Reset demo</button><button type="button" class="text-button" data-start-real>Leave demo and view install steps</button></div>
   </aside>
   <main id="main" class="demo-page" tabindex="-1">
     <section class="demo-intro">
@@ -160,7 +168,7 @@ const demo = () => `
       <h1 id="page-title" tabindex="-1">Review a complete CLI contract run</h1>
       <p>This sample uses the same four fixtures bundled with the Rust binary.</p>
       <div class="demo-actions">
-        <button class="button button--primary" type="button" data-run-demo>Run sample contract</button>
+        <button class="button button--primary" type="button" data-replay-demo>Replay recorded sample run</button>
         <button class="button button--quiet" type="button" data-break-demo>Show a blocked change</button>
         <span id="demo-live" aria-live="polite"></span>
       </div>
@@ -184,8 +192,22 @@ const demo = () => `
     <section class="recorded-output" aria-labelledby="recorded-heading">
       <p class="eyebrow">Self-hosted terminal recording</p>
       <h2 id="recorded-heading">Watch the same sample run in the CLI</h2>
-      ${terminal(true)}
-      <p>Run <code>agent-contract demo</code> to create this report in a temporary directory.</p>
+      <figure class="terminal-recording">
+        <img data-terminal-recording src="/terminal-recording.svg" width="1040" height="404" alt="Recorded terminal run of agent-contract demo passing four bundled checks." />
+        <figcaption>Generated at build time by running the bundled sample with the real binary.</figcaption>
+      </figure>
+      <div class="demo-command">
+        <code id="demo-command" tabindex="0">agent-contract demo</code>
+        <button class="button button--quiet" type="button" data-copy="#demo-command">Copy demo command</button>
+      </div>
+      <details class="recording-transcript"><summary>Read the recording transcript</summary><pre tabindex="0"><code>$ agent-contract demo
+Demo — sample data, nothing was saved to your project
+✓ inspect stable record [text] exit 0
+✓ inspect stable record [tty] exit 0
+✓ inspect stable record [json] exit 0
+✓ invalid input stays recoverable [json] exit 4
+PASS 4 checks
+Report: /tmp/agent-contract-demo-&lt;id&gt;/.agent-contract/report.md</code></pre></details>
     </section>
   </main>
   ${footer()}`;
@@ -236,29 +258,51 @@ const notFound = () => `
   ${footer()}`;
 
 function currentRoute(): Route {
+  if (new URLSearchParams(window.location.search).get('demo') === '1') return '/demo';
   const path = window.location.pathname.replace(/\/$/, '') || '/';
   return (['/', '/demo', '/privacy', '/terms', '/404'].includes(path) ? path : '/404') as Route;
 }
 
-function render({ focus = false } = {}) {
+function updateMetadata(route: Route) {
+  const canonicalPath = route === '/404' ? '/404' : route;
+  const canonical = `https://agent-cli-contract.sociobot.in${canonicalPath}`;
+  document.title = routeTitles[route];
+  document.querySelector<HTMLLinkElement>('link[rel="canonical"]')!.href = canonical;
+  document.querySelector<HTMLMetaElement>('meta[name="description"]')!.content = routeDescriptions[route];
+  document.querySelector<HTMLMetaElement>('meta[property="og:title"]')!.content = routeTitles[route];
+  document.querySelector<HTMLMetaElement>('meta[property="og:description"]')!.content = routeDescriptions[route];
+  document.querySelector<HTMLMetaElement>('meta[property="og:url"]')!.content = canonical;
+  document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')!.content = routeTitles[route];
+  document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')!.content = routeDescriptions[route];
+}
+
+function render({ focus = false, restoreScroll }: { focus?: boolean; restoreScroll?: { x: number; y: number } } = {}) {
   const route = currentRoute();
   const views: Record<Route, () => string> = { '/': landing, '/demo': demo, '/privacy': privacy, '/terms': terms, '/404': notFound };
   app.innerHTML = views[route]();
-  document.title = routeTitles[route];
-  document.querySelector<HTMLLinkElement>('link[rel="canonical"]')!.href = `https://agent-cli-contract.sociobot.in${route === '/404' ? '/404' : route}`;
+  updateMetadata(route);
   document.body.dataset.route = route.slice(1) || 'home';
   bindActions();
   if (focus) {
-    window.scrollTo(0, 0);
     const heading = document.querySelector<HTMLHeadingElement>('h1')!;
-    heading.focus();
+    heading.focus({ preventScroll: true });
     status.textContent = heading.textContent;
   }
-  if (window.location.hash) document.querySelector(window.location.hash)?.scrollIntoView();
+  if (restoreScroll) {
+    requestAnimationFrame(() => {
+      window.scrollTo(restoreScroll.x, restoreScroll.y);
+      document.querySelector<HTMLHeadingElement>('h1')?.focus({ preventScroll: true });
+    });
+  } else if (window.location.hash) {
+    document.querySelector(window.location.hash)?.scrollIntoView();
+  } else if (focus) {
+    window.scrollTo(0, 0);
+  }
 }
 
 function navigate(url: URL) {
-  history.pushState({}, '', `${url.pathname}${url.hash}`);
+  history.replaceState({ ...history.state, scrollX: window.scrollX, scrollY: window.scrollY }, '');
+  history.pushState({ scrollX: 0, scrollY: 0 }, '', `${url.pathname}${url.search}${url.hash}`);
   render({ focus: !url.hash });
 }
 
@@ -293,18 +337,12 @@ function bindActions() {
     if (reportHost) reportHost.innerHTML = demoReport(true);
     if (live) live.textContent = 'The sample now shows one blocked contract change.';
   });
-  document.querySelector<HTMLButtonElement>('[data-run-demo]')?.addEventListener('click', (event) => {
-    const button = event.currentTarget as HTMLButtonElement;
-    button.disabled = true;
-    button.textContent = 'Running sample…';
-    if (live) live.textContent = 'Running four fixtures in a fresh sample workspace.';
-    window.setTimeout(() => {
-      localStorage.setItem('demo:report', 'passed');
-      if (reportHost) reportHost.innerHTML = demoReport(false);
-      button.disabled = false;
-      button.textContent = 'Run sample contract';
-      if (live) live.textContent = 'Four checks passed. The sample workspace was discarded.';
-    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 450);
+  document.querySelector<HTMLButtonElement>('[data-replay-demo]')?.addEventListener('click', () => {
+    const recording = document.querySelector<HTMLImageElement>('[data-terminal-recording]');
+    if (recording) {
+      recording.replaceWith(recording.cloneNode(true));
+    }
+    if (live) live.textContent = 'Replaying the recorded output from the bundled CLI demo.';
   });
   document.querySelector<HTMLButtonElement>('[data-reset-demo]')?.addEventListener('click', () => {
     clearDemo();
@@ -334,7 +372,15 @@ document.addEventListener('click', (event) => {
   }
 });
 
-window.addEventListener('popstate', () => render({ focus: true }));
+history.scrollRestoration = 'manual';
+history.replaceState({ ...history.state, scrollX: window.scrollX, scrollY: window.scrollY }, '');
+window.addEventListener('scroll', () => {
+  history.replaceState({ ...history.state, scrollX: window.scrollX, scrollY: window.scrollY }, '');
+}, { passive: true });
+window.addEventListener('popstate', (event) => render({
+  focus: true,
+  restoreScroll: { x: event.state?.scrollX ?? 0, y: event.state?.scrollY ?? 0 }
+}));
 window.addEventListener('offline', () => { status.textContent = 'You are offline. The loaded sample remains available.'; });
 render();
 

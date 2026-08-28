@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite site",
-    "build:site": "vite build site --outDir ../dist/site --emptyOutDir",
+    "generate:recording": "cargo build && node scripts/generate-terminal-recording.mjs",
+    "build:site": "npm run generate:recording && vite build site --config vite.config.ts --outDir ../dist/site --emptyOutDir",
     "build:cli": "cargo build --release",
     "build": "npm run build:site && npm run build:cli",
     "typecheck": "tsc --noEmit",

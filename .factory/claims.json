@@ -49,6 +49,13 @@
     "sandbox": "fresh temp contract running a five-second process with a 40 ms limit; assert the runner stops it and reports the limit"
   },
   {
+    "id": "default-timeout",
+    "claim": "The default fixture timeout is 10 seconds.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:default-timeout",
+    "sandbox": "fresh temp contract with no timeout_ms running a 20-second process; measure that the runner stops near 10 seconds and reports 10000 ms"
+  },
+  {
     "id": "error-recovery",
     "claim": "Validates structured error codes and recovery commands.",
     "where": "demo report, README",
@@ -91,6 +98,13 @@
     "sandbox": "fresh browser context at /demo; intercept every request through a full sample run and assert all are same-origin"
   },
   {
+    "id": "recorded-demo",
+    "claim": "The browser recording is generated from the real bundled CLI demo and matches its four-check report.",
+    "where": "landing action, demo recording",
+    "test": "npm test -- --grep @claim:recorded-demo",
+    "sandbox": "fresh CLI demo; compare every report fixture name, mode, and exit plus normalized report path wording with the shipped SVG and transcript"
+  },
+  {
     "id": "free-mit",
     "claim": "Agent CLI Contract is free, open-source software under the MIT License.",
     "where": "landing facts, README, terms page",
@@ -103,6 +117,13 @@
     "where": "landing install note, README, privacy page",
     "test": "npm test -- --grep @claim:no-cli-telemetry",
     "sandbox": "fresh clone and bundled CLI demo; assert source and dependency lock contain no network or telemetry client path"
+  },
+  {
+    "id": "local-execution",
+    "claim": "Contracts run locally and write snapshots and reports on the same machine.",
+    "where": "landing facts, README",
+    "test": "npm test -- --grep @claim:local-execution",
+    "sandbox": "fresh temp contract with fixture networking denied; assert the local snapshot and JSON report are written in the contract directory"
   },
   {
     "id": "rust-version",

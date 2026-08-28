@@ -1,0 +1,8 @@
+$ agent-contract demo
+Demo — sample data, nothing was saved to your project
+✓ inspect stable record [text] exit 0
+✓ inspect stable record [tty] exit 0
+✓ inspect stable record [json] exit 0
+✓ invalid input stays recoverable [json] exit 4
+PASS 4 checks
+Report: /tmp/agent-contract-demo-<id>/.agent-contract/report.md

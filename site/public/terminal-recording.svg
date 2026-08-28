@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="404" viewBox="0 0 1040 404" role="img" aria-labelledby="title description">
+  <title id="title">Recorded agent-contract demo terminal run</title>
+  <desc id="description">The real bundled demo passes four checks and writes its report to an isolated temporary directory.</desc>
+  <style>
+    text { font: 20px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .label { font-size: 15px; font-weight: 600; }
+    .row { opacity: 0; animation: reveal 180ms ease forwards; }
+    .row-0 { animation-delay: 0ms; }
+    .row-1 { animation-delay: 160ms; }
+    .row-2 { animation-delay: 320ms; }
+    .row-3 { animation-delay: 480ms; }
+    .row-4 { animation-delay: 640ms; }
+    .row-5 { animation-delay: 800ms; }
+    .row-6 { animation-delay: 960ms; }
+    .row-7 { animation-delay: 1120ms; }
+    @keyframes reveal { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
+    @media (prefers-reduced-motion: reduce) { .row { opacity: 1; animation: none; } }
+  </style>
+  <rect width="1040" height="404" rx="8" fill="#10221f"/>
+  <rect width="1040" height="48" rx="8" fill="#17312c"/>
+  <circle cx="25" cy="24" r="5" fill="#c94224"/><circle cx="43" cy="24" r="5" fill="none" stroke="#8da69b"/><circle cx="61" cy="24" r="5" fill="none" stroke="#8da69b"/>
+  <text x="1000" y="30" fill="#b7c9bf" text-anchor="end" class="label">recorded from the bundled CLI · local</text>
+  <g>
+    <text x="40" y="88" fill="#ef8a6d" class="row row-0">$ agent-contract demo</text>
+    <text x="40" y="124" fill="#e7f0dd" class="row row-1">Demo — sample data, nothing was saved to your project</text>
+    <text x="40" y="160" fill="#7ee2a8" class="row row-2">✓ inspect stable record [text] exit 0</text>
+    <text x="40" y="196" fill="#7ee2a8" class="row row-3">✓ inspect stable record [tty] exit 0</text>
+    <text x="40" y="232" fill="#7ee2a8" class="row row-4">✓ inspect stable record [json] exit 0</text>
+    <text x="40" y="268" fill="#7ee2a8" class="row row-5">✓ invalid input stays recoverable [json] exit 4</text>
+    <text x="40" y="304" fill="#7ee2a8" class="row row-6">PASS 4 checks</text>
+    <text x="40" y="340" fill="#e7f0dd" class="row row-7">Report: /tmp/agent-contract-demo-&lt;id&gt;/.agent-contract/report.md</text>
+  </g>
+</svg>

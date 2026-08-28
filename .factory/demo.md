@@ -2,12 +2,12 @@
 
 ## Browser
 
-- URL: `https://agent-cli-contract.sociobot.in/demo` or `/demo` in local preview.
+- URL: `https://agent-cli-contract.sociobot.in/?demo=1` or `/?demo=1` in local preview. `/demo` is also a direct route.
 - Sample: a `ridge-cli` contract with text, real TTY, JSON, expected-error, recovery, repeat-run, and no-network checks.
 - Entry state: the four-check passing report is already visible.
-- Interaction: “Show a blocked change” swaps one JSON error code. “Run sample contract” restores the passing recorded result.
+- Interaction: “Replay recorded sample run” restarts the self-hosted SVG recording. “Show a blocked change” swaps one JSON error code.
 - Reset: “Reset demo” removes every browser key beginning with `demo:` and restores the original sample.
-- Exit: “Start for real” removes the demo namespace and opens installation instructions.
+- Exit: “Leave demo and view install steps” removes the demo namespace and opens installation instructions.
 - Storage namespace: `localStorage` keys beginning with `demo:`. No other browser storage is used.
 
 ## CLI
@@ -17,3 +17,4 @@
 - Sandbox: a new directory named `agent-contract-demo-<pid>-<time>` below the operating-system temporary directory.
 - Output: approved snapshots plus `.agent-contract/report.md` and `.agent-contract/report.json` inside that directory.
 - Project data: the demo does not read or write the current project.
+- Recording: `npm run generate:recording` runs the real binary, normalizes only the random temporary-directory suffix, and writes `site/public/terminal-recording.svg` plus its text transcript.
