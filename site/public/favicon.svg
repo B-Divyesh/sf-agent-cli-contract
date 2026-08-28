@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Agent CLI Contract route mark">
+  <rect width="64" height="64" rx="8" fill="#f3efdf"/>
+  <path d="M8 45c8-17 17 8 26-11s14-12 22-20" fill="none" stroke="#245b4a" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 7"/>
+  <circle cx="10" cy="44" r="5" fill="#c94224"/>
+  <path d="m42 27 5 5 10-13" fill="none" stroke="#152c28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
