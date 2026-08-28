@@ -9,7 +9,7 @@ repository = "https://github.com/B-Divyesh/sf-agent-cli-contract"
 readme = "README.md"
 keywords = ["cli", "testing", "snapshot", "agents"]
 categories = ["command-line-utilities", "development-tools::testing"]
-include = ["src/**", "examples/**", "Cargo.toml", "README.md", "LICENSE", "CHANGELOG.md"]
+include = ["/src/**", "/examples/**", "/Cargo.toml", "/README.md", "/LICENSE", "/CHANGELOG.md"]
 
 [[bin]]
 name = "agent-contract"
