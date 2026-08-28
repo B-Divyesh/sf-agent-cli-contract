@@ -1,0 +1,224 @@
+
+> agent-cli-contract-site@0.1.0 test
+> cargo test && cargo build && npm run typecheck && npm run build:site && playwright test
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/main.rs (target/debug/deps/agent_contract-3e8af323e81549e4)
+
+running 3 tests
+test tests::changed_json_paths_are_named ... ok
+test tests::secret_values_are_redacted ... ok
+test tests::safe_snapshot_names_are_stable ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+
+> agent-cli-contract-site@0.1.0 typecheck
+> tsc --noEmit
+
+
+> agent-cli-contract-site@0.1.0 build:site
+> npm run generate:recording && vite build site --config vite.config.ts --outDir ../dist/site --emptyOutDir
+
+
+> agent-cli-contract-site@0.1.0 generate:recording
+> cargo build && node scripts/generate-terminal-recording.mjs
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+Generated terminal recording from 7 lines of real demo output.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/site/404.html                   1.77 kB │ gzip: 0.61 kB
+../dist/site/index.html                 1.92 kB │ gzip: 0.65 kB
+../dist/site/assets/main-D44pLAqA.css  14.85 kB │ gzip: 4.22 kB
+../dist/site/assets/main-X0aWGxpe.js   18.42 kB │ gzip: 5.87 kB
+✓ built in 131ms
+[2m[WebServer] [22m(node:42455) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m(node:42468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 1 worker
+
+(node:42486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/product.spec.ts:31:1 › @claim:isolated-fixtures @claim:inline-files runs fixtures outside the project (189ms)
+  ✓   2 tests/product.spec.ts:52:1 › @claim:fixture-timeout stops a command that exceeds its limit (50ms)
+  ✓   3 tests/product.spec.ts:66:1 › @claim:default-timeout applies the documented 10 second limit (10.0s)
+  ✓   4 tests/product.spec.ts:83:1 › @claim:snapshot-regression reports changed command output (91ms)
+  ✓   5 tests/product.spec.ts:102:1 › @claim:nondeterminism names a changing JSON field (111ms)
+  ✓   6 tests/product.spec.ts:119:1 › @claim:idempotency reports a changed repeat run (141ms)
+  ✓   7 tests/product.spec.ts:134:1 › @claim:mode-capture records real TTY and valid JSON modes (91ms)
+  ✓   8 tests/product.spec.ts:153:1 › @claim:error-recovery validates a stable JSON error and recovery (201ms)
+  ✓   9 tests/product.spec.ts:163:1 › @claim:report-formats writes equivalent Markdown and JSON reports (200ms)
+  ✓  10 tests/product.spec.ts:173:1 › @claim:secret-redaction removes declared secrets from snapshots and reports (47ms)
+  ✓  11 tests/product.spec.ts:195:1 › @claim:network-opt-in blocks direct and runtime network access by default (177ms)
+  ✓  12 tests/product.spec.ts:248:1 › @claim:local-execution writes local outputs with fixture networking denied (45ms)
+  ✓  13 tests/product.spec.ts:262:1 › @claim:demo-sandbox keeps demo state separate and reset removes it (758ms)
+  ✓  14 tests/product.spec.ts:278:1 › @claim:no-third-party-data sends no demo data to other origins (267ms)
+  ✓  15 tests/product.spec.ts:287:1 › @claim:recorded-demo matches a fresh bundled CLI demo report (422ms)
+  ✓  16 tests/product.spec.ts:306:1 › @claim:free-mit ships as free MIT-licensed source (3ms)
+  ✓  17 tests/product.spec.ts:313:1 › @claim:no-cli-telemetry has no telemetry or network client path (214ms)
+  ✓  18 tests/product.spec.ts:321:1 › @claim:rust-version declares the tested minimum Rust version (7ms)
+  ✓  19 tests/product.spec.ts:327:1 › @claim:direct-execution @claim:declared-commands keeps command arguments literal (52ms)
+  ✓  20 tests/product.spec.ts:345:1 › @claim:environment-isolation does not pass host-only secrets to a fixture (41ms)
+  ✓  21 tests/product.spec.ts:364:1 › @claim:cli-demo-isolation leaves a project sentinel untouched (199ms)
+  ✓  22 tests/product.spec.ts:374:1 › @claim:exit-codes @claim:json-failure-document reports documented outcomes (73ms)
+  ✓  23 tests/product.spec.ts:397:1 › routes have one focused-capable h1 and no serious accessibility issues (3.3s)
+  ✓  24 tests/product.spec.ts:412:1 › mobile demo keeps primary actions visible and links resolve (308ms)
+  ✓  25 tests/product.spec.ts:424:1 › desktop first screen keeps the primary action and all facts above a 768px fold (285ms)
+  ✓  26 tests/product.spec.ts:435:1 › 390px routes do not create horizontal overflow and utility targets are touch sized (880ms)
+  ✓  27 tests/product.spec.ts:461:1 › Back restores landing scroll while focusing its heading (1.3s)
+  ✓  28 tests/product.spec.ts:474:1 › each route updates its title, description, canonical, and social metadata (632ms)
+  ✓  29 tests/product.spec.ts:492:1 › skip link moves keyboard focus into the main landmark (245ms)
+  ✓  30 tests/product.spec.ts:500:1 › the loaded demo reloads offline and its service worker accepts an update check (367ms)
+  ✓  31 tests/product.spec.ts:511:1 › deployment configuration sends unknown routes through a real 404 and caches versioned assets (4ms)
+  ✓  32 tests/product.spec.ts:519:1 › built assets stay inside the initial performance budgets (2ms)
+
+  32 passed (23.3s)
+
+> agent-cli-contract-site@0.1.0 build
+> npm run build:site && npm run build:cli
+
+
+> agent-cli-contract-site@0.1.0 build:site
+> npm run generate:recording && vite build site --config vite.config.ts --outDir ../dist/site --emptyOutDir
+
+
+> agent-cli-contract-site@0.1.0 generate:recording
+> cargo build && node scripts/generate-terminal-recording.mjs
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+Generated terminal recording from 7 lines of real demo output.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/site/404.html                   1.77 kB │ gzip: 0.61 kB
+../dist/site/index.html                 1.92 kB │ gzip: 0.65 kB
+../dist/site/assets/main-D44pLAqA.css  14.85 kB │ gzip: 4.22 kB
+../dist/site/assets/main-X0aWGxpe.js   18.42 kB │ gzip: 5.87 kB
+✓ built in 129ms
+
+> agent-cli-contract-site@0.1.0 build:cli
+> cargo build --release
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189
+   Compiling syn v3.0.4
+   Compiling cfg-if v1.0.4
+   Compiling serde_core v1.0.229
+   Compiling syn v2.0.119
+   Compiling thiserror v1.0.69
+   Compiling memchr v2.8.3
+   Compiling utf8parse v0.2.2
+   Compiling cfg_aliases v0.1.1
+   Compiling bitflags v2.13.1
+   Compiling nix v0.28.0
+   Compiling anstyle-parse v1.0.0
+   Compiling thiserror-impl v1.0.69
+   Compiling rustix v1.1.4
+   Compiling anstyle-query v1.1.5
+   Compiling getrandom v0.4.3
+   Compiling anstyle v1.0.14
+   Compiling serde v1.0.229
+   Compiling zmij v1.0.23
+   Compiling colorchoice v1.0.5
+   Compiling anyhow v1.0.104
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling anstream v1.0.0
+   Compiling aho-corasick v1.1.5
+   Compiling serde_derive v1.0.229
+   Compiling itoa v1.0.18
+   Compiling serde_json v1.0.151
+   Compiling equivalent v1.0.2
+   Compiling clap_lex v1.1.0
+   Compiling strsim v0.11.1
+   Compiling hashbrown v0.17.1
+   Compiling regex-syntax v0.8.11
+   Compiling heck v0.5.0
+   Compiling linux-raw-sys v0.12.1
+   Compiling regex-automata v0.4.18
+   Compiling clap_derive v4.6.4
+   Compiling indexmap v2.14.0
+   Compiling clap_builder v4.6.6
+   Compiling filedescriptor v0.8.3
+   Compiling serial2 v0.2.38
+   Compiling log v0.4.34
+   Compiling ryu v1.0.23
+   Compiling shell-words v1.1.1
+   Compiling once_cell v1.21.4
+   Compiling downcast-rs v1.2.1
+   Compiling unsafe-libyaml v0.2.11
+   Compiling fastrand v2.5.0
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-polish-final.83vHty/repo)
+   Compiling tempfile v3.27.0
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling portable-pty v0.9.0
+   Compiling clap v4.6.6
+   Compiling regex v1.13.1
+   Compiling wait-timeout v0.2.1
+    Finished `release` profile [optimized] target(s) in 38.81s
+    Checking libc v0.2.189
+    Checking cfg-if v1.0.4
+    Checking bitflags v2.13.1
+    Checking utf8parse v0.2.2
+    Checking memchr v2.8.3
+    Checking anstyle-parse v1.0.0
+    Checking serde_core v1.0.229
+    Checking anstyle v1.0.14
+    Checking anstyle-query v1.1.5
+    Checking is_terminal_polyfill v1.70.2
+    Checking colorchoice v1.0.5
+    Checking anstream v1.0.0
+    Checking thiserror v1.0.69
+    Checking aho-corasick v1.1.5
+    Checking clap_lex v1.1.0
+    Checking hashbrown v0.17.1
+    Checking equivalent v1.0.2
+    Checking itoa v1.0.18
+    Checking linux-raw-sys v0.12.1
+    Checking strsim v0.11.1
+    Checking regex-syntax v0.8.11
+    Checking clap_builder v4.6.6
+    Checking regex-automata v0.4.18
+    Checking indexmap v2.14.0
+    Checking rustix v1.1.4
+    Checking serde v1.0.229
+    Checking nix v0.28.0
+    Checking filedescriptor v0.8.3
+    Checking getrandom v0.4.3
+    Checking zmij v1.0.23
+    Checking anyhow v1.0.104
+    Checking serial2 v0.2.38
+    Checking shell-words v1.1.1
+    Checking fastrand v2.5.0
+    Checking downcast-rs v1.2.1
+    Checking ryu v1.0.23
+    Checking unsafe-libyaml v0.2.11
+    Checking once_cell v1.21.4
+    Checking log v0.4.34
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-polish-final.83vHty/repo)
+    Checking serde_yaml v0.9.34+deprecated
+    Checking portable-pty v0.9.0
+    Checking tempfile v3.27.0
+    Checking serde_json v1.0.151
+    Checking clap v4.6.6
+    Checking regex v1.13.1
+    Checking wait-timeout v0.2.1
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.24s
+   Packaging agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-polish-final.83vHty/repo)
+    Updating crates.io index
+    Packaged 12 files, 65.0KiB (18.6KiB compressed)
+   Verifying agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-polish-final.83vHty/repo)
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-polish-final.83vHty/repo/target/package/agent-cli-contract-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.07s

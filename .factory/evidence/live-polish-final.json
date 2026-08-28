@@ -1,0 +1,159 @@
+{
+  "checkedAt": "2026-08-28T16:17:02.287Z",
+  "url": "https://agent-cli-contract.sociobot.in",
+  "passed": true,
+  "checks": [
+    {
+      "id": "first-screen-copy",
+      "pass": true,
+      "evidence": "CONTRACT SURVEY / V0.1.0\n\nTest CLI contracts before agents depend on them\n\nFor CLI maintainers who need stable output, exits, and errors while keeping human-readable output unchanged.\n\nTry it with sample data\n→\nOpens a recorded run with four passing checks.\nFree and open source.\nRuns locally.\nNetwork use is opt-in."
+    },
+    {
+      "id": "query-demo",
+      "pass": true,
+      "evidence": "/?demo=1"
+    },
+    {
+      "id": "desktop-fold",
+      "pass": true,
+      "evidence": {
+        "actionBottom": 725.859375,
+        "factsBottom": 760.15625
+      }
+    },
+    {
+      "id": "demo-banner",
+      "pass": true,
+      "evidence": "Demo — sample data, nothing is saved\nReset demo\nLeave demo and view install steps"
+    },
+    {
+      "id": "honest-recording",
+      "pass": true,
+      "evidence": "replay action, SVG, and copyable agent-contract demo command visible"
+    },
+    {
+      "id": "isolated-state",
+      "pass": true,
+      "evidence": {
+        "demo:report": "failed",
+        "real:sentinel": "keep"
+      }
+    },
+    {
+      "id": "reset",
+      "pass": true,
+      "evidence": {
+        "real:sentinel": "keep"
+      }
+    },
+    {
+      "id": "leave-demo",
+      "pass": true,
+      "evidence": "https://agent-cli-contract.sociobot.in/#install"
+    },
+    {
+      "id": "same-origin",
+      "pass": true,
+      "evidence": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    },
+    {
+      "id": "recording-match",
+      "pass": true,
+      "evidence": {
+        "sha256": "99d906b21436369be32f5cd1d45221a5f093ee6f265c8d6945b9a18291eaccae",
+        "transcript": "$ agent-contract demo\nDemo — sample data, nothing was saved to your project\n✓ inspect stable record [text] exit 0\n✓ inspect stable record [tty] exit 0\n✓ inspect stable record [json] exit 0\n✓ invalid input stays recoverable [json] exit 4\nPASS 4 checks\nReport: /tmp/agent-contract-demo-<id>/.agent-contract/report.md\n"
+      }
+    },
+    {
+      "id": "route:/",
+      "pass": true,
+      "evidence": {
+        "title": "Agent CLI Contract — test stable command output",
+        "canonical": "https://agent-cli-contract.sociobot.in/",
+        "serious": []
+      }
+    },
+    {
+      "id": "route:/demo",
+      "pass": true,
+      "evidence": {
+        "title": "Demo — Agent CLI Contract",
+        "canonical": "https://agent-cli-contract.sociobot.in/demo",
+        "serious": []
+      }
+    },
+    {
+      "id": "route:/privacy",
+      "pass": true,
+      "evidence": {
+        "title": "Privacy — Agent CLI Contract",
+        "canonical": "https://agent-cli-contract.sociobot.in/privacy",
+        "serious": []
+      }
+    },
+    {
+      "id": "route:/terms",
+      "pass": true,
+      "evidence": {
+        "title": "Terms — Agent CLI Contract",
+        "canonical": "https://agent-cli-contract.sociobot.in/terms",
+        "serious": []
+      }
+    },
+    {
+      "id": "normal-console",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "history",
+      "pass": true,
+      "evidence": {
+        "saved": 1200,
+        "restored": 1200,
+        "focused": true
+      }
+    },
+    {
+      "id": "404",
+      "pass": true,
+      "evidence": {
+        "status": 404,
+        "title": "Page not found — Agent CLI Contract",
+        "serious": []
+      }
+    },
+    {
+      "id": "mobile-sticky",
+      "pass": true,
+      "evidence": {
+        "banner": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 91.375
+        },
+        "reset": {
+          "x": 16,
+          "y": 28.71875,
+          "width": 175,
+          "height": 56.65625
+        },
+        "leave": {
+          "x": 199,
+          "y": 28.71875,
+          "width": 175,
+          "height": 56.65625
+        },
+        "scrollWidth": 390
+      }
+    },
+    {
+      "id": "offline",
+      "pass": true,
+      "evidence": "Review a complete CLI contract run"
+    }
+  ]
+}
