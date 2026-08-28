@@ -28,6 +28,13 @@
     "sandbox": "fresh temp contract producing a random run_id; assert the finding names $.meta.run_id"
   },
   {
+    "id": "nondeterministic-field-allowlist",
+    "claim": "Known changing JSON fields can be allowlisted by JSON path.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:nondeterministic-field-allowlist",
+    "sandbox": "fresh temp contract with a changing $.meta.duration_ms; allowlist that path and assert the check passes"
+  },
+  {
     "id": "idempotency",
     "claim": "Idempotency checks report output or exit changes on a second run.",
     "where": "README contract format",
@@ -131,6 +138,20 @@
     "where": "landing install note, README",
     "test": "npm test -- --grep @claim:rust-version",
     "sandbox": "fresh clone; assert Cargo.toml declares rust-version 1.85 and the built binary reports version 0.1.0"
+  },
+  {
+    "id": "schema-output",
+    "claim": "The schema command prints the complete version 1 contract JSON Schema.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:schema-output",
+    "sandbox": "fresh built binary; parse agent-contract schema and assert version 1 plus every documented root and fixture field"
+  },
+  {
+    "id": "contract-format-version",
+    "claim": "Contract format version 1 is accepted and unsupported versions are rejected with guidance.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:contract-format-version",
+    "sandbox": "fresh version-1 and version-2 contracts; assert version 1 passes, version 2 exits 2 with guidance, and schema declares version 1"
   },
   {
     "id": "direct-execution",

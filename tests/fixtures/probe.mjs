@@ -6,6 +6,8 @@ if (mode === 'tty') {
   console.log(`isTTY=${Boolean(process.stdout.isTTY)}`);
 } else if (mode === 'unstable') {
   console.log(JSON.stringify({ ok: true, meta: { run_id: randomUUID() } }));
+} else if (mode === 'unstable-duration') {
+  console.log(JSON.stringify({ ok: true, meta: { duration_ms: randomUUID() } }));
 } else if (mode === 'mutate') {
   const count = existsSync('count.txt') ? Number(readFileSync('count.txt', 'utf8')) + 1 : 1;
   writeFileSync('count.txt', String(count));

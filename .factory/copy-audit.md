@@ -62,6 +62,16 @@ No sentence exceeds 22 words. The average audited sentence length is below 10 wo
 
 ## Catalog description
 
-“Test CLI output, exits, errors, and repeat runs before agents depend on them.”
+“Test CLI contracts before coding agents depend on their output.”
 
-The description begins with a verb, contains 13 words, uses 77 characters, and contains no banned word.
+The description begins with a verb, contains 10 words, uses 62 characters, and contains no banned word.
+
+## README changes in polish round 2
+
+| Copy | Words | Result |
+| --- | ---: | --- |
+| The public format starts at version `1`. | 7 | Pass (`contract-format-version`) |
+| `allow_nondeterministic_fields` accepts known JSON paths such as `$.meta.duration_ms`. | 8 | Pass (`nondeterministic-field-allowlist`) |
+| Run `agent-contract schema` for the complete JSON Schema. | 8 | Pass (`schema-output`) |
+
+The internal release-process sentence was removed. Every README sentence that describes a result a maintainer can rely on maps to a claim in `.factory/claims.json`.

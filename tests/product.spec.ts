@@ -116,6 +116,24 @@ fixtures:
   expect(result.stdout).toContain('nondeterministic JSON fields: $.meta.run_id');
 });
 
+test('@claim:nondeterministic-field-allowlist accepts an explicitly allowlisted changing JSON field', async () => {
+  const { path } = await contractDir(`version: 1
+command: [${JSON.stringify(process.execPath)}, ${JSON.stringify(probe)}]
+modes:
+  json: [unstable-duration]
+fixtures:
+  - name: known changing duration
+    modes: [json]
+    detect_nondeterminism: true
+    allow_nondeterministic_fields: ["$.meta.duration_ms"]
+    expect:
+      exit: 0
+`);
+  const result = await run(['--json', 'check', path, '--accept']);
+  expect(result.code).toBe(0);
+  expect(JSON.parse(result.stdout)).toMatchObject({ passed: true, summary: { failed: 0 } });
+});
+
 test('@claim:idempotency reports a changed repeat run', async () => {
   const { path } = await contractDir(`version: 1
 command: [${JSON.stringify(process.execPath)}, ${JSON.stringify(probe)}]
@@ -324,6 +342,42 @@ test('@claim:rust-version declares the tested minimum Rust version', async () =>
   expect((await run(['--version'])).stdout).toContain('0.1.0');
 });
 
+test('@claim:schema-output prints the complete version 1 schema for documented contract fields', async () => {
+  const result = await run(['schema']);
+  expect(result.code).toBe(0);
+  const schema = JSON.parse(result.stdout);
+  expect(schema).toMatchObject({ title: 'Agent CLI Contract v1', properties: { version: { const: 1 } } });
+  for (const field of ['version', 'command', 'modes', 'fixtures', 'env', 'redact_env']) {
+    expect(schema.properties).toHaveProperty(field);
+  }
+  const fixtureFields = schema.properties.fixtures.items.properties;
+  for (const field of ['name', 'args', 'modes', 'stdin', 'env', 'files', 'expect', 'recover_args', 'idempotent', 'detect_nondeterminism', 'allow_nondeterministic_fields', 'allow_network', 'timeout_ms']) {
+    expect(fixtureFields).toHaveProperty(field);
+  }
+});
+
+test('@claim:contract-format-version accepts version 1 and rejects another contract version', async () => {
+  const versionOne = await contractDir(`version: 1
+command: [${JSON.stringify(process.execPath)}, "-e", "process.exit(0)"]
+fixtures:
+  - name: current format
+    expect:
+      exit: 0
+`);
+  expect((await run(['check', versionOne.path, '--accept'])).code).toBe(0);
+  const versionTwo = await contractDir(`version: 2
+command: [${JSON.stringify(process.execPath)}, "-e", "process.exit(0)"]
+fixtures:
+  - name: future format
+    expect:
+      exit: 0
+`);
+  const rejected = await run(['--json', 'check', versionTwo.path]);
+  expect(rejected.code).toBe(2);
+  expect(JSON.parse(rejected.stdout)).toMatchObject({ ok: false, exit: 2, error: expect.stringContaining('use version 1') });
+  expect(JSON.parse((await run(['schema'])).stdout).properties.version).toEqual({ const: 1 });
+});
+
 test('@claim:direct-execution @claim:declared-commands keeps command arguments literal', async () => {
   const source = await readFile(resolve('src/main.rs'), 'utf8');
   expect(source).toContain('Command::new(program)');
@@ -409,13 +463,21 @@ test('routes have one focused-capable h1 and no serious accessibility issues', a
   expect(consoleErrors).toEqual([]);
 });
 
-test('mobile demo keeps primary actions visible and links resolve', async ({ page, request }) => {
+test('mobile demo shows a sample result in the initial viewport and links resolve', async ({ page, request }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   await page.getByRole('link', { name: 'Try it with sample data' }).press('Enter');
   await expect(page).toHaveURL('/?demo=1');
   await expect(page.getByRole('button', { name: 'Replay recorded sample run' })).toBeVisible();
+  const reportHeading = page.getByRole('heading', { name: 'All four contract checks pass' });
+  const firstResult = page.getByRole('cell', { name: 'inspect stable record' }).first();
+  await expect(reportHeading).toBeVisible();
+  await expect(firstResult).toBeVisible();
+  const headingBox = await reportHeading.boundingBox();
+  const resultBox = await firstResult.boundingBox();
+  expect(headingBox!.y + headingBox!.height).toBeLessThanOrEqual(844);
+  expect(resultBox!.y + resultBox!.height).toBeLessThanOrEqual(844);
   for (const path of ['/', '/demo', '/privacy', '/terms', '/robots.txt', '/sitemap.xml', '/favicon.svg']) {
     expect((await request.get(path)).ok()).toBe(true);
   }

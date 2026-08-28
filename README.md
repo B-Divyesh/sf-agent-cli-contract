@@ -15,8 +15,6 @@ cargo install --path .
 agent-contract --help
 ```
 
-The factory can publish the ready package with `cargo package` after release review.
-
 ## Try the bundled demo
 
 ```sh
