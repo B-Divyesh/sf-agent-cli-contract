@@ -29,7 +29,7 @@ npm run build        # site plus release CLI
 cargo package        # ready-to-publish crate
 ```
 
-`cargo package --allow-dirty` packaged and verified 47 files. The compressed crate was 71.5 KiB. Publishing was not attempted because the factory owns registry credentials.
+`cargo package` packaged and verified 10 files from a clean tree. The compressed crate was 16.9 KiB. Publishing was not attempted because the factory owns registry credentials.
 
 ## Verification
 
