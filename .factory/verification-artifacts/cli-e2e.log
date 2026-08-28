@@ -1,0 +1,140 @@
+BIN=/tmp/agent-cli-contract-consumer.eCJZCj/bin/agent-contract
+WORKSPACE=/tmp/agent-cli-contract-e2e.sGhT9y
+===== version =====
+agent-contract 0.1.0
+exit=0
+===== schema =====
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-cli-contract.sociobot.in/schema/v1.json",
+  "title": "Agent CLI Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "command", "fixtures"],
+  "properties": {
+    "version": { "const": 1 },
+    "command": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "modes": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+    "env": { "type": "object", "additionalProperties": { "type": "string" } },
+    "redact_env": { "type": "array", "items": { "type": "string" } },
+    "fixtures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "args": { "type": "array", "items": { "type": "string" } },
+          "modes": { "type": "array", "items": { "enum": ["text", "tty", "json"] } },
+          "stdin": { "type": "string" },
+          "env": { "type": "object", "additionalProperties": { "type": "string" } },
+          "files": { "type": "object", "additionalProperties": { "type": "string" } },
+          "expect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "exit": { "type": "integer" },
+              "stdout_contains": { "type": "array", "items": { "type": "string" } },
+              "stderr_contains": { "type": "array", "items": { "type": "string" } },
+              "error_code": { "type": "string" }
+            }
+          },
+          "recover_args": { "type": "array", "items": { "type": "string" } },
+          "idempotent": { "type": "boolean" },
+          "detect_nondeterminism": { "type": "boolean" },
+          "allow_nondeterministic_fields": { "type": "array", "items": { "type": "string" } },
+          "allow_network": { "type": "boolean" },
+          "timeout_ms": { "type": "integer", "minimum": 1, "maximum": 300000, "default": 10000 }
+        }
+      }
+    }
+  }
+}
+
+exit=0
+===== demo-json =====
+{"demo":"/tmp/agent-contract-demo-12477-1787925074768","ok":true,"report":"/tmp/agent-contract-demo-12477-1787925074768/.agent-contract/report.md"}
+exit=0
+===== init =====
+{"contract":"agent-contract.yml","ok":true}
+exit=0
+===== init-existing =====
+{"error":"agent-contract.yml already exists; choose another path","exit":2,"ok":false}
+exit=2
+===== first-accept =====
+{"tool_version":"0.1.0","contract":"agent-contract.yml","passed":true,"summary":{"passed":1,"failed":0,"snapshots_written":2},"checks":[{"fixture":"help stays stable","mode":"text","passed":true,"exit":0,"findings":[]}]}
+exit=0
+===== stable-recheck =====
+{"tool_version":"0.1.0","contract":"agent-contract.yml","passed":true,"summary":{"passed":1,"failed":0,"snapshots_written":0},"checks":[{"fixture":"help stays stable","mode":"text","passed":true,"exit":0,"findings":[]}]}
+exit=0
+===== empty-contract =====
+{"error":"/dev/null is not a valid contract: missing field `version`","exit":2,"ok":false}
+exit=2
+===== missing-contract =====
+{"error":"could not read /definitely/missing/agent-contract.yml: No such file or directory (os error 2)","exit":2,"ok":false}
+exit=2
+===== OUTPUT FILES =====
+.agent-contract/report.json 316 bytes
+.agent-contract/report.md 292 bytes
+agent-contract.yml 335 bytes
+snapshots/help-stays-stable.text.stderr 0 bytes
+snapshots/help-stays-stable.text.stdout 1363 bytes
+===== REPORT JSON =====
+{
+  "tool_version": "0.1.0",
+  "contract": "agent-contract.yml",
+  "passed": true,
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "snapshots_written": 0
+  },
+  "checks": [
+    {
+      "fixture": "help stays stable",
+      "mode": "text",
+      "passed": true,
+      "exit": 0,
+      "findings": []
+    }
+  ]
+}
+===== NORMALIZED SNAPSHOT =====
+Usage: /bin/echo [SHORT-OPTION]... [STRING]...
+  or:  /bin/echo LONG-OPTION
+Echo the STRING(s) to standard output.
+
+  -n             do not output the trailing newline
+  -e             enable interpretation of backslash escapes
+  -E             disable interpretation of backslash escapes (default)
+      --help        display this help and exit
+      --version     output version information and exit
+
+If -e is in effect, the following sequences are recognized:
+
+  \\      backslash
+  \a      alert (BEL)
+  \b      backspace
+  \c      produce no further output
+  \e      escape
+  \f      form feed
+  \n      new line
+  \r      carriage return
+  \t      horizontal tab
+  \v      vertical tab
+  \0NNN   byte with octal value NNN (1 to 3 digits)
+  \xHH    byte with hexadecimal value HH (1 to 2 digits)
+
+NOTE: your shell may have its own version of echo, which usually supersedes
+the version described here.  Please refer to your shell's documentation
+for details about the options it supports.
+
+NOTE: printf(1) is a preferred alternative,
+which does not have issues outputting option-like strings.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report any translation bugs to <https://translationproject.org/team/>
+Full documentation <https://www.gnu.org/software/coreutils/echo>
+or available locally via: info '(coreutils) echo invocation'

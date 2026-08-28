@@ -1,0 +1,3 @@
+QA_DIR=/tmp/agent-cli-contract-qa.68MA7Q
+COMMIT=ebd27071e057aae82e04856af73c830a4850c229
+STATUS_BEFORE=0

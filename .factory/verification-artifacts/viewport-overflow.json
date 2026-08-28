@@ -1,0 +1,386 @@
+{
+  "1440x900": {
+    "cta": {
+      "top": 855.703125,
+      "bottom": 906.5,
+      "left": 172,
+      "right": 447.078125,
+      "fullyVisible": false,
+      "partlyVisible": true
+    },
+    "firstFacts": [
+      {
+        "text": "Free and open source.",
+        "top": 930.5,
+        "bottom": 948.796875,
+        "visible": false
+      },
+      {
+        "text": "Runs locally.",
+        "top": 930.5,
+        "bottom": 948.796875,
+        "visible": false
+      },
+      {
+        "text": "Network use is opt-in.",
+        "top": 956.796875,
+        "bottom": 975.09375,
+        "visible": false
+      }
+    ]
+  },
+  "1366x768": {
+    "cta": {
+      "top": 844.40625,
+      "bottom": 895.203125,
+      "left": 135,
+      "right": 410.078125,
+      "fullyVisible": false,
+      "partlyVisible": false
+    },
+    "firstFacts": [
+      {
+        "text": "Free and open source.",
+        "top": 919.203125,
+        "bottom": 937.5,
+        "visible": false
+      },
+      {
+        "text": "Runs locally.",
+        "top": 919.203125,
+        "bottom": 937.5,
+        "visible": false
+      },
+      {
+        "text": "Network use is opt-in.",
+        "top": 945.5,
+        "bottom": 963.796875,
+        "visible": false
+      }
+    ]
+  },
+  "1280x720": {
+    "cta": {
+      "top": 798.625,
+      "bottom": 849.421875,
+      "left": 92,
+      "right": 367.078125,
+      "fullyVisible": false,
+      "partlyVisible": false
+    },
+    "firstFacts": [
+      {
+        "text": "Free and open source.",
+        "top": 873.421875,
+        "bottom": 891.71875,
+        "visible": false
+      },
+      {
+        "text": "Runs locally.",
+        "top": 873.421875,
+        "bottom": 891.71875,
+        "visible": false
+      },
+      {
+        "text": "Network use is opt-in.",
+        "top": 899.71875,
+        "bottom": 918.015625,
+        "visible": false
+      }
+    ]
+  },
+  "390x844": {
+    "cta": {
+      "top": 613.28125,
+      "bottom": 664.078125,
+      "left": 54,
+      "right": 372,
+      "fullyVisible": true,
+      "partlyVisible": true
+    },
+    "firstFacts": [
+      {
+        "text": "Free and open source.",
+        "top": 742.078125,
+        "bottom": 760.375,
+        "visible": true
+      },
+      {
+        "text": "Runs locally.",
+        "top": 768.375,
+        "bottom": 786.671875,
+        "visible": true
+      },
+      {
+        "text": "Network use is opt-in.",
+        "top": 794.671875,
+        "bottom": 812.96875,
+        "visible": true
+      }
+    ]
+  },
+  "overflow:/": [
+    {
+      "tag": "DIV",
+      "cls": "section-label",
+      "text": "START / 04",
+      "left": 18,
+      "right": 730,
+      "width": 712
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "Install from source\n        Add the first contract in two commands\n        \n    ",
+      "left": 18,
+      "right": 730,
+      "width": 712
+    },
+    {
+      "tag": "DIV",
+      "cls": "command-copy",
+      "text": "cargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract\n         ",
+      "left": 18,
+      "right": 730,
+      "width": 712
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "button button--quiet",
+      "text": "Copy install command",
+      "left": 18,
+      "right": 730,
+      "width": 712
+    },
+    {
+      "tag": "PRE",
+      "cls": "",
+      "text": "agent-contract init --command my-cli\nagent-contract check agent-contract.yml --a",
+      "left": 18,
+      "right": 730,
+      "width": 712
+    },
+    {
+      "tag": "CODE",
+      "cls": "",
+      "text": "cargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract",
+      "left": 20,
+      "right": 728,
+      "width": 708
+    },
+    {
+      "tag": "P",
+      "cls": "eyebrow",
+      "text": "Install from source",
+      "left": 18,
+      "right": 718,
+      "width": 700
+    },
+    {
+      "tag": "H2",
+      "cls": "",
+      "text": "Add the first contract in two commands",
+      "left": 18,
+      "right": 718,
+      "width": 700
+    },
+    {
+      "tag": "P",
+      "cls": "small-note",
+      "text": "Requires Rust 1.85 or newer. The binary has no telemetry.",
+      "left": 18,
+      "right": 718,
+      "width": 700
+    },
+    {
+      "tag": "CODE",
+      "cls": "",
+      "text": "agent-contract init --command my-cli\nagent-contract check agent-contract.yml --a",
+      "left": 38,
+      "right": 500,
+      "width": 462
+    }
+  ],
+  "overflow:/demo": [
+    {
+      "tag": "SECTION",
+      "cls": "fixture-sheet",
+      "text": "agent-contract.yml\n        Sample fixture\n        version: 1\ncommand: [\"ridge-cl",
+      "left": 18,
+      "right": 656,
+      "width": 638
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "REPORT / DEMO-001All four contract checks pass\n      PASS · 4\n    \n    \n      Fi",
+      "left": 18,
+      "right": 656,
+      "width": 638
+    },
+    {
+      "tag": "SECTION",
+      "cls": "demo-report",
+      "text": "REPORT / DEMO-001All four contract checks pass\n      PASS · 4\n    \n    \n      Fi",
+      "left": 18,
+      "right": 656,
+      "width": 638
+    },
+    {
+      "tag": "PRE",
+      "cls": "",
+      "text": "version: 1\ncommand: [\"ridge-cli\"]\nfixtures:\n  - name: inspect stable record\n    ",
+      "left": 19,
+      "right": 655,
+      "width": 636
+    },
+    {
+      "tag": "DIV",
+      "cls": "report-heading",
+      "text": "REPORT / DEMO-001All four contract checks pass\n      PASS · 4",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "report-table",
+      "text": "FixtureModeExitResult\n      inspect stable recordtext0Pass\n      inspect stable ",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "table-head",
+      "text": "FixtureModeExitResult",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "inspect stable recordtext0Pass",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "inspect stable recordtty0Pass",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "inspect stable recordjson0Pass",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "text": "invalid input stays recoverablejson4Pass",
+      "left": 37,
+      "right": 637,
+      "width": 600
+    },
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "Result",
+      "left": 545,
+      "right": 633,
+      "width": 88
+    },
+    {
+      "tag": "SPAN",
+      "cls": "pass",
+      "text": "Pass",
+      "left": 545,
+      "right": 633,
+      "width": 88
+    },
+    {
+      "tag": "SPAN",
+      "cls": "pass",
+      "text": "Pass",
+      "left": 545,
+      "right": 633,
+      "width": 88
+    },
+    {
+      "tag": "SPAN",
+      "cls": "pass",
+      "text": "Pass",
+      "left": 545,
+      "right": 633,
+      "width": 88
+    },
+    {
+      "tag": "SPAN",
+      "cls": "pass",
+      "text": "Pass",
+      "left": 545,
+      "right": 633,
+      "width": 88
+    },
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "Exit",
+      "left": 460,
+      "right": 533,
+      "width": 73
+    },
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "0",
+      "left": 460,
+      "right": 533,
+      "width": 73
+    },
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "0",
+      "left": 460,
+      "right": 533,
+      "width": 73
+    },
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "0",
+      "left": 460,
+      "right": 533,
+      "width": 73
+    }
+  ],
+  "overflow:/privacy": [],
+  "overflow:/terms": [],
+  "overflow:/does-not-exist": [
+    {
+      "tag": "SPAN",
+      "cls": "",
+      "text": "",
+      "left": -35,
+      "right": 395,
+      "width": 431
+    },
+    {
+      "tag": "DIV",
+      "cls": "lost-contours",
+      "text": "",
+      "left": -30,
+      "right": 390,
+      "width": 420
+    }
+  ]
+}

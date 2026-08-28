@@ -1,0 +1,81 @@
+  Installing agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q/target/package/agent-cli-contract-0.1.0)
+    Updating crates.io index
+     Locking 69 packages to latest Rust 1.85 compatible versions
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.24
+   Compiling libc v0.2.189
+   Compiling syn v3.0.4
+   Compiling cfg-if v1.0.4
+   Compiling serde_core v1.0.229
+   Compiling syn v2.0.119
+   Compiling thiserror v1.0.69
+   Compiling cfg_aliases v0.1.1
+   Compiling utf8parse v0.2.2
+   Compiling bitflags v2.13.1
+   Compiling memchr v2.8.3
+   Compiling anstyle-parse v1.0.0
+   Compiling nix v0.28.0
+   Compiling thiserror-impl v1.0.69
+   Compiling colorchoice v1.0.5
+   Compiling anstyle v1.0.14
+   Compiling getrandom v0.4.3
+   Compiling anstyle-query v1.1.5
+   Compiling anyhow v1.0.104
+   Compiling serde v1.0.229
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling rustix v1.1.4
+   Compiling zmij v1.0.23
+   Compiling anstream v1.0.0
+   Compiling aho-corasick v1.1.5
+   Compiling serde_derive v1.0.229
+   Compiling equivalent v1.0.2
+   Compiling linux-raw-sys v0.12.1
+   Compiling itoa v1.0.18
+   Compiling heck v0.5.0
+   Compiling clap_lex v1.1.0
+   Compiling hashbrown v0.17.1
+   Compiling regex-syntax v0.8.11
+   Compiling serde_json v1.0.151
+   Compiling strsim v0.11.1
+   Compiling clap_builder v4.6.6
+   Compiling regex-automata v0.4.18
+   Compiling indexmap v2.14.0
+   Compiling clap_derive v4.6.4
+   Compiling filedescriptor v0.8.3
+   Compiling serial2 v0.2.38
+   Compiling shell-words v1.1.1
+   Compiling ryu v1.0.23
+   Compiling downcast-rs v1.2.1
+   Compiling once_cell v1.21.4
+   Compiling fastrand v2.5.0
+   Compiling log v0.4.34
+   Compiling unsafe-libyaml v0.2.11
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling portable-pty v0.9.0
+   Compiling tempfile v3.27.0
+   Compiling clap v4.6.6
+   Compiling regex v1.13.1
+   Compiling wait-timeout v0.2.1
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q/target/package/agent-cli-contract-0.1.0)
+    Finished `release` profile [optimized] target(s) in 1m 14s
+  Installing /tmp/agent-cli-contract-consumer.eCJZCj/bin/agent-contract
+   Installed package `agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q/target/package/agent-cli-contract-0.1.0)` (executable `agent-contract`)
+warning: be sure to add `/tmp/agent-cli-contract-consumer.eCJZCj/bin` to your PATH to be able to run the installed binaries
+install_exit=0
+agent-contract 0.1.0
+Test stable machine contracts for CLIs
+
+Usage: agent-contract [OPTIONS] <COMMAND>
+
+Commands:
+  check   Run a contract suite and write Markdown and JSON reports
+  init    Write a documented starter contract
+  demo    Run the bundled sample in a disposable directory
+  schema  Print the version 1 contract JSON Schema
+  help    Print this message or the help of the given subcommand(s)
+
+Options:
+      --json     Print the command result as JSON
+  -h, --help     Print help
+  -V, --version  Print version

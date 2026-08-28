@@ -1,0 +1,822 @@
+===== npm-ci =====
+
+added 22 packages, and audited 23 packages in 2s
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+===== npm-test =====
+
+> agent-cli-contract-site@0.1.0 test
+> cargo test && npm run build:site && playwright test
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189
+   Compiling syn v3.0.4
+   Compiling cfg-if v1.0.4
+   Compiling serde_core v1.0.229
+   Compiling syn v2.0.119
+   Compiling thiserror v1.0.69
+   Compiling bitflags v2.13.1
+   Compiling memchr v2.8.3
+   Compiling cfg_aliases v0.1.1
+   Compiling utf8parse v0.2.2
+   Compiling anstyle-parse v1.0.0
+   Compiling nix v0.28.0
+   Compiling thiserror-impl v1.0.69
+   Compiling anstyle-query v1.1.5
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling serde v1.0.229
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.4
+   Compiling anyhow v1.0.104
+   Compiling zmij v1.0.23
+   Compiling anstream v1.0.0
+   Compiling aho-corasick v1.1.5
+   Compiling serde_derive v1.0.229
+   Compiling hashbrown v0.17.1
+   Compiling serde_json v1.0.151
+   Compiling clap_lex v1.1.0
+   Compiling equivalent v1.0.2
+   Compiling itoa v1.0.18
+   Compiling linux-raw-sys v0.12.1
+   Compiling regex-syntax v0.8.11
+   Compiling strsim v0.11.1
+   Compiling heck v0.5.0
+   Compiling clap_derive v4.6.4
+   Compiling clap_builder v4.6.6
+   Compiling regex-automata v0.4.18
+   Compiling indexmap v2.14.0
+   Compiling filedescriptor v0.8.3
+   Compiling serial2 v0.2.38
+   Compiling log v0.4.34
+   Compiling shell-words v1.1.1
+   Compiling fastrand v2.5.0
+   Compiling ryu v1.0.23
+   Compiling once_cell v1.21.4
+   Compiling downcast-rs v1.2.1
+   Compiling unsafe-libyaml v0.2.11
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling portable-pty v0.9.0
+   Compiling tempfile v3.27.0
+   Compiling regex v1.13.1
+   Compiling clap v4.6.6
+   Compiling wait-timeout v0.2.1
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 38.21s
+     Running unittests src/main.rs (target/debug/deps/agent_contract-72b816a2f1639de7)
+
+running 3 tests
+test tests::changed_json_paths_are_named ... ok
+test tests::safe_snapshot_names_are_stable ... ok
+test tests::secret_values_are_redacted ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+> agent-cli-contract-site@0.1.0 build:site
+> vite build site --outDir ../dist/site --emptyOutDir
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 4 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/site/index.html                  1.92 kB │ gzip: 0.65 kB
+../dist/site/assets/index-6YSZHBkm.css  13.60 kB │ gzip: 4.00 kB
+../dist/site/assets/index-cU-7l2E0.js   15.88 kB │ gzip: 5.30 kB
+✓ built in 228ms
+[2m[WebServer] [22m(node:7832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m(node:7845) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:7857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/product.spec.ts:30:1 › @claim:isolated-fixtures @claim:inline-files runs fixtures outside the project (16ms)
+(node:7871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/product.spec.ts:51:1 › @claim:fixture-timeout stops a command that exceeds its limit (17ms)
+(node:7902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 tests/product.spec.ts:65:1 › @claim:snapshot-regression reports changed command output (16ms)
+(node:7916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 tests/product.spec.ts:82:1 › @claim:nondeterminism names a changing JSON field (17ms)
+(node:7930) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7930) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 tests/product.spec.ts:99:1 › @claim:idempotency reports a changed repeat run (19ms)
+(node:7945) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7945) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 tests/product.spec.ts:114:1 › @claim:mode-capture records real TTY and valid JSON modes (16ms)
+(node:7960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery (13ms)
+(node:7974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 tests/product.spec.ts:143:1 › @claim:report-formats writes equivalent Markdown and JSON reports (47ms)
+(node:7988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 tests/product.spec.ts:153:1 › @claim:secret-redaction removes declared secrets from snapshots and reports (97ms)
+(node:8018) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8018) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 tests/product.spec.ts:175:1 › @claim:network-opt-in blocks network-shaped commands by default (13ms)
+(node:8048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 tests/product.spec.ts:189:1 › @claim:demo-sandbox keeps demo state separate and reset removes it (997ms)
+  ✓  12 tests/product.spec.ts:199:1 › @claim:no-third-party-data sends no demo data to other origins (1.4s)
+  ✓  13 tests/product.spec.ts:208:1 › @claim:free-mit ships as free MIT-licensed source (3ms)
+  ✘  14 tests/product.spec.ts:215:1 › @claim:no-cli-telemetry has no telemetry or network client path (10ms)
+(node:8133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  15 tests/product.spec.ts:223:1 › @claim:rust-version declares the tested minimum Rust version (16ms)
+(node:8147) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8147) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  16 tests/product.spec.ts:229:1 › routes have one focused-capable h1 and no serious accessibility issues (5.8s)
+  ✓  17 tests/product.spec.ts:244:1 › mobile demo keeps primary actions visible and links resolve (631ms)
+  ✓  18 tests/product.spec.ts:255:1 › built assets stay inside the initial performance budgets (5ms)
+
+
+  1) tests/product.spec.ts:30:1 › @claim:isolated-fixtures @claim:inline-files runs fixtures outside the project
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      43 | `);
+      44 |   const result = await run(['check', path, '--accept']);
+    > 45 |   expect(result.code).toBe(0);
+         |                       ^
+      46 |   await expect(stat(join(directory, 'fixture-created.txt'))).rejects.toThrow();
+      47 |   expect(await readFile(join(directory, 'snapshots/writes-only-in-fixture.text.stdout'), 'utf8')).toContain('cwd=<WORKDIR>');
+      48 |   expect(await readFile(join(directory, 'snapshots/writes-only-in-fixture.text.stdout'), 'utf8')).toContain('input=ridge-7');
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:45:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-isolated-fi-f4f50-ixtures-outside-the-project/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-isolated-fi-f4f50-ixtures-outside-the-project/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/product.spec.ts:51:1 › @claim:fixture-timeout stops a command that exceeds its limit ────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m"ENOENT"[39m
+
+      59 | `);
+      60 |   const result = await run(['--json', 'check', path, '--accept']);
+    > 61 |   expect(result.code).toBe(1);
+         |                       ^
+      62 |   expect(result.stdout).toContain('command timed out after 40 ms');
+      63 | });
+      64 |
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:61:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-fixture-tim-23074-mand-that-exceeds-its-limit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-fixture-tim-23074-mand-that-exceeds-its-limit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/product.spec.ts:65:1 › @claim:snapshot-regression reports changed command output ────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      73 | `;
+      74 |   const { path } = await contractDir(fixture('text'));
+    > 75 |   expect((await run(['check', path, '--accept'])).code).toBe(0);
+         |                                                         ^
+      76 |   await writeFile(path, fixture('json'));
+      77 |   const changed = await run(['--json', 'check', path]);
+      78 |   expect(changed.code).toBe(1);
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:75:57
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-snapshot-re-63c26-orts-changed-command-output/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-snapshot-re-63c26-orts-changed-command-output/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/product.spec.ts:82:1 › @claim:nondeterminism names a changing JSON field ────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m"ENOENT"[39m
+
+      93 | `);
+      94 |   const result = await run(['--json', 'check', path, '--accept']);
+    > 95 |   expect(result.code).toBe(1);
+         |                       ^
+      96 |   expect(result.stdout).toContain('nondeterministic JSON fields: $.meta.run_id');
+      97 | });
+      98 |
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:95:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-nondeterminism-names-a-changing-JSON-field/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-nondeterminism-names-a-changing-JSON-field/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests/product.spec.ts:99:1 › @claim:idempotency reports a changed repeat run ──────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m"ENOENT"[39m
+
+      108 | `);
+      109 |   const result = await run(['--json', 'check', path, '--accept']);
+    > 110 |   expect(result.code).toBe(1);
+          |                       ^
+      111 |   expect(result.stdout).toContain('idempotency check changed output or exit');
+      112 | });
+      113 |
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:110:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-idempotency-reports-a-changed-repeat-run/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-idempotency-reports-a-changed-repeat-run/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests/product.spec.ts:114:1 › @claim:mode-capture records real TTY and valid JSON modes ───────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      125 | `);
+      126 |   const result = await run(['check', path, '--accept']);
+    > 127 |   expect(result.code).toBe(0);
+          |                       ^
+      128 |   expect(await readFile(join(directory, 'snapshots/captures-modes.tty.stdout'), 'utf8')).toContain('isTTY=true');
+      129 |   const json = JSON.parse(await readFile(join(directory, 'snapshots/captures-modes.json.stdout'), 'utf8'));
+      130 |   expect(json.ok).toBe(true);
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:127:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-mode-captur-5080f-al-TTY-and-valid-JSON-modes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-mode-captur-5080f-al-TTY-and-valid-JSON-modes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      133 | test('@claim:error-recovery validates a stable JSON error and recovery', async () => {
+      134 |   const result = await run(['--json', 'demo']);
+    > 135 |   expect(result.code).toBe(0);
+          |                       ^
+      136 |   const summary = JSON.parse(result.stdout.trim());
+      137 |   expect(summary.ok).toBe(true);
+      138 |   const report = JSON.parse(await readFile(join(summary.demo, '.agent-contract/report.json'), 'utf8'));
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:135:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-error-recov-e7d67-ble-JSON-error-and-recovery/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-error-recov-e7d67-ble-JSON-error-and-recovery/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) tests/product.spec.ts:143:1 › @claim:report-formats writes equivalent Markdown and JSON reports
+
+    SyntaxError: Unexpected end of JSON input
+
+      143 | test('@claim:report-formats writes equivalent Markdown and JSON reports', async () => {
+      144 |   const result = await run(['--json', 'demo']);
+    > 145 |   const summary = JSON.parse(result.stdout.trim());
+          |                        ^
+      146 |   const markdown = await readFile(join(summary.demo, '.agent-contract/report.md'), 'utf8');
+      147 |   const json = JSON.parse(await readFile(join(summary.demo, '.agent-contract/report.json'), 'utf8'));
+      148 |   expect(markdown).toContain('**Result:** PASS');
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:145:24
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-report-form-82072-t-Markdown-and-JSON-reports/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-report-form-82072-t-Markdown-and-JSON-reports/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) tests/product.spec.ts:153:1 › @claim:secret-redaction removes declared secrets from snapshots and reports
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      165 | `);
+      166 |   const result = await run(['check', path, '--accept']);
+    > 167 |   expect(result.code).toBe(0);
+          |                       ^
+      168 |   const snapshotFiles = await readdir(join(directory, 'snapshots'));
+      169 |   const snapshots = await Promise.all(snapshotFiles.map((name) => readFile(join(directory, 'snapshots', name), 'utf8')));
+      170 |   const report = await readFile(join(directory, '.agent-contract/report.json'), 'utf8');
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:167:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-secret-reda-5ad10--from-snapshots-and-reports/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-secret-reda-5ad10--from-snapshots-and-reports/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) tests/product.spec.ts:175:1 › @claim:network-opt-in blocks network-shaped commands by default
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m"ENOENT"[39m
+
+      183 | `);
+      184 |   const result = await run(['--json', 'check', path, '--accept']);
+    > 185 |   expect(result.code).toBe(1);
+          |                       ^
+      186 |   expect(result.stdout).toContain('network-shaped command was blocked');
+      187 | });
+      188 |
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:185:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-network-opt-60699--shaped-commands-by-default/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-network-opt-60699--shaped-commands-by-default/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) tests/product.spec.ts:215:1 › @claim:no-cli-telemetry has no telemetry or network client path
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      218 |   expect(source).not.toMatch(/std::net|TcpStream|UdpSocket|telemetry|analytics/i);
+      219 |   expect(lock).not.toMatch(/name = "(reqwest|ureq|hyper|opentelemetry|sentry)"/);
+    > 220 |   expect((await run(['--json', 'demo'])).code).toBe(0);
+          |                                                ^
+      221 | });
+      222 |
+      223 | test('@claim:rust-version declares the tested minimum Rust version', async () => {
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:220:48
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-no-cli-tele-6e076-etry-or-network-client-path/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-no-cli-tele-6e076-etry-or-network-client-path/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) tests/product.spec.ts:223:1 › @claim:rust-version declares the tested minimum Rust version ───
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected substring: [32m"0.1.0"[39m
+    Received string:    [31m""[39m
+
+      224 |   const manifest = await readFile(resolve('Cargo.toml'), 'utf8');
+      225 |   expect(manifest).toContain('rust-version = "1.85"');
+    > 226 |   expect((await run(['--version'])).stdout).toContain('0.1.0');
+          |                                             ^
+      227 | });
+      228 |
+      229 | test('routes have one focused-capable h1 and no serious accessibility issues', async ({ page }) => {
+        at /tmp/agent-cli-contract-qa.68MA7Q/tests/product.spec.ts:226:45
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-rust-versio-8bfde-tested-minimum-Rust-version/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-rust-versio-8bfde-tested-minimum-Rust-version/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12 failed
+    tests/product.spec.ts:30:1 › @claim:isolated-fixtures @claim:inline-files runs fixtures outside the project
+    tests/product.spec.ts:51:1 › @claim:fixture-timeout stops a command that exceeds its limit ─────
+    tests/product.spec.ts:65:1 › @claim:snapshot-regression reports changed command output ─────────
+    tests/product.spec.ts:82:1 › @claim:nondeterminism names a changing JSON field ─────────────────
+    tests/product.spec.ts:99:1 › @claim:idempotency reports a changed repeat run ───────────────────
+    tests/product.spec.ts:114:1 › @claim:mode-capture records real TTY and valid JSON modes ────────
+    tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery ─
+    tests/product.spec.ts:143:1 › @claim:report-formats writes equivalent Markdown and JSON reports
+    tests/product.spec.ts:153:1 › @claim:secret-redaction removes declared secrets from snapshots and reports
+    tests/product.spec.ts:175:1 › @claim:network-opt-in blocks network-shaped commands by default ──
+    tests/product.spec.ts:215:1 › @claim:no-cli-telemetry has no telemetry or network client path ──
+    tests/product.spec.ts:223:1 › @claim:rust-version declares the tested minimum Rust version ─────
+  6 passed (32.9s)
+===== npm-build =====
+
+> agent-cli-contract-site@0.1.0 build
+> npm run build:site && npm run build:cli
+
+
+> agent-cli-contract-site@0.1.0 build:site
+> vite build site --outDir ../dist/site --emptyOutDir
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 4 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/site/index.html                  1.92 kB │ gzip: 0.65 kB
+../dist/site/assets/index-6YSZHBkm.css  13.60 kB │ gzip: 4.00 kB
+../dist/site/assets/index-cU-7l2E0.js   15.88 kB │ gzip: 5.30 kB
+✓ built in 174ms
+
+> agent-cli-contract-site@0.1.0 build:cli
+> cargo build --release
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189
+   Compiling syn v3.0.4
+   Compiling cfg-if v1.0.4
+   Compiling serde_core v1.0.229
+   Compiling syn v2.0.119
+   Compiling memchr v2.8.3
+   Compiling utf8parse v0.2.2
+   Compiling bitflags v2.13.1
+   Compiling cfg_aliases v0.1.1
+   Compiling thiserror v1.0.69
+   Compiling nix v0.28.0
+   Compiling anstyle-parse v1.0.0
+   Compiling thiserror-impl v1.0.69
+   Compiling anstyle v1.0.14
+   Compiling anstyle-query v1.1.5
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.4
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling anyhow v1.0.104
+   Compiling serde v1.0.229
+   Compiling colorchoice v1.0.5
+   Compiling zmij v1.0.23
+   Compiling anstream v1.0.0
+   Compiling aho-corasick v1.1.5
+   Compiling serde_derive v1.0.229
+   Compiling regex-syntax v0.8.11
+   Compiling strsim v0.11.1
+   Compiling itoa v1.0.18
+   Compiling linux-raw-sys v0.12.1
+   Compiling equivalent v1.0.2
+   Compiling heck v0.5.0
+   Compiling clap_lex v1.1.0
+   Compiling hashbrown v0.17.1
+   Compiling serde_json v1.0.151
+   Compiling indexmap v2.14.0
+   Compiling clap_builder v4.6.6
+   Compiling clap_derive v4.6.4
+   Compiling regex-automata v0.4.18
+   Compiling filedescriptor v0.8.3
+   Compiling serial2 v0.2.38
+   Compiling unsafe-libyaml v0.2.11
+   Compiling shell-words v1.1.1
+   Compiling log v0.4.34
+   Compiling once_cell v1.21.4
+   Compiling ryu v1.0.23
+   Compiling fastrand v2.5.0
+   Compiling downcast-rs v1.2.1
+   Compiling portable-pty v0.9.0
+   Compiling tempfile v3.27.0
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling regex v1.13.1
+   Compiling clap v4.6.6
+   Compiling wait-timeout v0.2.1
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q)
+    Finished `release` profile [optimized] target(s) in 1m 15s
+===== cargo-clippy =====
+    Checking libc v0.2.189
+    Checking cfg-if v1.0.4
+    Checking utf8parse v0.2.2
+    Checking memchr v2.8.3
+    Checking bitflags v2.13.1
+    Checking anstyle-parse v1.0.0
+    Checking serde_core v1.0.229
+    Checking anstyle v1.0.14
+    Checking colorchoice v1.0.5
+    Checking anstyle-query v1.1.5
+    Checking is_terminal_polyfill v1.70.2
+    Checking anstream v1.0.0
+    Checking thiserror v1.0.69
+    Checking aho-corasick v1.1.5
+    Checking clap_lex v1.1.0
+    Checking strsim v0.11.1
+    Checking hashbrown v0.17.1
+    Checking regex-syntax v0.8.11
+    Checking linux-raw-sys v0.12.1
+    Checking equivalent v1.0.2
+    Checking itoa v1.0.18
+    Checking indexmap v2.14.0
+    Checking rustix v1.1.4
+    Checking regex-automata v0.4.18
+    Checking clap_builder v4.6.6
+    Checking serde v1.0.229
+    Checking nix v0.28.0
+    Checking filedescriptor v0.8.3
+    Checking anyhow v1.0.104
+    Checking getrandom v0.4.3
+    Checking zmij v1.0.23
+    Checking serial2 v0.2.38
+    Checking once_cell v1.21.4
+    Checking shell-words v1.1.1
+    Checking fastrand v2.5.0
+    Checking log v0.4.34
+    Checking ryu v1.0.23
+    Checking unsafe-libyaml v0.2.11
+    Checking downcast-rs v1.2.1
+    Checking portable-pty v0.9.0
+    Checking serde_yaml v0.9.34+deprecated
+    Checking tempfile v3.27.0
+    Checking serde_json v1.0.151
+    Checking clap v4.6.6
+    Checking regex v1.13.1
+    Checking wait-timeout v0.2.1
+    Checking agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.14s
+===== typescript =====
+node_modules/playwright-core/types/types.d.ts(17,30): error TS2307: Cannot find module 'child_process' or its corresponding type declarations.
+node_modules/playwright-core/types/types.d.ts(18,26): error TS2307: Cannot find module 'stream' or its corresponding type declarations.
+node_modules/playwright-core/types/types.d.ts(19,28): error TS2307: Cannot find module 'fs' or its corresponding type declarations.
+node_modules/playwright-core/types/types.d.ts(4118,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(4464,56): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(4783,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(4798,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(5768,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(8486,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(8501,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(10800,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(11105,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(11115,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(11125,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(11557,26): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(11570,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(11911,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(13246,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(13529,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(13544,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(14912,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(14927,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(16150,59): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(16461,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(16476,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(17098,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(17108,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(17118,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18016,41): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18092,24): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18099,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(18136,31): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18632,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(18806,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18816,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(18826,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19004,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19063,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19146,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19211,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19275,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19334,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19372,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19431,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19469,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19528,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19608,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19667,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19705,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19764,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(19842,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(19854,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(20022,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(20080,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(20803,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(20943,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(20958,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(21975,26): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(22168,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(22398,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(22491,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(22552,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(22605,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23101,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23111,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23131,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23141,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23161,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23171,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23191,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23201,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23221,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23231,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23251,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23261,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23291,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23296,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23301,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23311,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23316,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(23321,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24081,27): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24553,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24572,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24616,35): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24736,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(24815,40): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24825,42): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24835,49): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24845,52): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24855,41): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24865,53): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24877,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(24879,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright-core/types/types.d.ts(25348,12): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(25358,11): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright-core/types/types.d.ts(25368,11): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17,30): error TS2307: Cannot find module 'child_process' or its corresponding type declarations.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18,26): error TS2307: Cannot find module 'stream' or its corresponding type declarations.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(19,28): error TS2307: Cannot find module 'fs' or its corresponding type declarations.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(3797,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(4104,56): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(4382,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(4397,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(5204,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(7626,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(7641,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(9522,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(9767,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(9777,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(9787,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(10212,26): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(10219,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(10553,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(11780,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(12011,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(12026,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14191,59): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14450,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14465,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14959,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14969,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(14979,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(15709,41): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(15764,24): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(15771,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(16176,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(16663,27): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17132,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17151,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17195,35): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17315,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17394,40): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17404,42): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17414,49): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17424,52): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17434,41): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17444,53): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17456,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17458,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17573,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17583,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17593,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17774,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17833,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17905,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(17970,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18023,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18082,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18109,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18168,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18195,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18254,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18323,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18382,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18409,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18468,15): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18533,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18545,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18605,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(18666,11): error TS2550: Property 'asyncDispose' does not exist on type 'SymbolConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'esnext' or later.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(19471,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(19486,13): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(20472,26): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(20665,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(20890,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(20983,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21044,23): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21086,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21503,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21513,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21533,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21543,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21563,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21573,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21593,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21603,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21623,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21633,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21653,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21663,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21693,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21698,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21703,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21713,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21718,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(21723,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(22108,12): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(22118,11): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/node_modules/playwright-core/types/types.d.ts(22128,11): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/types/test.d.ts(2252,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/types/test.d.ts(2423,12): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+node_modules/playwright/types/test.d.ts(9942,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+site/src/main.ts(336,49): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+tests/product.spec.ts(3,26): error TS2307: Cannot find module 'node:child_process' or its corresponding type declarations.
+tests/product.spec.ts(4,61): error TS2307: Cannot find module 'node:fs/promises' or its corresponding type declarations.
+tests/product.spec.ts(5,24): error TS2307: Cannot find module 'node:os' or its corresponding type declarations.
+tests/product.spec.ts(6,31): error TS2307: Cannot find module 'node:path' or its corresponding type declarations.
+tests/product.spec.ts(7,27): error TS2307: Cannot find module 'node:util' or its corresponding type declarations.
+tests/product.spec.ts(32,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(53,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(67,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(84,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(101,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(116,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(156,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+tests/product.spec.ts(169,58): error TS7006: Parameter 'name' implicitly has an 'any' type.
+tests/product.spec.ts(238,44): error TS2740: Type 'Page' is missing the following properties from type 'Page': ariaSnapshot, cancelPickLocator, clearConsoleMessages, clearPageErrors, and 5 more.
+tests/product.spec.ts(257,28): error TS7006: Parameter 'name' implicitly has an 'any' type.
+tests/product.spec.ts(258,29): error TS7006: Parameter 'name' implicitly has an 'any' type.
+tests/product.spec.ts(259,134): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+tests/product.spec.ts(259,139): error TS7006: Parameter 'item' implicitly has an 'any' type.
+===== npm-audit =====
+found 0 vulnerabilities
+===== cargo-package =====
+   Packaging agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q)
+    Updating crates.io index
+    Packaged 10 files, 59.3KiB (16.9KiB compressed)
+   Verifying agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q)
+   Compiling agent-cli-contract v0.1.0 (/tmp/agent-cli-contract-qa.68MA7Q/target/package/agent-cli-contract-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.62s

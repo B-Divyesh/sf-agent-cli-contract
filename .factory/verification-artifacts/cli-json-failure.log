@@ -1,0 +1,5 @@
+exit=1
+stdout_lines=2
+{"tool_version":"0.1.0","contract":"agent-contract.yml","passed":false,"summary":{"passed":0,"failed":1,"snapshots_written":0},"checks":[{"fixture":"help stays stable","mode":"text","passed":false,"exit":0,"findings":["stdout snapshot is missing; run with --accept after review","stderr snapshot is missing; run with --accept after review"]}]}
+{"error":"contract checks failed; read the report for the next action","exit":1,"ok":false}
+json_parse=FAIL Unexpected non-whitespace character after JSON at position 344 (line 2 column 1)

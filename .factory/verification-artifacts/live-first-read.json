@@ -1,0 +1,93 @@
+{
+  "url": "https://agent-cli-contract.sociobot.in/",
+  "title": "Agent CLI Contract — test stable command output",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "lang": "en",
+  "h1": [
+    "Test CLI contracts before agents depend on them"
+  ],
+  "visibleText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\n40° 46′ N\n073° 59′ W\n\nCONTRACT SURVEY / V0.1.0\n\nTest CLI contracts before agents depend on them\n\nFor CLI maintainers who need stable output, exits, and errors without changing the human interface.\n\nTry it with sample data\n→\nOpens a recorded run with four passing checks.\nFree and open source.\nRuns locally.\nNetwork use is opt-in.\nOne declared route. Four contract checkpoints.\nFIELD LOG / 01\n\nTHE PRODUCT, IN USE\n\nSee the contract before an agent does\n\nApprove a baseline once. Each later run names the output, exit, or JSON field that moved.\n\ncontract survey · local\n$ agent-contract check agent-contract.yml\n✓ inspect stable record [text]\n✓ inspect stable record [tty]\n✓ inspect stable record [json]\n✓ invalid input stays recoverable [json]\nPASS 4 checks · report.md + report.json\nROUTE / 02\n\nHOW IT WORKS\n\nSurvey a command in three steps\n01\nDeclare the route\n\nList the executable, fixed arguments, modes, and expected exits in YAML.\n\n02\nRun isolated fixtures\n\nEach fixture starts in a new temporary directory with a small environment.\n\n03\nReview named changes\n\nRead Markdown in a pull request or parse the same result as JSON.\n\nBOUNDARY / 03\n\nLIMITS AND PRIVACY\n\nKeep generated commands outside the boundary\n\nThe runner executes only commands written in your contract. It does not create commands, upload output, or benchmark tools.\n\nTemporary workspaces\nProject files stay outside each fixture.\nSecret redaction\nDeclared secret values become [REDACTED].\nExplicit network\nNetwork-shaped commands need allow_network: true.\nSTART / 04\n\nINSTALL FROM SOURCE\n\nAdd the first contract in two commands\ncargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract\nCopy install command\nagent-contract init --command my-cli\nagent-contract check agent-contract.yml --accept\n\nRequires Rust 1.85 or newer. The binary has no telemetry.\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+  "interactive": [
+    {
+      "tag": "A",
+      "text": "Agent CLI Contract",
+      "href": "https://agent-cli-contract.sociobot.in/",
+      "rect": {
+        "x": 124,
+        "y": 14,
+        "w": 209,
+        "h": 44
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Demo",
+      "href": "https://agent-cli-contract.sociobot.in/demo",
+      "rect": {
+        "x": 1104,
+        "y": 14,
+        "w": 49,
+        "h": 44
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Install",
+      "href": "https://agent-cli-contract.sociobot.in/#install",
+      "rect": {
+        "x": 1177,
+        "y": 14,
+        "w": 53,
+        "h": 44
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Privacy",
+      "href": "https://agent-cli-contract.sociobot.in/privacy",
+      "rect": {
+        "x": 1254,
+        "y": 14,
+        "w": 62,
+        "h": 44
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Try it with sample data\n→",
+      "href": "https://agent-cli-contract.sociobot.in/demo",
+      "rect": {
+        "x": 172,
+        "y": 856,
+        "w": 275,
+        "h": 51
+      }
+    }
+  ],
+  "main": true,
+  "firstScreenText": [
+    "Agent CLI Contract",
+    "Demo",
+    "Install",
+    "Privacy",
+    "40° 46′ N",
+    "073° 59′ W",
+    "Contract survey / v0.1.0",
+    "Test CLI contracts before agents depend on them",
+    "For CLI maintainers who need stable output, exits, and errors without changing the human interface.",
+    "→",
+    "Opens a recorded run with four passing checks."
+  ],
+  "httpStatus": 200,
+  "console": [],
+  "pageErrors": [],
+  "requests": [
+    "https://agent-cli-contract.sociobot.in/",
+    "https://agent-cli-contract.sociobot.in/assets/index-cU-7l2E0.js",
+    "https://agent-cli-contract.sociobot.in/assets/index-6YSZHBkm.css",
+    "https://agent-cli-contract.sociobot.in/topographic-run.webp"
+  ]
+}

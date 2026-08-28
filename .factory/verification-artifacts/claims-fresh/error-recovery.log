@@ -1,0 +1,67 @@
+
+> agent-cli-contract-site@0.1.0 test
+> cargo test && npm run build:site && playwright test --grep @claim:error-recovery
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/main.rs (target/debug/deps/agent_contract-72b816a2f1639de7)
+
+running 3 tests
+test tests::changed_json_paths_are_named ... ok
+test tests::safe_snapshot_names_are_stable ... ok
+test tests::secret_values_are_redacted ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+> agent-cli-contract-site@0.1.0 build:site
+> vite build site --outDir ../dist/site --emptyOutDir
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 4 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/site/index.html                  1.92 kB │ gzip: 0.65 kB
+../dist/site/assets/index-6YSZHBkm.css  13.60 kB │ gzip: 4.00 kB
+../dist/site/assets/index-cU-7l2E0.js   15.88 kB │ gzip: 5.30 kB
+✓ built in 193ms
+[2m[WebServer] [22m(node:5271) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m(node:5284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:5297) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5297) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery (15ms)
+
+
+  1) tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m"ENOENT"[39m
+
+      133 | test('@claim:error-recovery validates a stable JSON error and recovery', async () => {
+      134 |   const result = await run(['--json', 'demo']);
+    > 135 |   expect(result.code).toBe(0);
+          |                       ^
+      136 |   const summary = JSON.parse(result.stdout.trim());
+      137 |   expect(summary.ok).toBe(true);
+      138 |   const report = JSON.parse(await readFile(join(summary.demo, '.agent-contract/report.json'), 'utf8'));
+        at /work/repo/tests/product.spec.ts:135:23
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/product--claim-error-recov-e7d67-ble-JSON-error-and-recovery/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/product--claim-error-recov-e7d67-ble-JSON-error-and-recovery/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/product.spec.ts:133:1 › @claim:error-recovery validates a stable JSON error and recovery ─

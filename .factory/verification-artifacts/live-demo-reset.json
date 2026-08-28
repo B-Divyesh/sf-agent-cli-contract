@@ -1,0 +1,24 @@
+{
+  "blocked": {
+    "keys": [
+      "demo:report"
+    ],
+    "value": "failed",
+    "heading": "One contract change needs review",
+    "alert": "error.code changed Expected invalid_input. Received bad_request. Restore the code or approve the new snapshot after review."
+  },
+  "reset": {
+    "keys": [],
+    "heading": "All four contract checks pass",
+    "focus": "Reset demo"
+  },
+  "start": {
+    "keys": [],
+    "url": "https://agent-cli-contract.sociobot.in/#install",
+    "installVisible": true,
+    "scrollY": 0
+  },
+  "origins": [
+    "https://agent-cli-contract.sociobot.in"
+  ]
+}

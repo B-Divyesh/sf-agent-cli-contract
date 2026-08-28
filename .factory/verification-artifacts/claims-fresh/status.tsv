@@ -1,0 +1,16 @@
+isolated-fixtures	1
+mode-capture	1
+snapshot-regression	1
+nondeterminism	1
+idempotency	1
+inline-files	1
+fixture-timeout	1
+error-recovery	1
+report-formats	1
+secret-redaction	1
+network-opt-in	1
+demo-sandbox	0
+no-third-party-data	0
+free-mit	0
+no-cli-telemetry	1
+rust-version	1

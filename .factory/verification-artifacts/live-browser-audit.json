@@ -1,0 +1,946 @@
+{
+  "testedAt": "2026-08-28T13:52:43.383Z",
+  "routes": {
+    "/": {
+      "httpStatus": 200,
+      "title": "Agent CLI Contract — test stable command output",
+      "canonical": "https://agent-cli-contract.sociobot.in/",
+      "lang": "en",
+      "h1": [
+        "Test CLI contracts before agents depend on them"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Test CLI contracts before agents depend on them"
+        },
+        {
+          "level": 2,
+          "text": "See the contract before an agent does"
+        },
+        {
+          "level": 2,
+          "text": "Survey a command in three steps"
+        },
+        {
+          "level": 3,
+          "text": "Declare the route"
+        },
+        {
+          "level": 3,
+          "text": "Run isolated fixtures"
+        },
+        {
+          "level": 3,
+          "text": "Review named changes"
+        },
+        {
+          "level": 2,
+          "text": "Keep generated commands outside the boundary"
+        },
+        {
+          "level": 2,
+          "text": "Add the first contract in two commands"
+        }
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "missingAlt": [],
+      "interactive": [
+        {
+          "tag": "A",
+          "name": "Skip to main content",
+          "width": 199,
+          "height": 45
+        },
+        {
+          "tag": "A",
+          "name": "Agent CLI Contract",
+          "width": 209,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Demo",
+          "width": 49,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Install",
+          "width": 53,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 62,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Try it with sample data\n→",
+          "width": 275,
+          "height": 51
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Copy install command",
+          "width": 211,
+          "height": 63
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "targetsUnder44": [
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\n40° 46′ N\n073° 59′ W\n\nCONTRACT SURVEY / V0.1.0\n\nTest CLI contracts before agents depend on them\n\nFor CLI maintainers who need stable output, exits, and errors without changing the human interface.\n\nTry it with sample data\n→\nOpens a recorded run with four passing checks.\nFree and open source.\nRuns locally.\nNetwork use is opt-in.\nOne declared route. Four contract checkpoints.\nFIELD LOG / 01\n\nTHE PRODUCT, IN USE\n\nSee the contract before an agent does\n\nApprove a baseline once. Each later run names the output, exit, or JSON field that moved.\n\ncontract survey · local\n$ agent-contract check agent-contract.yml\n✓ inspect stable record [text]\n✓ inspect stable record [tty]\n✓ inspect stable record [json]\n✓ invalid input stays recoverable [json]\nPASS 4 checks · report.md + report.json\nROUTE / 02\n\nHOW IT WORKS\n\nSurvey a command in three steps\n01\nDeclare the route\n\nList the executable, fixed arguments, modes, and expected exits in YAML.\n\n02\nRun isolated fixtures\n\nEach fixture starts in a new temporary directory with a small environment.\n\n03\nReview named changes\n\nRead Markdown in a pull request or parse the same result as JSON.\n\nBOUNDARY / 03\n\nLIMITS AND PRIVACY\n\nKeep generated commands outside the boundary\n\nThe runner executes only commands written in your contract. It does not create commands, upload output, or benchmark tools.\n\nTemporary workspaces\nProject files stay outside each fixture.\nSecret redaction\nDeclared secret values become [REDACTED].\nExplicit network\nNetwork-shaped commands need allow_network: true.\nSTART / 04\n\nINSTALL FROM SOURCE\n\nAdd the first contract in two commands\ncargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract\nCopy install command\nagent-contract init --command my-cli\nagent-contract check agent-contract.yml --accept\n\nRequires Rust 1.85 or newer. The binary has no telemetry.\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+      "axeSeriousCritical": [],
+      "consoleEvents": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "origins": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    },
+    "/demo": {
+      "httpStatus": 200,
+      "title": "Demo — Agent CLI Contract",
+      "canonical": "https://agent-cli-contract.sociobot.in/demo",
+      "lang": "en",
+      "h1": [
+        "Review a complete CLI contract run"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Review a complete CLI contract run"
+        },
+        {
+          "level": 2,
+          "text": "Sample fixture"
+        },
+        {
+          "level": 2,
+          "text": "All four contract checks pass"
+        },
+        {
+          "level": 2,
+          "text": "Watch the same sample run in the CLI"
+        }
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "missingAlt": [],
+      "interactive": [
+        {
+          "tag": "A",
+          "name": "Skip to main content",
+          "width": 199,
+          "height": 45
+        },
+        {
+          "tag": "A",
+          "name": "Agent CLI Contract",
+          "width": 209,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Demo",
+          "width": 49,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Install",
+          "width": 53,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 62,
+          "height": 44
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Reset demo",
+          "width": 106,
+          "height": 36
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Start for real",
+          "width": 111,
+          "height": 36
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Run sample contract",
+          "width": 226,
+          "height": 51
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Show a blocked change",
+          "width": 222,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "targetsUnder44": [
+        {
+          "tag": "BUTTON",
+          "name": "Reset demo",
+          "width": 106,
+          "height": 36
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Start for real",
+          "width": 111,
+          "height": 36
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\nDemo — sample data, nothing is saved\nReset demo\nStart for real\n\nISOLATED FIELD TEST\n\nReview a complete CLI contract run\n\nThis sample uses the same four fixtures bundled with the Rust binary.\n\nRun sample contract\nShow a blocked change\nagent-contract.yml\nSample fixture\nversion: 1\ncommand: [\"ridge-cli\"]\nfixtures:\n  - name: inspect stable record\n    modes: [text, tty, json]\n    expect:\n      exit: 0\n    idempotent: true\n    allow_network: false\nREPORT / DEMO-001\nAll four contract checks pass\nPASS · 4\nFIXTURE\nMODE\nEXIT\nRESULT\ninspect stable record\ntext\n0\nPass\ninspect stable record\ntty\n0\nPass\ninspect stable record\njson\n0\nPass\ninvalid input stays recoverable\njson\n4\nPass\n\nSELF-HOSTED TERMINAL RECORDING\n\nWatch the same sample run in the CLI\ncontract survey · local\n$ agent-contract check agent-contract.yml\n✓ inspect stable record [text]\n✓ inspect stable record [tty]\n✓ inspect stable record [json]\n✓ invalid input stays recoverable [json]\nPASS 4 checks · report.md + report.json\n\nRun agent-contract demo to create this report in a temporary directory.\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+      "axeSeriousCritical": [],
+      "consoleEvents": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "origins": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    },
+    "/privacy": {
+      "httpStatus": 200,
+      "title": "Privacy — Agent CLI Contract",
+      "canonical": "https://agent-cli-contract.sociobot.in/privacy",
+      "lang": "en",
+      "h1": [
+        "Keep CLI checks on your machine"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Keep CLI checks on your machine"
+        },
+        {
+          "level": 2,
+          "text": "What the CLI reads"
+        },
+        {
+          "level": 2,
+          "text": "What the CLI writes"
+        },
+        {
+          "level": 2,
+          "text": "What leaves the machine"
+        },
+        {
+          "level": 2,
+          "text": "Website data"
+        },
+        {
+          "level": 2,
+          "text": "Questions"
+        }
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "missingAlt": [],
+      "interactive": [
+        {
+          "tag": "A",
+          "name": "Skip to main content",
+          "width": 199,
+          "height": 45
+        },
+        {
+          "tag": "A",
+          "name": "Agent CLI Contract",
+          "width": 209,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Demo",
+          "width": 49,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Install",
+          "width": 53,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 62,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "targetsUnder44": [
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\n\nPOLICY / EFFECTIVE 28 AUGUST 2026\n\nKeep CLI checks on your machine\n\nAgent CLI Contract has no account, analytics, telemetry, or hosted contract service.\n\nWhat the CLI reads\n\nThe CLI reads the contract path you provide. It starts only the commands declared in that file.\n\nWhat the CLI writes\n\nThe CLI writes snapshots beside the contract. It writes Markdown and JSON reports in .agent-contract.\n\nWhat leaves the machine\n\nThe CLI does not send contract data anywhere. A fixture may use the network only when its contract allows it.\n\nWebsite data\n\nThe demo stores only its sample view under keys beginning with demo:. Resetting or leaving the demo removes those keys.\n\nQuestions\n\nOpen an issue in the source repository for privacy questions.\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+      "axeSeriousCritical": [],
+      "consoleEvents": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "origins": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    },
+    "/terms": {
+      "httpStatus": 200,
+      "title": "Terms — Agent CLI Contract",
+      "canonical": "https://agent-cli-contract.sociobot.in/terms",
+      "lang": "en",
+      "h1": [
+        "Use the tool under MIT terms"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Use the tool under MIT terms"
+        },
+        {
+          "level": 2,
+          "text": "Your contracts and output"
+        },
+        {
+          "level": 2,
+          "text": "Your responsibility"
+        },
+        {
+          "level": 2,
+          "text": "No warranty"
+        }
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "missingAlt": [],
+      "interactive": [
+        {
+          "tag": "A",
+          "name": "Skip to main content",
+          "width": 199,
+          "height": 45
+        },
+        {
+          "tag": "A",
+          "name": "Agent CLI Contract",
+          "width": 209,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Demo",
+          "width": 49,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Install",
+          "width": 53,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 62,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "targetsUnder44": [
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\n\nTERMS / EFFECTIVE 28 AUGUST 2026\n\nUse the tool under MIT terms\n\nAgent CLI Contract is free software provided under the MIT License.\n\nYour contracts and output\n\nYou keep ownership of your contract files, snapshots, and reports.\n\nYour responsibility\n\nRun only commands you trust. Review fixture arguments before execution.\n\nNo warranty\n\nThe software is provided “as is,” without warranty. The repository LICENSE contains the complete terms.\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+      "axeSeriousCritical": [],
+      "consoleEvents": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "origins": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    },
+    "/does-not-exist": {
+      "httpStatus": 200,
+      "title": "Page not found — Agent CLI Contract",
+      "canonical": "https://agent-cli-contract.sociobot.in/404",
+      "lang": "en",
+      "h1": [
+        "This route leaves the map"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "This route leaves the map"
+        }
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "missingAlt": [],
+      "interactive": [
+        {
+          "tag": "A",
+          "name": "Skip to main content",
+          "width": 199,
+          "height": 45
+        },
+        {
+          "tag": "A",
+          "name": "Agent CLI Contract",
+          "width": 209,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Demo",
+          "width": 49,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Install",
+          "width": 53,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 62,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "name": "Return to the home route",
+          "width": 271,
+          "height": 51
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "targetsUnder44": [
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "width": 50,
+          "height": 21
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "width": 41,
+          "height": 21
+        }
+      ],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyText": "Skip to main content\nAgent CLI Contract\nDemo\nInstall\nPrivacy\n\nCOORDINATE NOT FOUND / 404\n\nThis route leaves the map\n\nThe page may have moved. Return to the contract survey.\n\nReturn to the home route\n\nTest CLI contracts before agents depend on them.\n\nPrivacy\nTerms\n\nBuilt by Param Factory · v0.1.0",
+      "axeSeriousCritical": [],
+      "consoleEvents": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "origins": [
+        "https://agent-cli-contract.sociobot.in"
+      ]
+    }
+  },
+  "keyboard": {
+    "tab1": {
+      "tag": "A",
+      "name": "Skip to main content",
+      "href": "https://agent-cli-contract.sociobot.in/#main",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "none",
+      "rect": {
+        "x": 8,
+        "y": 8,
+        "w": 198.578125,
+        "h": 44.796875
+      }
+    },
+    "tab2": {
+      "tag": "A",
+      "name": "Agent CLI Contract",
+      "href": "https://agent-cli-contract.sociobot.in/",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "none",
+      "rect": {
+        "x": 124,
+        "y": 13.5,
+        "w": 208.59375,
+        "h": 44
+      }
+    },
+    "tab3": {
+      "tag": "A",
+      "name": "Demo",
+      "href": "https://agent-cli-contract.sociobot.in/demo",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1104.21875,
+        "y": 13.5,
+        "w": 48.671875,
+        "h": 44
+      }
+    },
+    "tab4": {
+      "tag": "A",
+      "name": "Install",
+      "href": "https://agent-cli-contract.sociobot.in/#install",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1176.890625,
+        "y": 13.5,
+        "w": 52.875,
+        "h": 44
+      }
+    },
+    "tab5": {
+      "tag": "A",
+      "name": "Privacy",
+      "href": "https://agent-cli-contract.sociobot.in/privacy",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1253.765625,
+        "y": 13.5,
+        "w": 62.234375,
+        "h": 44
+      }
+    },
+    "tab6": {
+      "tag": "A",
+      "name": "Try it with sample data\n→",
+      "href": "https://agent-cli-contract.sociobot.in/demo",
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(21, 44, 40)",
+      "boxShadow": "rgb(21, 44, 40) 5px 5px 0px 0px",
+      "rect": {
+        "x": 172,
+        "y": 855.703125,
+        "w": 275.078125,
+        "h": 50.796875
+      }
+    },
+    "afterPrimaryEnter": {
+      "url": "https://agent-cli-contract.sociobot.in/demo",
+      "active": {
+        "tag": "H1",
+        "text": "Review a complete CLI contract run"
+      }
+    },
+    "demoNext": {
+      "tag": "BUTTON",
+      "text": "Run sample contract"
+    },
+    "demoRunResult": {
+      "live": "Four checks passed. The sample workspace was discarded.",
+      "keys": [
+        "demo:report"
+      ],
+      "reportHeading": "All four contract checks pass"
+    },
+    "skipAfterEnter": {
+      "activeTag": "BODY",
+      "activeId": "",
+      "scrollY": 69
+    }
+  },
+  "mobile": {
+    "home": {
+      "h1": "Test CLI contracts before agents depend on them",
+      "cta": {
+        "top": 613.28125,
+        "bottom": 664.078125,
+        "width": 318,
+        "height": 50.796875,
+        "inViewport": true
+      },
+      "plainFacts": [
+        {
+          "text": "Free and open source.",
+          "inViewport": true
+        },
+        {
+          "text": "Runs locally.",
+          "inViewport": true
+        },
+        {
+          "text": "Network use is opt-in.",
+          "inViewport": true
+        }
+      ],
+      "scrollWidth": 730,
+      "clientWidth": 390
+    },
+    "demo": {
+      "url": "https://agent-cli-contract.sociobot.in/demo",
+      "banner": "Demo — sample data, nothing is saved Reset demoStart for real",
+      "h1": "Review a complete CLI contract run",
+      "scrollWidth": 656,
+      "clientWidth": 390,
+      "targets": [
+        {
+          "name": "Reset demo",
+          "w": 175,
+          "h": 36
+        },
+        {
+          "name": "Start for real",
+          "w": 175,
+          "h": 36
+        },
+        {
+          "name": "Privacy",
+          "w": 49.796875,
+          "h": 21.328125
+        },
+        {
+          "name": "Terms",
+          "w": 40.5,
+          "h": 21.328125
+        }
+      ]
+    }
+  },
+  "reducedMotion": {
+    "media": true,
+    "nonzero": [
+      {
+        "tag": "HTML",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "HEAD",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "TITLE",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "SCRIPT",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "BODY",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "A",
+        "cls": "skip-link",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "HEADER",
+        "cls": "site-header",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "A",
+        "cls": "wordmark route-link",
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "svg",
+        "cls": {},
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      },
+      {
+        "tag": "path",
+        "cls": {},
+        "animation": "1e-05s",
+        "transition": "1e-05s"
+      }
+    ]
+  },
+  "demo": {},
+  "offline": {
+    "url": "https://agent-cli-contract.sociobot.in/demo",
+    "title": "Demo — Agent CLI Contract",
+    "h1": "Review a complete CLI contract run",
+    "controlled": true,
+    "error": null
+  }
+}
