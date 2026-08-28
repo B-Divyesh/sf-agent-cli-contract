@@ -1,18 +1,35 @@
-# Review 2 handoff — FAIL
+# Polish 2 handoff
 
-Reviewer-only work order `agent-cli-contract-review-2` is complete. No product code was changed.
+Repair commit `1d1f36658153632ef1e93abb135a33cc9b840c9b` fixes every finding in `.factory/review-1.md` and `.factory/review-2.md`, including the new phone-first demo layout and three previously unlisted README contract claims. It is pushed to `origin/main`.
 
-## Delivered
+## What changed
 
-- Added `.factory/review-2.md`, a fresh cold-read, demo, claims, sandbox, history, structure, accessibility, and missed-leverage review.
-- Reviewed the deployed site at desktop and 390 × 844, plus the current checkout at `3ec47269c9a627ade759d7646685acbdf065e033`.
+- At 390 px, the real four-check sample report precedes the YAML fixture sheet. Its PASS heading and first fixture result are visible in the first 844 px viewport.
+- README no longer contains the internal factory release sentence. Its allowlist, schema, and version-1 promises now have executable claims and tests.
+- Added `nondeterministic-field-allowlist`, `schema-output`, and `contract-format-version` to `.factory/claims.json`; catalog description is a verb-first, 62-character sentence.
+- Preserved the cartographic paper, contour, route-marker visual system and the existing honest recorded CLI demo, isolation, routes, legal pages, offline support, and accessibility behavior.
 
-## Verification
+## Verify
 
-- All 25 listed claim commands passed independently from fresh clone `/tmp/agent-cli-contract-review2-aA5xLm/repo`.
-- The same clone passed `npm test` (3 Rust and 32 Playwright tests), `npm run build`, `cargo fmt --check`, and `cargo clippy --all-targets -- -D warnings`.
-- Browser checks confirmed demo storage isolation/reset, same-origin requests, offline reload after first visit, direct CLI demo isolation, route metadata, real 404, links, history focus/scroll restoration, and no serious/critical axe findings.
+From a clean clone:
 
-## Known gaps and next steps
+```sh
+npm install
+npm test
+cargo fmt --check
+cargo clippy --all-targets -- -D warnings
+cargo package
+```
 
-The review verdict is **FAIL**. Resolve F-2-1 by making the actual sample report visible in the first 390 × 844 demo viewport. Resolve F-2-2 through F-2-5 by removing the internal release sentence and adding or removing the three unlisted README claims. Rerun the full fresh-clone claim sweep after repair.
+Every one of the 28 manifest claim commands was also run separately from `/tmp/agent-cli-contract-polish-2-FI9Nk8/repo`; all passed. The full clean-clone `npm test` passed 3 Rust tests and 35 Playwright tests. That suite includes the Axe serious/critical scan, privacy/network interception, offline reload, metadata/404, keyboard, history, and mobile demo first-viewport checks. `npm audit --omit=dev` reported zero vulnerabilities.
+
+Build with `npm run build`; deployment output is `dist/site`. The ready package is verified by `cargo package` and is not published by this work order.
+
+## Evidence and status
+
+- Finding-to-evidence map: `.factory/polish-2.md`.
+- Built-site screenshots: `.factory/evidence/polish-2-home-desktop.png` and `.factory/evidence/polish-2-mobile-demo.png`.
+- Local size output: JS 18.42 kB / 5.87 kB gzip; CSS 14.97 kB / 4.25 kB gzip.
+- Live URL: <https://agent-cli-contract.sociobot.in/?demo=1>. The push has been made; this handoff is updated with the final cold live re-check after the static deployment serves `1d1f366`.
+
+Known product gaps: none. Deployment propagation is the only pending external state at the time of this commit.
