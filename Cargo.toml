@@ -7,9 +7,10 @@ description = "Test stable machine contracts for CLIs used by agents and scripts
 license = "MIT"
 repository = "https://github.com/B-Divyesh/sf-agent-cli-contract"
 readme = "README.md"
+build = "build.rs"
 keywords = ["cli", "testing", "snapshot", "agents"]
 categories = ["command-line-utilities", "development-tools::testing"]
-include = ["/src/**", "/examples/**", "/Cargo.toml", "/README.md", "/LICENSE", "/CHANGELOG.md"]
+include = ["/src/**", "/examples/**", "/build.rs", "/Cargo.toml", "/README.md", "/LICENSE", "/CHANGELOG.md"]
 
 [[bin]]
 name = "agent-contract"
@@ -24,3 +25,4 @@ serde_json = "1.0"
 serde_yaml = "0.9"
 tempfile = "3.20"
 wait-timeout = "0.2"
+libc = "0.2"

@@ -51,7 +51,7 @@ const terminal = (compact = false) => `
 
 const landing = () => `
   ${header()}
-  <main id="main" class="landing">
+  <main id="main" class="landing" tabindex="-1">
     <section class="hero survey-grid" aria-labelledby="page-title">
       <div class="coordinate-rail" aria-hidden="true"><span>40° 46′ N</span><span>073° 59′ W</span></div>
       <div class="hero-copy">
@@ -102,11 +102,11 @@ const landing = () => `
       <div>
         <p class="eyebrow">Limits and privacy</p>
         <h2 id="limits-heading">Keep generated commands outside the boundary</h2>
-        <p>The runner executes only commands written in your contract. It does not create commands, upload output, or benchmark tools.</p>
+        <p>The runner executes only commands written in your contract.</p>
         <ul class="boundary-list">
           <li><b>Temporary workspaces</b><span>Project files stay outside each fixture.</span></li>
           <li><b>Secret redaction</b><span>Declared secret values become <code>[REDACTED]</code>.</span></li>
-          <li><b>Explicit network</b><span>Network-shaped commands need <code>allow_network: true</code>.</span></li>
+          <li><b>Explicit network</b><span>Network use needs <code>allow_network: true</code>.</span></li>
         </ul>
       </div>
     </section>
@@ -154,7 +154,7 @@ const demo = () => `
     <span><b>Demo</b> — sample data, nothing is saved</span>
     <div><button type="button" class="text-button" data-reset-demo>Reset demo</button><button type="button" class="text-button" data-start-real>Start for real</button></div>
   </aside>
-  <main id="main" class="demo-page">
+  <main id="main" class="demo-page" tabindex="-1">
     <section class="demo-intro">
       <p class="eyebrow">Isolated field test</p>
       <h1 id="page-title" tabindex="-1">Review a complete CLI contract run</h1>
@@ -192,7 +192,7 @@ const demo = () => `
 
 const privacy = () => `
   ${header()}
-  <main id="main" class="prose-page">
+  <main id="main" class="prose-page" tabindex="-1">
     <p class="eyebrow">Policy / effective 28 August 2026</p>
     <h1 id="page-title" tabindex="-1">Keep CLI checks on your machine</h1>
     <p class="lede">Agent CLI Contract has no account, analytics, telemetry, or hosted contract service.</p>
@@ -211,7 +211,7 @@ const privacy = () => `
 
 const terms = () => `
   ${header()}
-  <main id="main" class="prose-page">
+  <main id="main" class="prose-page" tabindex="-1">
     <p class="eyebrow">Terms / effective 28 August 2026</p>
     <h1 id="page-title" tabindex="-1">Use the tool under MIT terms</h1>
     <p class="lede">Agent CLI Contract is free software provided under the MIT License.</p>
@@ -226,7 +226,7 @@ const terms = () => `
 
 const notFound = () => `
   ${header()}
-  <main id="main" class="not-found">
+  <main id="main" class="not-found" tabindex="-1">
     <div class="lost-contours" aria-hidden="true"><span></span><span></span><span></span></div>
     <p class="eyebrow">Coordinate not found / 404</p>
     <h1 id="page-title" tabindex="-1">This route leaves the map</h1>
@@ -321,7 +321,12 @@ function bindActions() {
 
 document.addEventListener('click', (event) => {
   const link = (event.target as Element).closest<HTMLAnchorElement>('a[href]');
-  if (!link || link.classList.contains('route-link')) return;
+  if (!link) return;
+  if (link.classList.contains('skip-link')) {
+    window.setTimeout(() => document.querySelector<HTMLElement>('main')?.focus(), 0);
+    return;
+  }
+  if (link.classList.contains('route-link')) return;
   const url = new URL(link.href);
   if (url.origin === window.location.origin && url.pathname !== window.location.pathname) {
     event.preventDefault();

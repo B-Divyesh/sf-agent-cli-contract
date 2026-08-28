@@ -28,10 +28,9 @@ The headline states the job in eight words. The next sentence names CLI maintain
 | Each fixture starts in a new temporary directory with a small environment. | 12 | Pass |
 | Read Markdown in a pull request or parse the same result as JSON. | 12 | Pass |
 | The runner executes only commands written in your contract. | 9 | Pass |
-| It does not create commands, upload output, or benchmark tools. | 10 | Pass |
 | Project files stay outside each fixture. | 6 | Pass |
 | Declared secret values become `[REDACTED]`. | 5 | Pass |
-| Network-shaped commands need `allow_network: true`. | 5 | Pass |
+| Network use needs `allow_network: true`. | 5 | Pass |
 | Requires Rust 1.85 or newer. | 5 | Pass |
 | The binary has no telemetry. | 5 | Pass |
 | Test CLI contracts before agents depend on them. | 8 | Pass |

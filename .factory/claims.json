@@ -71,10 +71,10 @@
   },
   {
     "id": "network-opt-in",
-    "claim": "Network-shaped commands need an explicit fixture opt-in.",
+    "claim": "Network use needs an explicit fixture opt-in.",
     "where": "landing facts and privacy section, README",
     "test": "npm test -- --grep @claim:network-opt-in",
-    "sandbox": "fresh temp contract declaring curl without allow_network; assert it is rejected before execution"
+    "sandbox": "fresh temp contracts declaring curl and a Node fetch without allow_network; assert both are blocked"
   },
   {
     "id": "demo-sandbox",
@@ -110,5 +110,47 @@
     "where": "landing install note, README",
     "test": "npm test -- --grep @claim:rust-version",
     "sandbox": "fresh clone; assert Cargo.toml declares rust-version 1.85 and the built binary reports version 0.1.0"
+  },
+  {
+    "id": "direct-execution",
+    "claim": "The runner uses declared executable arguments without a shell.",
+    "where": "README safety model",
+    "test": "npm test -- --grep @claim:direct-execution",
+    "sandbox": "fresh temp contract; inspect the runner and execute a Node argument containing shell metacharacters; assert it remains one literal argument"
+  },
+  {
+    "id": "declared-commands",
+    "claim": "The runner starts only the executable declared in the contract.",
+    "where": "landing privacy boundary, privacy page",
+    "test": "npm test -- --grep @claim:declared-commands",
+    "sandbox": "fresh temp contract; assert the command schema has one declared executable and that the runner rejects an empty command"
+  },
+  {
+    "id": "environment-isolation",
+    "claim": "Fixtures receive only a small environment and do not receive host secret variables.",
+    "where": "README safety model",
+    "test": "npm test -- --grep @claim:environment-isolation",
+    "sandbox": "set a host-only secret; execute a fresh fixture and assert its output cannot read that variable"
+  },
+  {
+    "id": "cli-demo-isolation",
+    "claim": "The CLI demo never reads or writes project data.",
+    "where": "README demo section",
+    "test": "npm test -- --grep @claim:cli-demo-isolation",
+    "sandbox": "run the bundled demo from a temporary project containing a sentinel file; assert the sentinel remains unchanged and the reported demo path is outside the project"
+  },
+  {
+    "id": "exit-codes",
+    "claim": "Invalid or empty suites exit 2, contract failures exit 1, and passing suites exit 0.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:exit-codes",
+    "sandbox": "fresh invalid, failing, and accepted contracts; assert the documented exit codes"
+  },
+  {
+    "id": "json-failure-document",
+    "claim": "Every --json check result is one script-readable JSON document.",
+    "where": "README contract format",
+    "test": "npm test -- --grep @claim:json-failure-document",
+    "sandbox": "fresh valid contract without snapshots; assert its failure output parses once as a report object"
   }
 ]

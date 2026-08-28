@@ -87,7 +87,7 @@ Run `agent-contract schema` for the complete JSON Schema. Invalid or empty suite
 
 Each fixture receives a new temporary working directory. Idempotency checks share only their own temporary directory. The runner uses direct process arguments, never a shell. It passes a small environment allowlist plus values declared in the contract. Secret-shaped host variables are not passed. Declared secret values are replaced with `[REDACTED]` in snapshots and reports.
 
-Network use must be enabled per fixture. Without it, URL arguments and known network executables are rejected, proxy variables point to a closed local port, and `AGENT_CONTRACT_NETWORK=disabled` is set. A target binary can still open a raw socket; use an OS sandbox when hostile code is in scope. This tool runs maintainer-authored commands, not generated commands.
+Network use must be enabled per fixture. Without it, URL arguments and known network executables are rejected, and the target process plus its children cannot open or connect sockets. `AGENT_CONTRACT_NETWORK=disabled` is also set for tools that report their policy. This tool runs maintainer-authored commands, not generated commands.
 
 ## Develop and verify
 

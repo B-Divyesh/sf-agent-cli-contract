@@ -13,6 +13,8 @@ use wait_timeout::ChildExt;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const SCHEMA: &str = include_str!("../examples/schema.json");
+#[cfg(target_os = "linux")]
+const NETWORK_GUARD: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/network_guard.so"));
 
 #[derive(Parser)]
 #[command(name = "agent-contract", version, about = "Test stable machine contracts for CLIs", long_about = None)]
@@ -57,6 +59,15 @@ enum Commands {
         fail: bool,
         #[arg(long)]
         recover: bool,
+    },
+    /// Start a declared fixture with outbound network syscalls denied.
+    #[command(hide = true)]
+    NetworkDeniedExec {
+        /// Executable from the contract.
+        executable: String,
+        /// Arguments supplied by the contract.
+        #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
+        args: Vec<String>,
     },
 }
 
@@ -176,10 +187,11 @@ fn main() {
             fail,
             recover,
         } => fixture_target(&mode, fail, recover),
+        Commands::NetworkDeniedExec { executable, args } => network_denied_exec(&executable, &args),
     };
 
     if let Err((code, message)) = result {
-        if cli.json {
+        if cli.json && code != 1 {
             println!(
                 "{}",
                 serde_json::json!({"ok": false, "error": message, "exit": code})
@@ -604,9 +616,10 @@ fn run_pipe(
     allow_network: bool,
     timeout_ms: u64,
 ) -> Result<Captured, String> {
-    let mut command = Command::new(executable);
+    let (program, command_args) = sandboxed_program(executable, args, allow_network)?;
+    let mut command = Command::new(program);
     command
-        .args(args)
+        .args(command_args)
         .current_dir(dir)
         .env_clear()
         .stdin(Stdio::piped())
@@ -681,8 +694,9 @@ fn run_pty(
             pixel_height: 0,
         })
         .map_err(|error| format!("could not open a TTY: {error}"))?;
-    let mut command = CommandBuilder::new(executable);
-    command.args(args);
+    let (program, command_args) = sandboxed_program(executable, args, allow_network)?;
+    let mut command = CommandBuilder::new(program);
+    command.args(command_args);
     command.cwd(dir);
     command.env_clear();
     apply_env_pty(&mut command, env, dir, allow_network);
@@ -823,6 +837,78 @@ fn enforce_network_policy(executable: &str, args: &[String], allowed: bool) -> R
         );
     }
     Ok(())
+}
+
+fn sandboxed_program(
+    executable: &str,
+    args: &[String],
+    allow_network: bool,
+) -> Result<(PathBuf, Vec<String>), String> {
+    if allow_network {
+        return Ok((PathBuf::from(executable), args.to_vec()));
+    }
+    let wrapper = std::env::current_exe()
+        .map_err(|error| format!("could not locate the network guard: {error}"))?;
+    let mut wrapper_args = vec!["network-denied-exec".into(), executable.into()];
+    wrapper_args.extend(args.iter().cloned());
+    Ok((wrapper, wrapper_args))
+}
+
+fn network_denied_exec(executable: &str, args: &[String]) -> Result<(), (i32, String)> {
+    #[cfg(target_os = "linux")]
+    {
+        let guard = materialize_network_guard().map_err(|error| {
+            (
+                2,
+                format!(
+                    "could not prepare the network guard before starting {executable:?}: {error}"
+                ),
+            )
+        })?;
+        // This wrapper is a new process. Setting its environment cannot affect
+        // the parent runner, and execvp carries the preload into the target.
+        unsafe { std::env::set_var("LD_PRELOAD", guard) };
+        let program = std::ffi::CString::new(executable)
+            .map_err(|_| (2, "the declared executable contains a NUL byte".into()))?;
+        let values = std::iter::once(executable)
+            .chain(args.iter().map(String::as_str))
+            .map(std::ffi::CString::new)
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|_| (2, "a declared argument contains a NUL byte".into()))?;
+        let mut pointers = values
+            .iter()
+            .map(|value| value.as_ptr())
+            .collect::<Vec<_>>();
+        pointers.push(std::ptr::null());
+        // execvp replaces this small guard process. The filter remains active for
+        // the target and every child it starts, so URL parsing cannot bypass it.
+        unsafe { libc::execvp(program.as_ptr(), pointers.as_ptr()) };
+        Err((
+            2,
+            format!(
+                "could not start declared executable {executable:?}: {}",
+                std::io::Error::last_os_error()
+            ),
+        ))
+    }
+    #[cfg(not(target_os = "linux"))]
+    {
+        let _ = (executable, args);
+        Err((
+            2,
+            "network-denied fixtures require Linux process isolation; set allow_network: true only after review".into(),
+        ))
+    }
+}
+
+#[cfg(target_os = "linux")]
+fn materialize_network_guard() -> std::io::Result<PathBuf> {
+    let path = std::env::current_dir()?.join(format!(
+        ".agent-contract-network-guard-{}.so",
+        std::process::id()
+    ));
+    fs::write(&path, NETWORK_GUARD)?;
+    Ok(path)
 }
 
 fn secret_values(env: &BTreeMap<String, String>, extra: &[String]) -> Vec<String> {
