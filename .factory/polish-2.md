@@ -28,6 +28,7 @@ Repaired from release candidate `3ec47269c9a627ade759d7646685acbdf065e033` using
 - `npm test` passed from the same clone: 3 Rust unit tests and 35 Playwright tests, including route metadata, real 404, keyboard skip link, offline reload, privacy isolation, no third-party demo requests, Axe serious/critical scan, mobile sizing, and the report-in-first-viewport assertion.
 - `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, `cargo package`, and `npm audit --omit=dev` passed from that clone. The package was verified by Cargo; npm reported zero vulnerabilities.
 - Production site build: JS 18.42 kB (5.87 kB gzip), CSS 14.97 kB (4.25 kB gzip), hero artwork under the 300 kB budget.
-- Screenshots: `.factory/evidence/polish-2-home-desktop.png` and `.factory/evidence/polish-2-mobile-demo.png` from the built site at `http://127.0.0.1:4174/`.
+- Screenshots: `.factory/evidence/polish-2-home-desktop.png` and `.factory/evidence/polish-2-mobile-demo.png` from the built site at `http://127.0.0.1:4174/`; `.factory/evidence/polish-2-live-mobile-demo.png` from the deployed custom domain.
+- Deployment: `/opt/fleet/lib/deploy-static.sh agent-cli-contract dist/site` completed successfully as Azure deployment `2df3f06e-d4be-4836-a5fa-51bd0edb050c`. Cold live `https://agent-cli-contract.sociobot.in/?demo=1` loaded the Demo title and heading, showed the PASS report at 676.7 px and its first result row at 834.5 px in a 390 × 844 viewport, kept the banner sticky after scroll, and passed blocked-change then reset. Normal live routes `/`, `/?demo=1`, `/privacy`, and `/terms` produced no console errors. `/missing-route` returned HTTP 404 and the designed 404 title.
 
-The repair commit is pushed to `origin/main`. The static deployment is rechecked cold after the deployment updates; live evidence is recorded in the handoff.
+The repair commit is pushed to `origin/main` and the static deployment was cold-checked successfully.

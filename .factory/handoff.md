@@ -30,6 +30,6 @@ Build with `npm run build`; deployment output is `dist/site`. The ready package 
 - Finding-to-evidence map: `.factory/polish-2.md`.
 - Built-site screenshots: `.factory/evidence/polish-2-home-desktop.png` and `.factory/evidence/polish-2-mobile-demo.png`.
 - Local size output: JS 18.42 kB / 5.87 kB gzip; CSS 14.97 kB / 4.25 kB gzip.
-- Live URL: <https://agent-cli-contract.sociobot.in/?demo=1>. The push has been made; this handoff is updated with the final cold live re-check after the static deployment serves `1d1f366`.
+- Live URL: <https://agent-cli-contract.sociobot.in/?demo=1>. Deployment through `/opt/fleet/lib/deploy-static.sh agent-cli-contract dist/site` completed as Azure deployment `2df3f06e-d4be-4836-a5fa-51bd0edb050c`. A cold 390 × 844 visit confirmed the Demo title, visible PASS heading at 676.7 px, visible first fixture row at 834.5 px, sticky demo banner, blocked-change/reset interaction, and no console errors on normal routes. `/privacy`, `/terms`, and the designed HTTP 404 route were also rechecked.
 
-Known product gaps: none. Deployment propagation is the only pending external state at the time of this commit.
+Known product gaps: none.
