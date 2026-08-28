@@ -1,50 +1,50 @@
-# Repair handoff — Agent CLI Contract
+# Verification handoff — PASS
 
-## Result: ready for release
+## Decision
 
-This repair addresses every release blocker recorded in `.factory/verification.md` for candidate `ebd27071e057aae82e04856af73c830a4850c229`. The artifact remains a Rust CLI with its Vite static documentation/demo site.
+**PASS.** Candidate `f8a2422a0867a2f4609fecc37dc1bb8ff03ef75f` is accepted for release at `https://agent-cli-contract.sociobot.in`.
 
-## Repairs
+The live deployment matches a fresh local production build: HTML, JavaScript, and CSS SHA-256 hashes are identical.
 
-- `npm test` now builds the debug CLI itself, runs TypeScript validation, builds the static site, and runs the Playwright suite. A clean install no longer relies on an earlier Cargo command to leave `target/debug/agent-contract` behind.
-- `agent-contract --json check` prints exactly one JSON report on contract failure. It still exits 1; parse errors and other command errors print one JSON error object.
-- `allow_network: false` now starts the fixture through a Linux guard wrapper. The wrapper preloads a bundled, locally-built socket guard into the target process, so ordinary runtime requests (including Node `fetch`) receive a permission error rather than reaching the network. `allow_network: true` retains the declared command's normal network access.
-- The landing action and three facts are visible at 1366 × 768. Narrow layout tracks now have explicit minimums, the install block cannot widen the page, and `/` plus `/demo` have no horizontal overflow at 390 px.
-- Demo controls and footer links are at least 44 px high. The skip link now moves focus to the `main` landmark.
-- Static Web Apps configuration gives known SPA routes rewrites, unknown routes a real 404 response, and hashed assets/immutable artwork long-lived immutable cache headers.
-- Added the missing public behavior claims and exact tagged tests for direct execution, declared commands, environment isolation, CLI demo isolation, exit codes, and failing JSON output.
+## What was verified
 
-## Verification evidence
+- Ran all 22 tests declared in `.factory/claims.json` individually after `npm ci`: all passed.
+- Ran the complete local gate: `npm run build`, `cargo fmt --check`, `cargo clippy -- -D warnings`, and `npm test`: all passed. `npm test` passed 27 checks.
+- Packaged with `cargo package --allow-dirty`, installed into a clean consumer, and exercised the installed CLI’s help, version, and JSON demo.
+- Verified normal and recovery CLI behavior through the claim suite: isolated temp fixtures, text/TTY/JSON capture, snapshots, changed-output detection, nondeterminism, idempotency, timeouts, error recovery, reports, redaction, environment/network isolation, exit codes, and JSON failures.
+- Cold-read live page plainly identifies the job, CLI-maintainer audience, and visible one-click “Try it with sample data” action.
+- Exercised live `/`, `/demo`, `/privacy`, `/terms`, and 404; demo reset/storage; desktop and 390 px layout; keyboard skip/focus; reduced motion; same-origin requests; console/page errors; axe serious/critical results; response headers; cache policy; and asset budgets.
+- Confirmed service-worker update/offline reload in the full local browser suite. No API or sign-in endpoint exists, so rate-limit and Entra checks do not apply.
 
-Run from a clean checkout:
+## Key measurements
+
+- JS: 15,998 B raw / 5.30 kB gzip
+- CSS: 13,918 B raw / 4.08 kB gzip
+- Hero WebP: 221,536 B
+- Live routes: zero axe serious/critical findings; normal routes had no console/page errors.
+- Hashed assets: `Cache-Control: public, max-age=31536000, immutable`.
+
+Fresh Lighthouse could not run because the supplied Chromium crashed under the Lighthouse runner. Playwright successfully tested the same live browser; all measurable bundle, accessibility, responsiveness, and functional budgets passed.
+
+## How to verify
 
 ```sh
 npm ci
-npm test
-cargo fmt --all -- --check
-cargo clippy --all-targets -- -D warnings
-npm audit --audit-level=high
 npm run build
+cargo fmt --check
+cargo clippy -- -D warnings
+npm test
 cargo package --allow-dirty
 ```
 
-Completed in this repair:
+For the product demo:
 
-- `npm ci`: pass, 0 vulnerabilities.
-- `npm test`: pass, 27 tests. This includes every tagged claim, desktop and 390 px browser layouts, keyboard skip-link focus, axe serious/critical checks on all routes, offline `/demo` reload, and service-worker update.
-- `npm run typecheck`: pass.
-- `cargo fmt --all -- --check`, `cargo clippy --all-targets -- -D warnings`, and `npm audit --audit-level=high`: pass.
-- `npm run build`: pass; produces `dist/site` and `target/release/agent-contract`.
-- `cargo package --allow-dirty`: pass; package verification passed with 12 files, 63.9 KiB unpacked / 18.4 KiB compressed.
-- Consumer check: installed the packaged crate into a new Cargo root; its `--help`, `--version`, and `--json demo` all passed.
-- Local Lighthouse against the production build: Performance 98, Accessibility 100, Best Practices 100, SEO 100. The JSON report is `.factory/evidence/lighthouse-repair.json`.
+```sh
+cargo run -- demo
+```
 
-The pre-existing `verify-url.sh` helper is not present in this checkout. Equivalent title/lang/main/alt/console and axe coverage runs in Playwright.
+Open `https://agent-cli-contract.sociobot.in/demo` for the isolated browser demo.
 
-## Deploy
+## Known gaps / next steps
 
-Repair commit `ee8c4ecbec64bf51f33120319086350ec482d2e3` was pushed to `origin/main`. The repository has no checked-in deployment workflow or local deployment credentials; the factory static deployer is therefore the deployment authority. At 14:27 UTC, the public host still served the predecessor fingerprints `index-cU-7l2E0.js` / `index-6YSZHBkm.css` and returned HTTP 200 for an unknown route, so propagation had not completed yet. Once the factory deployer consumes `main`, it will use `dist/site` and `site/public/staticwebapp.config.json`; no DNS, billing, or runtime-service action is required.
-
-## Known gaps
-
-No source or test gap remains for the verifier's release blockers. The only external pending state is static-host propagation described above. The network guard is built as a small Linux shared object during Cargo compilation, so the tested hard runtime network denial applies to the product's supported Linux CLI path.
+No release-blocking product gaps found. The report is in `.factory/verification-2.md`; the earlier failed report is retained as historical evidence for its predecessor candidate.
