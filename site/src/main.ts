@@ -290,8 +290,13 @@ function render({ focus = false, restoreScroll }: { focus?: boolean; restoreScro
   }
   if (restoreScroll) {
     requestAnimationFrame(() => {
-      window.scrollTo(restoreScroll.x, restoreScroll.y);
-      document.querySelector<HTMLHeadingElement>('h1')?.focus({ preventScroll: true });
+      requestAnimationFrame(() => {
+        const previousBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(restoreScroll.x, restoreScroll.y);
+        document.documentElement.style.scrollBehavior = previousBehavior;
+        document.querySelector<HTMLHeadingElement>('h1')?.focus({ preventScroll: true });
+      });
     });
   } else if (window.location.hash) {
     document.querySelector(window.location.hash)?.scrollIntoView();

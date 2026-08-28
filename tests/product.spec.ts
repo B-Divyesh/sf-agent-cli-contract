@@ -462,13 +462,13 @@ test('Back restores landing scroll while focusing its heading', async ({ page })
   await page.setViewportSize({ width: 1366, height: 768 });
   await page.goto('/');
   await page.evaluate(() => window.scrollTo(0, 1200));
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(1200);
   const saved = await page.evaluate(() => window.scrollY);
   await page.evaluate(() => document.querySelector<HTMLAnchorElement>('a[href="/demo"]')?.click());
   await page.goBack();
   await expect(page.locator('h1')).toBeFocused();
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThanOrEqual(saved - 24);
-  expect(await page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(saved + 24);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThanOrEqual(saved - 2);
+  expect(await page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(saved + 2);
 });
 
 test('each route updates its title, description, canonical, and social metadata', async ({ page }) => {
