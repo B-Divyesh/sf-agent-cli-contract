@@ -43,8 +43,8 @@ The pre-existing `verify-url.sh` helper is not present in this checkout. Equival
 
 ## Deploy
 
-Push this repair commit to `main`. The repository's static deployment consumes `dist/site` and `site/public/staticwebapp.config.json`; no DNS, billing, or runtime-service action is required.
+Repair commit `ee8c4ecbec64bf51f33120319086350ec482d2e3` was pushed to `origin/main`. The repository has no checked-in deployment workflow or local deployment credentials; the factory static deployer is therefore the deployment authority. At 14:27 UTC, the public host still served the predecessor fingerprints `index-cU-7l2E0.js` / `index-6YSZHBkm.css` and returned HTTP 200 for an unknown route, so propagation had not completed yet. Once the factory deployer consumes `main`, it will use `dist/site` and `site/public/staticwebapp.config.json`; no DNS, billing, or runtime-service action is required.
 
 ## Known gaps
 
-None for the verifier's release blockers. The network guard is built as a small Linux shared object during Cargo compilation, so the tested hard runtime network denial applies to the product's supported Linux CLI path.
+No source or test gap remains for the verifier's release blockers. The only external pending state is static-host propagation described above. The network guard is built as a small Linux shared object during Cargo compilation, so the tested hard runtime network denial applies to the product's supported Linux CLI path.
