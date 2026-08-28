@@ -1,0 +1,15 @@
+{
+  "slug": "agent-cli-contract",
+  "title": "Agent CLI Contract",
+  "summary": "Test CLI output, exits, errors, and repeat runs before agents depend on them.",
+  "artifact_class": "cli",
+  "user": "CLI maintainers whose commands are driven by coding agents and scripts.",
+  "smallest_useful_product": "Run a declarative fixture suite against another CLI, snapshot text and JSON output, validate exits and error taxonomy, detect nondeterministic fields, and write Markdown and JSON reports.",
+  "monetization": "free",
+  "constraints": [
+    "Run every fixture in an isolated temporary directory.",
+    "Execute only commands declared by the maintainer.",
+    "Redact environment secrets.",
+    "Make network access opt-in."
+  ]
+}
