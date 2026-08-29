@@ -6,6 +6,7 @@ import { mkdtemp, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { promisify } from 'node:util';
+import { parse as parseYaml } from 'yaml';
 
 const exec = promisify(execFile);
 const binary = resolve('target/debug/agent-contract');
@@ -336,10 +337,59 @@ test('@claim:no-cli-telemetry has no telemetry or network client path', async ()
   expect((await run(['--json', 'demo'])).code).toBe(0);
 });
 
-test('@claim:rust-version declares the tested minimum Rust version', async () => {
+test('@claim:rust-version builds with the declared minimum Rust version', async () => {
+  test.setTimeout(180_000);
   const manifest = await readFile(resolve('Cargo.toml'), 'utf8');
   expect(manifest).toContain('rust-version = "1.85"');
-  expect((await run(['--version'])).stdout).toContain('0.1.0');
+  const target = await mkdtemp(join(tmpdir(), 'agent-contract-rust-1-85-'));
+  await exec('cargo', ['+1.85.0', 'build', '--locked', '--bin', 'agent-contract'], {
+    env: { ...process.env, CARGO_TARGET_DIR: target },
+    timeout: 150_000
+  });
+  const built = await exec(join(target, 'debug', 'agent-contract'), ['--version']);
+  expect(built.stdout).toContain('0.1.0');
+});
+
+test('@claim:starter-contract creates a runnable version 1 contract', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'agent-contract-starter-'));
+  const path = join(directory, 'agent-contract.yml');
+  const initialized = await exec(binary, ['init', '--command', binary], { cwd: directory });
+  expect(initialized.stdout).toContain('Wrote agent-contract.yml');
+  const starter = parseYaml(await readFile(path, 'utf8')) as {
+    version: number;
+    command: string[];
+    fixtures: Array<{ name: string; args: string[] }>;
+  };
+  expect(starter.version).toBe(1);
+  expect(starter.command).toEqual([binary]);
+  expect(starter.fixtures[0]).toMatchObject({ name: 'help stays stable', args: ['--help'] });
+  const accepted = await exec(binary, ['check', path, '--accept'], { cwd: directory });
+  expect(accepted.stdout).toContain('PASS');
+  expect(JSON.parse(await readFile(join(directory, '.agent-contract/report.json'), 'utf8'))).toMatchObject({ passed: true });
+});
+
+test('@claim:copy-install-command copies by keyboard and announces success or failure', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://127.0.0.1:4173' });
+  await page.goto('/');
+  const command = (await page.locator('#install-command').textContent())!.trim();
+  const button = page.getByRole('button', { name: 'Copy install command' });
+  await button.focus();
+  await button.press('Enter');
+  await expect(page.locator('#install-copy-status')).toHaveText('Copied install command.');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(command);
+
+  await page.reload();
+  await page.evaluate(() => {
+    Object.defineProperty(navigator.clipboard, 'writeText', {
+      configurable: true,
+      value: () => Promise.reject(new DOMException('Clipboard access denied', 'NotAllowedError'))
+    });
+  });
+  const deniedButton = page.getByRole('button', { name: 'Copy install command' });
+  await deniedButton.focus();
+  await deniedButton.press('Space');
+  await expect(page.locator('#install-copy-status')).toHaveText('Copy failed. Select the displayed command and copy it manually.');
+  await expect(page.getByRole('button', { name: 'Copy failed — select the command' })).toBeFocused();
 });
 
 test('@claim:schema-output prints the complete version 1 schema for documented contract fields', async () => {
@@ -481,6 +531,31 @@ test('mobile demo shows a sample result in the initial viewport and links resolv
   for (const path of ['/', '/demo', '/privacy', '/terms', '/robots.txt', '/sitemap.xml', '/favicon.svg']) {
     expect((await request.get(path)).ok()).toBe(true);
   }
+});
+
+test('390px demo exposes every result column without a scroll region or Axe violations', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?demo=1');
+  const table = page.getByRole('table', { name: 'Fixture results' });
+  const dimensions = await table.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+    overflowX: getComputedStyle(element).overflowX
+  }));
+  expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
+  expect(dimensions.overflowX).toBe('visible');
+  const tableBox = await table.boundingBox();
+  expect(tableBox).not.toBeNull();
+  for (const cell of await table.getByRole('cell').all()) {
+    const box = await cell.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.x).toBeGreaterThanOrEqual(tableBox!.x - 1);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(tableBox!.x + tableBox!.width + 1);
+  }
+  await expect(table.getByRole('cell', { name: '0', exact: true }).first()).toBeVisible();
+  await expect(table.getByRole('cell', { name: 'Pass', exact: true }).first()).toBeVisible();
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''))).toEqual([]);
 });
 
 test('desktop first screen keeps the primary action and all facts above a 768px fold', async ({ page }) => {

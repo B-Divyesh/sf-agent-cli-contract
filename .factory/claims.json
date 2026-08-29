@@ -137,7 +137,21 @@
     "claim": "The CLI requires Rust 1.85 or newer.",
     "where": "landing install note, README",
     "test": "npm test -- --grep @claim:rust-version",
-    "sandbox": "fresh clone; assert Cargo.toml declares rust-version 1.85 and the built binary reports version 0.1.0"
+    "sandbox": "fresh clone; provision Rust 1.85.0, compile the locked package with cargo +1.85.0, and assert that binary reports version 0.1.0"
+  },
+  {
+    "id": "starter-contract",
+    "claim": "The init command writes a runnable version 1 starter contract.",
+    "where": "landing install steps, README Add a contract",
+    "test": "npm test -- --grep @claim:starter-contract",
+    "sandbox": "fresh temporary directory; initialize with the built binary as the literal command, parse the YAML, accept its snapshots, and assert the suite passes"
+  },
+  {
+    "id": "copy-install-command",
+    "claim": "The landing page copies the displayed install command and announces the outcome.",
+    "where": "landing install action",
+    "test": "npm test -- --grep @claim:copy-install-command",
+    "sandbox": "fresh browser page; grant clipboard access and activate by keyboard, then deny the write and assert both announced outcomes"
   },
   {
     "id": "schema-output",

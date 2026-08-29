@@ -126,8 +126,9 @@ const landing = () => `
         <h2 id="install-heading">Add the first contract in two commands</h2>
         <div class="command-copy">
           <code id="install-command" tabindex="0">cargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract</code>
-          <button class="button button--quiet" type="button" data-copy="#install-command">Copy install command</button>
+          <button class="button button--quiet" type="button" data-copy="#install-command" data-copy-status="#install-copy-status" data-copy-success="Copied install command">Copy install command</button>
         </div>
+        <span id="install-copy-status" class="sr-only" role="status" aria-live="polite"></span>
         <pre aria-label="Create and run a contract" tabindex="0"><code>agent-contract init --command my-cli
 agent-contract check agent-contract.yml --accept</code></pre>
         <p class="small-note">Requires Rust 1.85 or newer. The binary has no telemetry.</p>
@@ -198,8 +199,9 @@ const demo = () => `
       </figure>
       <div class="demo-command">
         <code id="demo-command" tabindex="0">agent-contract demo</code>
-        <button class="button button--quiet" type="button" data-copy="#demo-command">Copy demo command</button>
+        <button class="button button--quiet" type="button" data-copy="#demo-command" data-copy-status="#demo-copy-status" data-copy-success="Copied demo command">Copy demo command</button>
       </div>
+      <span id="demo-copy-status" class="sr-only" role="status" aria-live="polite"></span>
       <details class="recording-transcript"><summary>Read the recording transcript</summary><pre tabindex="0"><code>$ agent-contract demo
 Demo — sample data, nothing was saved to your project
 ✓ inspect stable record [text] exit 0
@@ -327,11 +329,15 @@ function bindActions() {
 
   document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((button) => button.addEventListener('click', async () => {
     const target = document.querySelector(button.dataset.copy!)?.textContent ?? '';
+    const copyStatus = document.querySelector<HTMLElement>(button.dataset.copyStatus ?? '');
+    const successLabel = button.dataset.copySuccess ?? 'Copied command';
     try {
       await navigator.clipboard.writeText(target);
-      button.textContent = 'Copied install command';
+      button.textContent = successLabel;
+      if (copyStatus) copyStatus.textContent = `${successLabel}.`;
     } catch {
       button.textContent = 'Copy failed — select the command';
+      if (copyStatus) copyStatus.textContent = 'Copy failed. Select the displayed command and copy it manually.';
     }
   }));
 
