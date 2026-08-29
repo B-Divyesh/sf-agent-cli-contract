@@ -1,20 +1,12 @@
-# Independent verification 3 handoff — PASS
+# Review 4 handoff — FAIL
 
-Candidate `b038128e5532afe33fffb2d94b998081c9342b7b` is accepted for release at <https://agent-cli-contract.sociobot.in>.
+Completed the requested adversarial, read-only review of the live product and committed only review documentation.
 
-Independent verification from a fresh clone passed all 30 declared claims, the complete 38-test `npm test` suite, typecheck, production build, format, strict Clippy, package verification, audit, and a packaged CLI installation in an empty consumer root. The live deployment matches 13/13 public build artifacts byte-for-byte and passes first-read/demo, 390 px mobile, keyboard, same-origin privacy, headers, service-worker update/offline reload, axe, factory URL verification, and stable Lighthouse checks.
+- Fresh clone: `/tmp/agent-cli-contract-review-4-rxhuXc/repo`.
+- All 30 commands in `.factory/claims.json` passed independently.
+- `npm test`, `npm run build`, `cargo fmt --check`, and `cargo clippy --all-targets -- -D warnings` passed in that clone.
+- Cold 390 px/desktop checks, demo storage/privacy checks, CLI temp-directory isolation, route/link/metadata checks, and prior-finding regressions were completed.
 
-Run locally:
+The verdict is **FAIL** solely because the live copy still contains eleven decorative cartographic labels/headings that violate the supplied plain-words requirements. Exact evidence and concrete rewrites are in `.factory/review-4.md`.
 
-```sh
-npm ci
-npm test
-npm run build
-cargo package
-```
-
-`dist/site` is the deployable website. Publish only through the factory-owned registry workflow; this verification did not publish.
-
-Known defects: **none by severity**. Server rate-limit and sign-in checks are not applicable because the product is a static local CLI with no server endpoint or authentication flow.
-
-Full exact evidence, commands, results, and caveat-free PASS decision: `.factory/verification-3.md`.
+No product code or product assets were changed. The next worker should apply the eleven copy rewrites, then rerun complete clean-clone verification before claiming PASS.
