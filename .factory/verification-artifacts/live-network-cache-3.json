@@ -1,0 +1,259 @@
+{
+  "demo": {
+    "navStatus": 200,
+    "initial": {},
+    "replay": "Replaying the recorded output from the bundled CLI demo.",
+    "blockedStorage": {
+      "demo:report": "failed"
+    },
+    "blocked": "FAIL · 1",
+    "alert": "\n      error.code changed\n      Expected invalid_input. Received bad_request.\n      Restore the code or approve the new snapshot after review.\n    ",
+    "resetStorage": {},
+    "reset": "PASS · 4",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://agent-cli-contract.sociobot.in/?demo=1",
+        "type": "document"
+      },
+      {
+        "method": "GET",
+        "url": "https://agent-cli-contract.sociobot.in/assets/main-BWLDo9Z4.js",
+        "type": "script"
+      },
+      {
+        "method": "GET",
+        "url": "https://agent-cli-contract.sociobot.in/assets/main-D8sVLijJ.css",
+        "type": "stylesheet"
+      },
+      {
+        "method": "GET",
+        "url": "https://agent-cli-contract.sociobot.in/terminal-recording.svg",
+        "type": "image"
+      }
+    ],
+    "responses": [
+      {
+        "url": "https://agent-cli-contract.sociobot.in/?demo=1",
+        "status": 200,
+        "cacheControl": "public, must-revalidate, max-age=30"
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/assets/main-D8sVLijJ.css",
+        "status": 200,
+        "cacheControl": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/assets/main-BWLDo9Z4.js",
+        "status": 200,
+        "cacheControl": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/terminal-recording.svg",
+        "status": 200,
+        "cacheControl": "public, max-age=31536000, immutable"
+      }
+    ],
+    "sameOrigin": true,
+    "errors": [],
+    "pageErrors": []
+  },
+  "links": [
+    {
+      "href": "https://agent-cli-contract.sociobot.in/?demo=1#main",
+      "status": 200
+    },
+    {
+      "href": "https://agent-cli-contract.sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://agent-cli-contract.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "href": "https://agent-cli-contract.sociobot.in/#install",
+      "status": 200
+    },
+    {
+      "href": "https://agent-cli-contract.sociobot.in/privacy",
+      "status": 200
+    },
+    {
+      "href": "https://agent-cli-contract.sociobot.in/terms",
+      "status": 200
+    }
+  ],
+  "assets": [
+    {
+      "path": "/assets/main-BWLDo9Z4.js",
+      "status": 200,
+      "headers": {
+        "content-type": "text/javascript",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-encoding": "br",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 18945
+    },
+    {
+      "path": "/assets/main-D8sVLijJ.css",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-encoding": "br",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 15192
+    },
+    {
+      "path": "/topographic-run.webp",
+      "status": 200,
+      "headers": {
+        "content-length": "221536",
+        "content-type": "image/webp",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, max-age=31536000, immutable",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 221536
+    },
+    {
+      "path": "/terminal-recording.svg",
+      "status": 200,
+      "headers": {
+        "content-length": "2337",
+        "content-type": "image/svg+xml",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, max-age=31536000, immutable",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 2337
+    },
+    {
+      "path": "/sw.js",
+      "status": 200,
+      "headers": {
+        "content-type": "text/javascript",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, must-revalidate, max-age=30",
+        "content-encoding": "br",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 906
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, must-revalidate, max-age=30",
+        "content-encoding": "br",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 84
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "headers": {
+        "content-type": "text/xml",
+        "date": "Sat, 29 Aug 2026 05:06:56 GMT",
+        "cache-control": "public, must-revalidate, max-age=30",
+        "content-encoding": "br",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 382
+    },
+    {
+      "path": "/social-card.webp",
+      "status": 200,
+      "headers": {
+        "content-length": "97938",
+        "content-type": "image/webp",
+        "date": "Sat, 29 Aug 2026 05:06:57 GMT",
+        "cache-control": "public, max-age=31536000, immutable",
+        "etag": "\"95898626\"",
+        "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+        "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "x-dns-prefetch-control": "off",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      },
+      "bytes": 97938
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "mobileDemo": {
+    "url": "https://agent-cli-contract.sociobot.in/?demo=1",
+    "bodyScrollWidth": 390,
+    "docScrollWidth": 390,
+    "viewportWidth": 390,
+    "bannerBox": {
+      "x": 0,
+      "y": 69,
+      "width": 390,
+      "height": 91.375
+    },
+    "reportBox": {
+      "x": 18,
+      "y": 578.421875,
+      "width": 354,
+      "height": 450.578125
+    },
+    "reportScrollWidth": 352,
+    "reportClientWidth": 352,
+    "headingBox": {
+      "x": 37,
+      "y": 621.21875,
+      "width": 316,
+      "height": 55.4375
+    },
+    "firstRowBox": {
+      "x": 37,
+      "y": 797.625,
+      "width": 316,
+      "height": 50
+    },
+    "seriousCritical": [],
+    "allAxe": [],
+    "interactive": [
+      {
+        "text": "Skip to main content",
+        "w": 199,
+        "h": 45
+      },
+      {
+        "text": "Agent CLI Contract",
+        "w": 155,
+        "h": 44
+      },
+      {
+        "text": "Demo",
+        "w": 61,
+        "h": 44
+      },
+      {
+        "text": "Install",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "text": "Privacy",
+        "w": 74,
+        "h": 44
+      },
+      {
+        "text": "Reset demo",
+        "w": 175,
+        "h": 57
+      },
+      {
+        "text": "Leave demo and view install steps",
+        "w": 175,
+        "h": 57
+      },
+      {
+        "text": "Replay recorded sample run",
+        "w": 354,
+        "h": 51
+      },
+      {
+        "text": "Show a blocked change",
+        "w": 354,
+        "h": 44
+      },
+      {
+        "text": "Copy demo command",
+        "w": 354,
+        "h": 44
+      },
+      {
+        "text": "Read the recording transcript",
+        "w": 354,
+        "h": 44
+      },
+      {
+        "text": "Privacy",
+        "w": 50,
+        "h": 44
+      },
+      {
+        "text": "Terms",
+        "w": 41,
+        "h": 44
+      }
+    ],
+    "firstViewportText": [
+      "Agent CLI Contract",
+      "Demo",
+      "Privacy",
+      "Demo",
+      "Reset demo",
+      "Leave demo and view install steps",
+      "Isolated field test",
+      "Review a complete CLI contract run",
+      "This sample uses the same four fixtures bundled with the Rust binary.",
+      "Replay recorded sample run",
+      "Show a blocked change",
+      "REPORT / DEMO-001",
+      "All four contract checks pass",
+      "PASS · 4",
+      "Fixture",
+      "Mode",
+      "Exit",
+      "Result",
+      "inspect stable record",
+      "text",
+      "0",
+      "Pass"
+    ]
+  },
+  "reducedMotion": {
+    "media": true,
+    "scrollBehavior": "auto",
+    "animations": [
+      {
+        "tag": "HTML",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "HEAD",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "TITLE",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "META",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      },
+      {
+        "tag": "LINK",
+        "cls": "",
+        "d": "1e-05s",
+        "t": "1e-05s"
+      }
+    ]
+  },
+  "text200": {
+    "bodyScrollWidth": 453,
+    "docScrollWidth": 453,
+    "viewportWidth": 390,
+    "h1Box": {
+      "x": 54,
+      "y": 239.890625,
+      "width": 392.359375,
+      "height": 479.71875
+    },
+    "primaryBox": {
+      "x": 54,
+      "y": 1101.265625,
+      "width": 392.359375,
+      "height": 50.796875
+    }
+  }
+}

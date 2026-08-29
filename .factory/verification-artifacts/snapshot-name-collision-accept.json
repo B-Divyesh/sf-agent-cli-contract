@@ -1,0 +1,1 @@
+{"tool_version":"0.1.0","contract":".factory/verification-artifacts/snapshot-name-collision.yml","passed":true,"summary":{"passed":2,"failed":0,"snapshots_written":4},"checks":[{"fixture":"same name","mode":"text","passed":true,"exit":0,"findings":[]},{"fixture":"same-name","mode":"text","passed":true,"exit":0,"findings":[]}]}

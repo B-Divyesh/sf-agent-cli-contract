@@ -1,0 +1,15 @@
+Test stable machine contracts for CLIs
+
+Usage: agent-contract [OPTIONS] <COMMAND>
+
+Commands:
+  check   Run a contract suite and write Markdown and JSON reports
+  init    Write a documented starter contract
+  demo    Run the bundled sample in a disposable directory
+  schema  Print the version 1 contract JSON Schema
+  help    Print this message or the help of the given subcommand(s)
+
+Options:
+      --json     Print the command result as JSON
+  -h, --help     Print help
+  -V, --version  Print version

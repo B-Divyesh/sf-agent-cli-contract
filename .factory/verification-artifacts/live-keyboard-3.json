@@ -1,0 +1,25 @@
+{
+  "first": {
+    "tag": "A",
+    "text": "Skip to main content",
+    "outline": "rgb(21, 44, 40) solid 3px",
+    "boxShadow": "none"
+  },
+  "afterSkip": {
+    "tag": "H1",
+    "id": "page-title"
+  },
+  "primaryFocus": {
+    "outline": "rgb(21, 44, 40) solid 3px",
+    "boxShadow": "rgb(21, 44, 40) 5px 5px 0px 0px"
+  },
+  "demoUrl": "https://agent-cli-contract.sociobot.in/?demo=1",
+  "blocked": {
+    "status": "FAIL · 1",
+    "active": "Show a blocked change"
+  },
+  "reset": {
+    "status": "PASS · 4",
+    "active": "Reset demo"
+  }
+}

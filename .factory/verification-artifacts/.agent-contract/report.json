@@ -1,15 +1,24 @@
 {
   "tool_version": "0.1.0",
-  "contract": ".factory/verification-artifacts/network-bypass.yml",
-  "passed": true,
+  "contract": ".factory/verification-artifacts/snapshot-name-collision.yml",
+  "passed": false,
   "summary": {
     "passed": 1,
-    "failed": 0,
-    "snapshots_written": 2
+    "failed": 1,
+    "snapshots_written": 0
   },
   "checks": [
     {
-      "fixture": "undeclared network from ordinary runtime",
+      "fixture": "same name",
+      "mode": "text",
+      "passed": false,
+      "exit": 0,
+      "findings": [
+        "stdout snapshot changed; run with --accept after review"
+      ]
+    },
+    {
+      "fixture": "same-name",
       "mode": "text",
       "passed": true,
       "exit": 0,

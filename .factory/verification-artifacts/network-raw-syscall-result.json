@@ -1,0 +1,1 @@
+{"tool_version":"0.1.0","contract":".factory/verification-artifacts/network-raw-syscall.yml","passed":true,"summary":{"passed":1,"failed":0,"snapshots_written":2},"checks":[{"fixture":"raw socket must be denied","mode":"text","passed":true,"exit":0,"findings":[]}]}

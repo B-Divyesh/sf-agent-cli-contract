@@ -1,0 +1,20 @@
+{
+  "ready": {
+    "scope": "https://agent-cli-contract.sociobot.in/",
+    "active": "activated",
+    "scriptURL": "https://agent-cli-contract.sociobot.in/sw.js"
+  },
+  "controllerBefore": "https://agent-cli-contract.sociobot.in/sw.js",
+  "update": {
+    "scope": "https://agent-cli-contract.sociobot.in/",
+    "active": "activated"
+  },
+  "offline": {
+    "responseStatus": 200,
+    "title": "Demo — Agent CLI Contract",
+    "h1": "Review a complete CLI contract run",
+    "bodyContainsDemo": true,
+    "controller": "https://agent-cli-contract.sociobot.in/sw.js"
+  },
+  "events": []
+}

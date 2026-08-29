@@ -1,0 +1,8 @@
+version: 1
+command: ["/work/repo/.factory/verification-artifacts/raw-socket-probe"]
+fixtures:
+  - name: raw socket must be denied
+    expect:
+      exit: 0
+      stdout_contains: ["NETWORK_CONNECTED_WITHOUT_OPT_IN"]
+    allow_network: false

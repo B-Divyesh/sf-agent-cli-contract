@@ -1,0 +1,11 @@
+version: 1
+command: ["/bin/echo"]
+fixtures:
+  - name: same name
+    args: ["first output"]
+    expect:
+      exit: 0
+  - name: same-name
+    args: ["second output"]
+    expect:
+      exit: 0

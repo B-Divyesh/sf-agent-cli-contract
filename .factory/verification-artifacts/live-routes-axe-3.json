@@ -1,0 +1,200 @@
+[
+  {
+    "path": "/",
+    "finalUrl": "https://agent-cli-contract.sociobot.in/",
+    "status": 200,
+    "title": "Agent CLI Contract — test stable command output",
+    "lang": "en",
+    "h1Count": 1,
+    "h1": [
+      "Test CLI contracts before agents depend on them"
+    ],
+    "mainCount": 1,
+    "metaDescription": "Test CLI output, exit codes, errors, and repeat runs before coding agents depend on them.",
+    "canonical": "https://agent-cli-contract.sociobot.in/",
+    "seriousCritical": [],
+    "allAxe": [],
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright"
+      }
+    ],
+    "pageErrors": [],
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 05:05:49 GMT",
+      "etag": "\"95898626\"",
+      "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  {
+    "path": "/demo",
+    "finalUrl": "https://agent-cli-contract.sociobot.in/demo",
+    "status": 200,
+    "title": "Demo — Agent CLI Contract",
+    "lang": "en",
+    "h1Count": 1,
+    "h1": [
+      "Review a complete CLI contract run"
+    ],
+    "mainCount": 1,
+    "metaDescription": "Review a recorded run of the four fixtures bundled with Agent CLI Contract.",
+    "canonical": "https://agent-cli-contract.sociobot.in/demo",
+    "seriousCritical": [],
+    "allAxe": [],
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright"
+      }
+    ],
+    "pageErrors": [],
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 05:05:52 GMT",
+      "etag": "\"95898626\"",
+      "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  {
+    "path": "/privacy",
+    "finalUrl": "https://agent-cli-contract.sociobot.in/privacy",
+    "status": 200,
+    "title": "Privacy — Agent CLI Contract",
+    "lang": "en",
+    "h1Count": 1,
+    "h1": [
+      "Keep CLI checks on your machine"
+    ],
+    "mainCount": 1,
+    "metaDescription": "Learn what Agent CLI Contract reads, writes, and keeps on your machine.",
+    "canonical": "https://agent-cli-contract.sociobot.in/privacy",
+    "seriousCritical": [],
+    "allAxe": [],
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright"
+      }
+    ],
+    "pageErrors": [],
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 05:05:54 GMT",
+      "etag": "\"95898626\"",
+      "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  {
+    "path": "/terms",
+    "finalUrl": "https://agent-cli-contract.sociobot.in/terms",
+    "status": 200,
+    "title": "Terms — Agent CLI Contract",
+    "lang": "en",
+    "h1Count": 1,
+    "h1": [
+      "Use the tool under MIT terms"
+    ],
+    "mainCount": 1,
+    "metaDescription": "Read the MIT terms for Agent CLI Contract and your responsibility when running commands.",
+    "canonical": "https://agent-cli-contract.sociobot.in/terms",
+    "seriousCritical": [],
+    "allAxe": [],
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright"
+      }
+    ],
+    "pageErrors": [],
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 05:05:54 GMT",
+      "etag": "\"95898626\"",
+      "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  {
+    "path": "/missing-route",
+    "finalUrl": "https://agent-cli-contract.sociobot.in/missing-route",
+    "status": 404,
+    "title": "Page not found — Agent CLI Contract",
+    "lang": "en",
+    "h1Count": 1,
+    "h1": [
+      "This route leaves the map"
+    ],
+    "mainCount": 1,
+    "metaDescription": "This Agent CLI Contract page could not be found.",
+    "canonical": "https://agent-cli-contract.sociobot.in/404",
+    "seriousCritical": [],
+    "allAxe": [],
+    "consoleEvents": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()"
+      },
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright"
+      }
+    ],
+    "pageErrors": [],
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-length": "1765",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 05:05:56 GMT",
+      "etag": "\"95898626\"",
+      "last-modified": "Sat, 29 Aug 2026 04:44:14 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  }
+]

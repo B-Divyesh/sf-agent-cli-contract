@@ -1,0 +1,10 @@
+package=0
+install=0
+version=0
+help=0
+schema=0
+demo=0
+parse=0
+starter=0
+invalid_exit=2
+missing_exit=2
