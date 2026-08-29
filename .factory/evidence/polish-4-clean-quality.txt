@@ -1,0 +1,12 @@
+Clean clone: /tmp/agent-cli-contract-polish4-pSRbxZ/repo
+Commit: 527fc745b70dc89468239ade7da9e4370a03ff0b
+
+npm test: PASS — 3 Rust unit tests and 39 Playwright tests passed in 48.0 seconds.
+npm run build: PASS — generated dist/site and target/release/agent-contract.
+cargo fmt --all -- --check: PASS.
+cargo clippy --all-targets -- -D warnings: PASS.
+cargo package: PASS — 12 files, 64.9 KiB unpacked, 18.6 KiB compressed; verification build passed.
+npm audit --audit-level=high: PASS — 0 vulnerabilities.
+npm audit --omit=dev --audit-level=high: PASS — 0 vulnerabilities.
+
+Every command in claims.json was executed separately in this clean clone. All 30 passed in 334 seconds; see polish-4-clean-claim-results.tsv.

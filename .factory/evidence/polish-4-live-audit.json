@@ -1,0 +1,54 @@
+{
+  "base": "https://agent-cli-contract.sociobot.in",
+  "checkedAt": "2026-08-29T08:20:32.251Z",
+  "passed": true,
+  "findings": {
+    "F-4-1": "Version 0.1.0",
+    "F-4-2": "coordinate rail has no text",
+    "F-4-3": "Four sample checks",
+    "F-4-4": "Sample report",
+    "F-4-5": "Review a sample contract report",
+    "F-4-6": "How it works",
+    "F-4-7": "Test a CLI contract in three steps",
+    "F-4-8": "Safety and privacy; Install",
+    "F-4-11": "local sample",
+    "F-4-9": "Sample data",
+    "F-4-10": "404 / Page not found / Return home"
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Agent CLI Contract — test stable command output"
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Agent CLI Contract"
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — Agent CLI Contract"
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — Agent CLI Contract"
+    },
+    "/missing-route": {
+      "status": 404,
+      "title": "Page not found — Agent CLI Contract"
+    }
+  },
+  "a11y": {
+    "mobileSeriousOrCritical": [],
+    "/": [],
+    "/demo": [],
+    "/privacy": [],
+    "/terms": [],
+    "/missing-route": []
+  },
+  "privacy": {
+    "demoRequestsSameOrigin": true
+  },
+  "offline": {
+    "demoReload": true
+  }
+}
