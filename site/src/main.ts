@@ -46,7 +46,7 @@ const footer = () => `
 
 const terminal = (compact = false) => `
   <div class="terminal ${compact ? 'terminal--compact' : ''}" aria-label="Recorded terminal run">
-    <div class="terminal-bar"><span></span><span></span><span></span><b>contract survey · local</b></div>
+    <div class="terminal-bar"><span></span><span></span><span></span><b>local sample</b></div>
     <ol class="terminal-lines">
       <li><span class="prompt">$</span> agent-contract check agent-contract.yml</li>
       <li><span class="pass">✓</span> inspect stable record <em>[text]</em></li>
@@ -61,9 +61,9 @@ const landing = () => `
   ${header()}
   <main id="main" class="landing" tabindex="-1">
     <section class="hero survey-grid" aria-labelledby="page-title">
-      <div class="coordinate-rail" aria-hidden="true"><span>40° 46′ N</span><span>073° 59′ W</span></div>
+      <div class="coordinate-rail" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Contract survey / v0.1.0</p>
+        <p class="eyebrow">Version 0.1.0</p>
         <h1 id="page-title" tabindex="-1">Test CLI contracts before agents depend on them</h1>
         <p class="lede">For CLI maintainers who need stable output, exits, and errors while keeping human-readable output unchanged.</p>
         <div class="hero-action">
@@ -77,26 +77,26 @@ const landing = () => `
         </ul>
       </div>
       <figure class="hero-map">
-        <img src="/topographic-run.webp" width="1440" height="960" alt="A survey route crosses four checkpoints on a topographic map." fetchpriority="high" />
-        <figcaption>One declared command. Four contract checkpoints.</figcaption>
+        <img src="/topographic-run.webp" width="1440" height="960" alt="A topographic map with four marked locations." fetchpriority="high" />
+        <figcaption>One declared command. Four sample checks.</figcaption>
       </figure>
     </section>
 
     <section class="preview section-rule" aria-labelledby="preview-heading">
-      <div class="section-label">FIELD LOG / 01</div>
+      <div class="section-label">Sample report</div>
       <div>
         <p class="eyebrow">The product, in use</p>
-        <h2 id="preview-heading">See the contract before an agent does</h2>
+        <h2 id="preview-heading">Review a sample contract report</h2>
         <p>Approve a baseline once. Each later run names the output, exit, or JSON field that moved.</p>
         ${terminal()}
       </div>
     </section>
 
     <section class="steps section-rule" aria-labelledby="steps-heading">
-      <div class="section-label">ROUTE / 02</div>
+      <div class="section-label">How it works</div>
       <div>
         <p class="eyebrow">How it works</p>
-        <h2 id="steps-heading">Survey a command in three steps</h2>
+        <h2 id="steps-heading">Test a CLI contract in three steps</h2>
         <ol class="route-steps">
           <li><span>01</span><div><h3>Declare the command</h3><p>List the executable, fixed arguments, modes, and expected exits in YAML.</p></div></li>
           <li><span>02</span><div><h3>Run isolated fixtures</h3><p>Each fixture starts in a new temporary directory with a small environment.</p></div></li>
@@ -106,7 +106,7 @@ const landing = () => `
     </section>
 
     <section class="boundaries section-rule" aria-labelledby="limits-heading">
-      <div class="section-label">BOUNDARY / 03</div>
+      <div class="section-label">Safety and privacy</div>
       <div>
         <p class="eyebrow">Limits and privacy</p>
         <h2 id="limits-heading">Run only commands you declare</h2>
@@ -120,7 +120,7 @@ const landing = () => `
     </section>
 
     <section id="install" class="install section-rule" aria-labelledby="install-heading">
-      <div class="section-label">START / 04</div>
+      <div class="section-label">Install</div>
       <div>
         <p class="eyebrow">Install from source</p>
         <h2 id="install-heading">Add the first contract in two commands</h2>
@@ -165,7 +165,7 @@ const demo = () => `
   </aside>
   <main id="main" class="demo-page" tabindex="-1">
     <section class="demo-intro">
-      <p class="eyebrow">Isolated field test</p>
+      <p class="eyebrow">Sample data</p>
       <h1 id="page-title" tabindex="-1">Review a complete CLI contract run</h1>
       <p>This sample uses the same four fixtures bundled with the Rust binary.</p>
       <div class="demo-actions">
@@ -252,10 +252,10 @@ const notFound = () => `
   ${header()}
   <main id="main" class="not-found" tabindex="-1">
     <div class="lost-contours" aria-hidden="true"><span></span><span></span><span></span></div>
-    <p class="eyebrow">Coordinate not found / 404</p>
-    <h1 id="page-title" tabindex="-1">This route leaves the map</h1>
-    <p>The page may have moved. Return to the contract survey.</p>
-    <a class="button button--primary route-link" href="/">Return to the home route</a>
+    <p class="eyebrow">404</p>
+    <h1 id="page-title" tabindex="-1">Page not found</h1>
+    <p>This page may have moved. Return to the home page.</p>
+    <a class="button button--primary route-link" href="/">Return home</a>
   </main>
   ${footer()}`;
 

@@ -1,1 +1,1 @@
-Test CLI output, exits, errors, and repeat runs before agents depend on them.
+Test a CLI's output, exit codes, errors, and repeat runs before agents depend on it.

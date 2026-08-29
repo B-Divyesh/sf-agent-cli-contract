@@ -513,6 +513,26 @@ test('routes have one focused-capable h1 and no serious accessibility issues', a
   expect(consoleErrors).toEqual([]);
 });
 
+test('plain product language names the landing, demo, and missing-page states', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.hero .eyebrow')).toHaveText('Version 0.1.0');
+  await expect(page.locator('.coordinate-rail')).toHaveText('');
+  await expect(page.locator('.hero-map figcaption')).toHaveText('One declared command. Four sample checks.');
+  await expect(page.getByText('Sample report', { exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Review a sample contract report' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Test a CLI contract in three steps' })).toBeVisible();
+  await expect(page.locator('.terminal-bar b')).toHaveText('local sample');
+  await expect(page.locator('main')).not.toContainText(/contract survey|FIELD LOG|ROUTE \/ 02|BOUNDARY \/ 03|START \/ 04|checkpoints/i);
+
+  await page.goto('/?demo=1');
+  await expect(page.locator('.demo-intro .eyebrow')).toHaveText('Sample data');
+
+  await page.goto('/missing-route');
+  await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
+  await expect(page.getByText('This page may have moved. Return to the home page.')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Return home' })).toBeVisible();
+});
+
 test('mobile demo shows a sample result in the initial viewport and links resolve', async ({ page, request }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

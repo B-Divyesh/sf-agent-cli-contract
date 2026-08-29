@@ -14,7 +14,7 @@ Audited 29 August 2026 against the rendered `/` route. Words split on spaces; co
 | Runs locally. | 2 | Pass (`local-execution`) |
 | Network use is opt-in. | 4 | Pass (`network-opt-in`) |
 | One declared command. | 3 | Pass |
-| Four contract checkpoints. | 3 | Pass |
+| Four sample checks. | 3 | Pass |
 
 The headline states the job in eight words. The next sentence names CLI maintainers and the changed situation. The action and outcome fit one spoken breath.
 
@@ -37,7 +37,23 @@ The headline states the job in eight words. The next sentence names CLI maintain
 
 ## Headings, labels, and buttons
 
-All fragments are under 10 words. They include “See the contract before an agent does,” “Survey a command in three steps,” “Run only commands you declare,” “Add the first contract in two commands,” “Copy install command,” “Declare the command,” “Run isolated fixtures,” and “Review named changes.”
+All fragments are under 10 words. They include “Version 0.1.0,” “Sample report,” “Review a sample contract report,” “How it works,” “Test a CLI contract in three steps,” “Safety and privacy,” “Install,” “Run only commands you declare,” “Add the first contract in two commands,” “Copy install command,” “Declare the command,” “Run isolated fixtures,” and “Review named changes.”
+
+## Plain-language label check
+
+| Location | Copy | Result |
+| --- | --- | --- |
+| First-screen version label | Version 0.1.0 | Pass |
+| Hero caption | One declared command. Four sample checks. | Pass |
+| Sample preview | Sample report / Review a sample contract report | Pass |
+| Steps | How it works / Test a CLI contract in three steps | Pass |
+| Safety section | Safety and privacy | Pass |
+| Install section | Install | Pass |
+| Demo eyebrow | Sample data | Pass |
+| Missing-page state | 404 / Page not found / Return home | Pass |
+| Terminal preview | local sample | Pass |
+
+The coordinate rail has no text. Map language remains visual only in the original art and its layout treatment.
 
 ## Banned-word scan
 
@@ -73,9 +89,9 @@ Each clipboard outcome is exposed through a polite status region. The failure sa
 
 ## Catalog description
 
-“Test CLI output, exits, errors, and repeat runs before agents depend on them.”
+"Test a CLI's output, exit codes, errors, and repeat runs before agents depend on it."
 
-The description begins with a verb, contains 13 words, uses 77 characters, and contains no banned word.
+The description begins with a verb, contains 15 words, uses 84 characters, and contains no banned word.
 
 ## README claim audit
 
