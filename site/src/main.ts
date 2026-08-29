@@ -372,7 +372,15 @@ document.addEventListener('click', (event) => {
   const link = (event.target as Element).closest<HTMLAnchorElement>('a[href]');
   if (!link) return;
   if (link.classList.contains('skip-link')) {
-    window.setTimeout(() => document.querySelector<HTMLElement>('main')?.focus(), 0);
+    // Own fragment navigation so the browser cannot later move focus to a
+    // descendant heading. A skip link must leave the main landmark active.
+    event.preventDefault();
+    const target = document.getElementById(link.hash.slice(1));
+    if (target instanceof HTMLElement) {
+      history.pushState(history.state, '', link.hash);
+      target.scrollIntoView();
+      target.focus({ preventScroll: true });
+    }
     return;
   }
   if (link.classList.contains('route-link')) return;

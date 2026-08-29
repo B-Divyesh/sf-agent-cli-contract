@@ -654,6 +654,22 @@ test('skip link moves keyboard focus into the main landmark', async ({ page }) =
   await expect(page.locator('main')).toBeFocused();
 });
 
+test('@regression:skip-link-focus keeps main active across repeated fresh keyboard flows', async ({ browser }) => {
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    await page.goto('/demo');
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
+    await page.keyboard.press('Enter');
+    await page.evaluate(() => new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    }));
+    await expect(page.locator('main')).toBeFocused();
+    await context.close();
+  }
+});
+
 test('the loaded demo reloads offline and its service worker accepts an update check', async ({ page, context }) => {
   await page.goto('/demo');
   await page.evaluate(() => navigator.serviceWorker.ready);
