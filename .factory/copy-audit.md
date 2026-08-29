@@ -1,6 +1,6 @@
 # Landing copy audit
 
-Audited 28 August 2026 against the rendered `/` route. Words split on spaces; code tokens count as one word.
+Audited 29 August 2026 against the rendered `/` route. Words split on spaces; code tokens count as one word.
 
 ## First screen
 
@@ -60,18 +60,31 @@ No sentence exceeds 22 words. The average audited sentence length is below 10 wo
 | Isolated run location | temporary directory |
 | Browser try-out | demo |
 
+## Interaction feedback
+
+| Copy | Words | Result |
+| --- | ---: | --- |
+| Copied install command. | 3 | Pass (`copy-install-command`) |
+| Copy failed. | 2 | Pass (`copy-install-command`) |
+| Select the displayed command and copy it manually. | 8 | Pass (`copy-install-command`) |
+| Copied demo command. | 3 | Pass |
+
+Each clipboard outcome is exposed through a polite status region. The failure says what happened and gives one manual next step.
+
 ## Catalog description
 
-“Test CLI contracts before coding agents depend on their output.”
+“Test CLI output, exits, errors, and repeat runs before agents depend on them.”
 
-The description begins with a verb, contains 10 words, uses 62 characters, and contains no banned word.
+The description begins with a verb, contains 13 words, uses 77 characters, and contains no banned word.
 
-## README changes in polish round 2
+## README claim audit
 
 | Copy | Words | Result |
 | --- | ---: | --- |
 | The public format starts at version `1`. | 7 | Pass (`contract-format-version`) |
 | `allow_nondeterministic_fields` accepts known JSON paths such as `$.meta.duration_ms`. | 8 | Pass (`nondeterministic-field-allowlist`) |
 | Run `agent-contract schema` for the complete JSON Schema. | 8 | Pass (`schema-output`) |
+| Create a starter file. | 4 | Pass (`starter-contract`) |
+| Build the single binary with Rust 1.85 or newer. | 9 | Pass (`rust-version`, compiled with Rust 1.85.0) |
 
-The internal release-process sentence was removed. Every README sentence that describes a result a maintainer can rely on maps to a claim in `.factory/claims.json`.
+The internal release-process sentence remains removed. Every README sentence that describes a result a maintainer can rely on maps to a claim in `.factory/claims.json`.

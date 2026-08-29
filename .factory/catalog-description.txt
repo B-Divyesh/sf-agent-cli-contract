@@ -1,1 +1,1 @@
-Test CLI contracts before coding agents depend on their output.
+Test CLI output, exits, errors, and repeat runs before agents depend on them.

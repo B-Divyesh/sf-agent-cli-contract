@@ -5,6 +5,7 @@
 - URL: `https://agent-cli-contract.sociobot.in/?demo=1` or `/?demo=1` in local preview. `/demo` is also a direct route.
 - Sample: a `ridge-cli` contract with text, real TTY, JSON, expected-error, recovery, repeat-run, and no-network checks.
 - Entry state: the four-check passing report is already visible. On a 390 px phone it is placed before the fixture sheet, with the report heading and first result row inside the initial 844 px viewport.
+- Mobile results: all fixture, mode, exit, and result columns reflow inside 390 px. The report has no horizontal scroll region.
 - Interaction: “Replay recorded sample run” restarts the self-hosted SVG recording. “Show a blocked change” swaps one JSON error code.
 - Reset: “Reset demo” removes every browser key beginning with `demo:` and restores the original sample.
 - Exit: “Leave demo and view install steps” removes the demo namespace and opens installation instructions.

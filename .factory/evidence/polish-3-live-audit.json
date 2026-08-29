@@ -1,0 +1,190 @@
+{
+  "base": "https://agent-cli-contract.sociobot.in",
+  "checkedAt": "2026-08-29T04:37:35.625Z",
+  "checks": {
+    "mobileFirstScreen": {
+      "headline": "Test CLI contracts before agents depend on them",
+      "audience": "For CLI maintainers who need stable output, exits, and errors while keeping human-readable output unchanged.",
+      "actionBottom": 644.078125,
+      "factsBottom": 784.96875,
+      "viewportHeight": 844
+    },
+    "demoEntry": {
+      "url": "https://agent-cli-contract.sociobot.in/?demo=1",
+      "title": "Demo — Agent CLI Contract",
+      "h1": "Review a complete CLI contract run",
+      "banner": "Demo — sample data, nothing is saved\nReset demo\nLeave demo and view install steps",
+      "tableMetrics": {
+        "clientWidth": 316,
+        "scrollWidth": 316,
+        "overflowX": "visible"
+      },
+      "allCellsInsideTable": true,
+      "reportHeadingBottom": 676.65625,
+      "firstResultBottom": 832.96875,
+      "axeSeriousCritical": []
+    },
+    "demoIsolation": {
+      "demoAfterChange": {
+        "demo": "failed",
+        "real": "keep",
+        "keys": [
+          "demo:report",
+          "real:sentinel"
+        ]
+      },
+      "afterReset": {
+        "demoKeys": [],
+        "real": "keep"
+      },
+      "stickyBanner": {
+        "y": 0,
+        "bottom": 91.375
+      }
+    },
+    "demoExit": {
+      "url": "https://agent-cli-contract.sociobot.in/#install",
+      "demoKeys": [],
+      "real": "keep"
+    },
+    "clipboard": {
+      "expected": "cargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract",
+      "actual": "cargo install --git https://github.com/B-Divyesh/sf-agent-cli-contract",
+      "announcement": "Copied install command."
+    },
+    "desktopFirstScreen": {
+      "actionBottom": 725.859375,
+      "factsBottom": 760.15625,
+      "viewportHeight": 768
+    },
+    "history": {
+      "savedScroll": 1198,
+      "restoredScroll": 1199,
+      "active": "page-title"
+    },
+    "skipLink": {
+      "active": "MAIN",
+      "activeId": "main"
+    },
+    "links": [
+      {
+        "url": "https://agent-cli-contract.sociobot.in/",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/demo",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/privacy",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/?demo=1",
+        "status": 200
+      },
+      {
+        "url": "https://agent-cli-contract.sociobot.in/terms",
+        "status": 200
+      }
+    ],
+    "offline": {
+      "title": "Demo — Agent CLI Contract",
+      "h1": "Review a complete CLI contract run"
+    },
+    "reducedMotion": {
+      "matches": true,
+      "duration": "1e-05s"
+    },
+    "requestOrigins": [
+      "https://agent-cli-contract.sociobot.in"
+    ]
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Agent CLI Contract — test stable command output",
+      "lang": "en",
+      "h1Count": 1,
+      "mainCount": 1,
+      "canonical": "https://agent-cli-contract.sociobot.in/",
+      "description": "Test CLI output, exit codes, errors, and repeat runs before coding agents depend on them.",
+      "ogTitle": "Agent CLI Contract — test stable command output",
+      "seriousCritical": [],
+      "privacyLinks": 2,
+      "termsLinks": 1
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Agent CLI Contract",
+      "lang": "en",
+      "h1Count": 1,
+      "mainCount": 1,
+      "canonical": "https://agent-cli-contract.sociobot.in/demo",
+      "description": "Review a recorded run of the four fixtures bundled with Agent CLI Contract.",
+      "ogTitle": "Demo — Agent CLI Contract",
+      "seriousCritical": [],
+      "privacyLinks": 2,
+      "termsLinks": 1
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — Agent CLI Contract",
+      "lang": "en",
+      "h1Count": 1,
+      "mainCount": 1,
+      "canonical": "https://agent-cli-contract.sociobot.in/privacy",
+      "description": "Learn what Agent CLI Contract reads, writes, and keeps on your machine.",
+      "ogTitle": "Privacy — Agent CLI Contract",
+      "seriousCritical": [],
+      "privacyLinks": 2,
+      "termsLinks": 1
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — Agent CLI Contract",
+      "lang": "en",
+      "h1Count": 1,
+      "mainCount": 1,
+      "canonical": "https://agent-cli-contract.sociobot.in/terms",
+      "description": "Read the MIT terms for Agent CLI Contract and your responsibility when running commands.",
+      "ogTitle": "Terms — Agent CLI Contract",
+      "seriousCritical": [],
+      "privacyLinks": 2,
+      "termsLinks": 1
+    },
+    "/missing-route": {
+      "status": 404,
+      "title": "Page not found — Agent CLI Contract",
+      "lang": "en",
+      "h1Count": 1,
+      "mainCount": 1,
+      "canonical": "https://agent-cli-contract.sociobot.in/404",
+      "description": "This Agent CLI Contract page could not be found.",
+      "ogTitle": "Page not found — Agent CLI Contract",
+      "seriousCritical": [],
+      "privacyLinks": 2,
+      "termsLinks": 1
+    }
+  },
+  "errors": [],
+  "requests": [
+    "https://agent-cli-contract.sociobot.in/",
+    "https://agent-cli-contract.sociobot.in/assets/main-BWLDo9Z4.js",
+    "https://agent-cli-contract.sociobot.in/assets/main-D8sVLijJ.css",
+    "https://agent-cli-contract.sociobot.in/topographic-run.webp",
+    "https://agent-cli-contract.sociobot.in/terminal-recording.svg"
+  ],
+  "passed": true,
+  "expectedNavigationErrors": [
+    "desktop console: Failed to load resource: the server responded with a status of 404 ()"
+  ]
+}
