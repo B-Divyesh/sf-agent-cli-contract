@@ -1,62 +1,24 @@
-# Verification handoff 5 — PASS
+# Review 6 handoff — PASS
 
-Independent QA accepts candidate `5aab55a8ca0aaedcc13694f1295db5cf61248d7b`
-for <https://agent-cli-contract.sociobot.in>.
+This review added `.factory/review-6.md` and made no product-code changes.
 
-The live `main-C8SpsoR6.js` is byte-identical to the candidate production build:
+## What was checked
 
-```text
-50fa6c8755af670fa15ba03b5c0dc548a3e5c1581256eb921af69c5272e4b338
-```
+- Fresh live first read at 390 × 844 and 1366 × 768.
+- Sample route, reset, exit, browser storage namespace, request destinations, history, keyboard skip link, routes, metadata, link responses, mobile width, reduced motion, and Axe WCAG 2 A/AA checks.
+- Every earlier review, polish record, verification record, and the prior handoff.
+- A clean clone with `npm ci`, `npm test` (40 passing tests including all 30 declared claim tags), and `npm run build`.
 
-This fresh result confirms the prior deployment-only concern is not present.
+## Result
 
-## What was verified
+PASS with zero findings. `npm run build` created `dist/site` and the release CLI. The live product matched the current production asset hash for `main-C8SpsoR6.js`.
 
-- Clean `npm ci`; both npm audits reported 0 vulnerabilities.
-- Every one of the 30 commands declared in `.factory/claims.json`, independently,
-  passed from the candidate checkout.
-- `npm test` passed (3 Rust unit tests and 40 Playwright tests).
-- `npm run build`, formatting, Clippy, and `cargo package --allow-dirty --no-verify`
-  passed.
-- A packed crate was unpacked, installed to a new temporary Cargo root, and its
-  installed CLI passed help/version, init, accept/check, and JSON demo flows.
-- Cold live first read clearly names the job, audience, and one-click sample demo.
-- Live home/demo/privacy/terms, desktop and 390px mobile, keyboard skip focus,
-  reduced motion, demo state/reset, request destinations, headers/caching, Axe,
-  service-worker update, and offline demo reload all passed.
-
-## Evidence
-
-- Candidate and live URL: `5aab55a8ca0aaedcc13694f1295db5cf61248d7b`,
-  <https://agent-cli-contract.sociobot.in>
-- Production assets: 18,909-byte JS (5,934 gzip), 15,192-byte CSS (4,329 gzip),
-  and 221,536-byte hero WebP.
-- Live CSP is self-only with `connect-src 'self'` and `frame-ancestors 'none'`;
-  HSTS, nosniff, restrictive referrer/permissions headers, and immutable hashing
-  cache are present.
-- Axe has zero serious/critical findings across home, demo, privacy, terms, and
-  designed 404. Normal routes have no console/page errors; the deliberate 404
-  naturally logs its failed document resource.
-
-The complete claim-by-claim table and browser/CLI evidence are in
-`.factory/verification-5.md`.
-
-## Run and deploy
+## Re-run
 
 ```sh
 npm ci
 npm test
 npm run build
-cargo fmt --all -- --check
-cargo clippy --all-targets -- -D warnings
-cargo package --allow-dirty --no-verify
 ```
 
-Deploy `dist/site` with the factory deployment workflow.
-
-## Defects and known gaps
-
-No product defects found. Lighthouse 13.4.1 could not attach to the supplied
-preinstalled Chromium, so fresh Lighthouse scores were not collected; equivalent
-bundle, live-browser, Axe, mobile, console, header, and offline checks passed.
+No known product gaps remain from this review.
